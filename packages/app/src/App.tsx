@@ -18,39 +18,20 @@ const NotFound = withBaseLayout(() => <div className="p-6">404 - 페이지를 �
 const AssignmentDetail = withBaseLayout(Pages.AssignmentDetail);
 
 export const App = ({ url = "", ssr = false }: Props) => {
-  // 공통으로 들어가는 내부 라우트 정의
-  const AppRoutes = (
-    <Routes>
-      <Route path="/" Component={Home} />
-      <Route path="/assignments/" Component={Assignments} />
-      <Route path="/:id/" Component={User} />
-      <Route path="/:id/assignment/:assignmentId/" Component={AssignmentDetail} />
-      <Route path="*" Component={NotFound} />
-    </Routes>
-  );
-
-  // 공통 Provider 래퍼
-  const withProviders = (children: React.ReactNode) => (
+  const Router = ssr ? StaticRouter : BrowserRouter;
+  return (
     <AppDataProvider>
       <QueryClientProvider client={queryClient}>
-        {children}
+        <Router location={url} basename={BASE_URL}>
+          <Routes>
+            <Route path="/" Component={Home} />
+            <Route path="/assignments/" Component={Assignments} />
+            <Route path="/:id/" Component={User} />
+            <Route path="/:id/assignment/:assignmentId/" Component={AssignmentDetail} />
+            <Route path="*" Component={NotFound} />
+          </Routes>
+        </Router>
       </QueryClientProvider>
     </AppDataProvider>
-  );
-
-  // 1. 서버 사이드 렌더링 (SSR/SSG) 인 경우
-  if (ssr) {
-    return withProviders(
-      <StaticRouter location={url} basename={BASE_URL}>
-        {AppRoutes}
-      </StaticRouter>
-    );
-  }
-
-  // 2. 클라이언트 사이드 렌더링 (Browser) 인 경우
-  return withProviders(
-    <BrowserRouter basename={BASE_URL}>
-      {AppRoutes}
-    </BrowserRouter>
   );
 };

@@ -28,6 +28,15 @@ const AssignmentDetailProvider = ({ children }: PropsWithChildren) => {
   );
 };
 
+// 날짜 포맷 유틸 함수 - SSG와 클라이언트에서 동일한 결과 보장
+function formatDate(date: string | Date): string {
+  const dateObj = typeof date === "string" ? new Date(date) : date;
+  const year = dateObj.getFullYear();
+  const month = String(dateObj.getMonth() + 1).padStart(2, "0");
+  const day = String(dateObj.getDate()).padStart(2, "0");
+  return `${year}.${month}.${day}`; // "2024.12.15"
+}
+
 // AssignmentDetail 페이지 메타데이터 생성 함수
 export interface AssignmentMetadataParams {
   assignmentId: string;
@@ -68,7 +77,7 @@ export const AssignmentDetail = Object.assign(
                   </div>
                   <div className="flex items-center gap-4 text-xs text-gray-500">
                     <span>by {data.user}</span>
-                    <span suppressHydrationWarning>{new Date(data.createdAt).toLocaleDateString("ko-KR")}</span>
+                    <span>{formatDate(data.createdAt)}</span>
                   </div>
                 </div>
               </div>

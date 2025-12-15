@@ -2,43 +2,17 @@ import { useMemo } from "react";
 import { useAppDataContext } from "@/providers";
 import type { AssignmentSummary } from "../types";
 
-const ASSIGNMENTS_INFO: Record<string, { chapter: string; title: string }> = {
-  "hanghae-plus/front_7th_chapter1-1": {
-    chapter: "1. 자바스크립트 딥다이브",
-    title: "1-1. 프레임워크 없이 SPA 만들기 (1)",
-  },
-  "hanghae-plus/front_7th_chapter1-2": {
-    chapter: "1. 자바스크립트 딥다이브",
-    title: "1-2. 프레임워크 없이 SPA 만들기 (2)",
-  },
-  "hanghae-plus/front_7th_chapter1-3": {
-    chapter: "1. 자바스크립트 딥다이브",
-    title: "1-3. React, Beyond the Basics",
-  },
-  "hanghae-plus/front_7th_chapter2-1": { chapter: "2. 클린코드", title: "2-1. 클린코드와 리팩토링" },
-  "hanghae-plus/front_7th_chapter2-2": {
-    chapter: "2. 클린코드",
-    title: "2-2. 디자인 패턴과 함수형 프로그래밍",
-  },
-  "hanghae-plus/front_7th_chapter2-3": { chapter: "2. 클린코드", title: "2-3. 관심사 분리와 폴더구조" },
-  "hanghae-plus/front_7th_chapter3-1": { chapter: "3. 테스트", title: "3-1. 프런트엔드 테스트 코드 (1)" },
-  "hanghae-plus/front_7th_chapter3-2": { chapter: "3. 테스트", title: "3-2. 프런트엔드 테스트 코드 (2)" },
-  "hanghae-plus/front_7th_chapter4-1": { chapter: "4. 성능최적화", title: "4-1. SSR, SSG, Infra" },
-  "hanghae-plus/front_7th_chapter4-2": { chapter: "4. 성능최적화", title: "4-2. 코드 관점의 성능 최적화" },
-};
-
 export const useAssignmentSummaries = () => {
   const { data } = useAppDataContext();
-
   const allAssignments = data.assignmentDetails;
 
   const summaries = useMemo(() => {
-    // Check if data exists
+    // 1. 데이터 유효성 검사 (Guard Clause)
     if (!data || !data.users) {
       return [];
     }
 
-    // Extract repository URL from PR URL
+    // 2. PR URL에서 리포지토리 이름 추출 (예: hanghae-plus/front_7th_chapter1-1)
     const getRepositoryFromUrl = (prUrl: string): string => {
       const match = prUrl.match(/github\.com\/(.*?)\/pull/);
       return match ? match[1] : "";
@@ -61,32 +35,52 @@ export const useAssignmentSummaries = () => {
       }
     >();
 
-    // Process all user assignments
+    // 3. 모든 유저의 과제 순회
     Object.entries(data.users).forEach(([userId, user]) => {
       user.assignments?.forEach((assignment) => {
         const repository = getRepositoryFromUrl(assignment.url);
+      
         if (!repository) return;
 
+        // 4. 맵에 아직 이 과제(리포지토리)가 등록되지 않았다면 초기화
         if (!assignmentMap.has(repository)) {
-          const assignmentInfo = ASSIGNMENTS_INFO[repository];
+      
+          
+          // Title: 백엔드에서 받아온 'assignmentName'이 있으면 쓰고, 없으면 리포지토리 이름 사용
+          // (타입 에러 방지를 위해 any 캐스팅 사용. 추후 도메인 타입 수정 권장)
+          const realTitle = (assignment as any).assignmentName || repository;
+
+          // Chapter: 리포지토리 URL에서 'chapterX-X' 패턴을 찾아 'X주차'로 변환
+          // 예: front_7th_chapter1-1 -> 1주차
+          const chapterMatch = repository.match(/chapter(\d+)/);
+          const chapterNum = chapterMatch ? chapterMatch[1] : "기타";
+          
+          // 화면에 보여질 챕터 그룹명
+          const dynamicChapter = chapterNum === "기타" 
+            ? "기타 과제" 
+            : `${chapterNum}주차 과제`;
+
           assignmentMap.set(repository, {
-            title: assignmentInfo.title,
-            chapter: assignmentInfo.chapter,
+            title: realTitle,      
+            chapter: dynamicChapter,
             repository,
             submissions: [],
           });
         }
 
+        // 5. 제출 현황 집계
         const existing = assignmentMap.get(repository);
-        if (!existing) {
-          return;
-        }
-        // Check if this user already submitted to this assignment
+        if (!existing) return; // 방어 코드
+
+        // 중복 제출 방지
         const existingSubmission = existing.submissions.find((v) => v.userId === userId);
         const assignmentId = allAssignments[assignment.url]?.id;
+
+        // 과제 ID가 없거나 이미 처리한 유저라면 스킵
         if (existingSubmission || !assignmentId) {
           return;
         }
+
         existing.submissions.push({
           id: assignmentId,
           passed: assignment.passed,
@@ -98,6 +92,7 @@ export const useAssignmentSummaries = () => {
       });
     });
 
+    // 6. 결과 배열로 변환 및 통계 계산
     const result: AssignmentSummary[] = Array.from(assignmentMap.entries()).map(([repository, data]) => {
       const totalSubmissions = data.submissions.length;
       const passedCount = data.submissions.filter((s) => s.passed).length;
@@ -110,7 +105,6 @@ export const useAssignmentSummaries = () => {
           prUrl: v.prUrl,
         }));
 
-      const bestPracticeCount = bestPracticeUsers.length;
       const passRate = totalSubmissions > 0 ? (passedCount / totalSubmissions) * 100 : 0;
 
       return {
@@ -118,7 +112,7 @@ export const useAssignmentSummaries = () => {
         chapter: data.chapter,
         repository,
         totalSubmissions,
-        bestPracticeCount,
+        bestPracticeCount: bestPracticeUsers.length,
         passedCount,
         passRate: Math.round(passRate * 10) / 10,
         bestPracticeUsers,
@@ -127,17 +121,21 @@ export const useAssignmentSummaries = () => {
       };
     });
 
-    // Sort by chapter order
+    // 7. 정렬 (주차별 -> 이름순)
     return result.sort((a, b) => {
-      const getChapterNumber = (chapter: string) => {
-        const match = chapter.match(/(\d+)주차/);
-        return match ? parseInt(match[1]) : 999;
+      const getChapterNumber = (chapterStr: string) => {
+        // "1주차 과제"에서 숫자 1만 추출
+        const match = chapterStr.match(/(\d+)/);
+        return match ? parseInt(match[1], 10) : 999;
       };
 
       const aChapter = getChapterNumber(a.chapter);
       const bChapter = getChapterNumber(b.chapter);
 
-      return aChapter !== bChapter ? aChapter - bChapter : a.title.localeCompare(b.title);
+      if (aChapter !== bChapter) {
+        return aChapter - bChapter;
+      }
+      return a.title.localeCompare(b.title);
     });
   }, [allAssignments, data]);
 

@@ -346,7 +346,7 @@
 <table><thead><tr><th style="text-align:left">단계</th><th style="text-align:left">에이전트 역할</th><th style="text-align:left">핵심 책임 (Output)</th></tr></thead><tbody><tr><td style="text-align:left">1. 기능 설계 (Design)</td><td style="text-align:left">PRD 분석 후 $\rightarrow$ 최종 명세서 작성. (Q&amp;A 및 자가 평가를 통해 명세 견고성 확보)</td><td style="text-align:left"><code>logs/output-02-feature-spec.md</code> (데이터 모델, API 흐름 확정)</td></tr><tr><td style="text-align:left">2. 테스트 설계 (Test-Design)</td><td style="text-align:left">명세 기반 $\rightarrow$ 빈 테스트 셸 생성. (Mock 데이터는 작성 금지)</td><td style="text-align:left"><code>src/__tests__</code> (RED 셸 확립)</td></tr><tr><td style="text-align:left">3. 테스트 코드 작성 (Test-Write)</td><td style="text-align:left">빈 셸 $\rightarrow$ 실제 테스트 로직 (Mocking, Assertion) 구현. (RED 완성)</td><td style="text-align:left"><code>src/__tests__</code> (실제 테스트 로직)</td></tr><tr><td style="text-align:left">4. 코드 작성 (Code-Write)</td><td style="text-align:left">실패 테스트 $\rightarrow$ 테스트를 통과하는 기능 코드 작성.</td><td style="text-align:left"><code>src/types.ts</code>, <code>src/utils/</code>, <code>src/hooks/</code> (GREEN 목표)</td></tr><tr><td style="text-align:left">4.5. 코드 리뷰 (Code Review)</td><td style="text-align:left">4단계 후 타입 안정성, 스타일을 자동 검토 및 수정하여 GREEN 달성 안정성 확보.</td><td style="text-align:left"><code>logs/code-review-log.md</code> (상세 기록)</td></tr><tr><td style="text-align:left">5. 코드 수정 (Code-Fix)</td><td style="text-align:left">실패 로그 기반 $\rightarrow$ 비동기 오류 및 로직 오류 자동 디버깅 (GREEN 달성까지 반복).</td><td style="text-align:left"><code>src/</code> (GREEN 달성)</td></tr><tr><td style="text-align:left">6. UI 구현 (UI-Implement)</td><td style="text-align:left">완성 로직 기반 $\rightarrow$ UI 컴포넌트 통합 및 수정. (<code>App.tsx</code>에서 모달/아이콘 연결)</td><td style="text-align:left"><code>src/components/</code>, <code>src/App.tsx</code> (UI/UX 완성)</td></tr><tr><td style="text-align:left">7. 리팩토링 (Refactor)</td><td style="text-align:left">테스트 통과 코드를 개선 (가독성, 효율성). 타입/시그니처 불변성 유지.</td><td style="text-align:left"><code>src/</code> (REFACTOR)</td></tr></tbody></table>
 <h2 id="작업-흐름-step-by-step"><a class="anchor" aria-hidden="true" tabindex="-1" href="#작업-흐름-step-by-step"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>작업 흐름 (Step-by-Step)</h2>
 <ol>
-<li>(: 설계) $\rightarrow$ 🧑‍💻 개발자 개입을 통해 명세서 확정.</li>
+<li>(Step 1: 설계) $\rightarrow$ 🧑‍💻 개발자 개입을 통해 명세서 확정.</li>
 <li>(Step 2 ~ 5: TDD Core Loop)
 <ul>
 <li>2 &amp; 3단계 실행 $\rightarrow$ RED 🔴 상태 확립.</li>
@@ -413,7 +413,7 @@
 
 
 
-<table><thead><tr><th style="text-align:left">항목</th><th style="text-align:left">내용</th></tr></thead><tbody><tr><td style="text-align:left">작업 내용</td><td style="text-align:left">(설계) 완료 및 Core 인프라 구축 성공.<br/>- 기능 설계 에이전트 스크립트(<code>01</code>, <code>02</code> 파일)의 Q&amp;A 흐름 완성.<br/>- Core 파일 구축 완료: TDD 전반의 통제권을 확보하기 위해 <code>core/agent_prompts.js</code> (프롬프트 규칙), <code>core/runAgent.js</code> (API 안정화/재시도), <code>core/checklistUtils.js</code> (흐름 추적 및 자가 평가) 3가지 핵심 모듈을 구현.<br/>- Final Spec 작성: <code>seriesId</code>, 2단계 API 호출 등 복잡한 데이터 모델 및 API 흐름을 명확히 정의하여 모든 에이전트가 매 작업마다 최우선적으로 참고해야 할 명세를 확정.</td></tr><tr><td style="text-align:left">사용한 툴</td><td style="text-align:left">Gemini Pro (대화/분석), Node.js/@google/generative-ai, Gemini Gems (컨텍스트 주입 및 페르소나 부여한 Gemini),</td></tr><tr><td style="text-align:left">느낀점</td><td style="text-align:left">명세 구체화 과정에서 <code>core/agent_prompts.js</code>에 담긴 세밀한 제약 규칙과 <code>core/runAgent.js</code>의 안정화 로직 덕분에 AI가 명세를 정확히 이해하고 따를 수 있었다. 특히 <code>core/checklistUtil.js</code>로 에이전트가 수정 및 생성한 작업에 대한 흐름을 확보한 것이 이번 에이전트 과제에서 내가 무슨일을 시켰고, 시킨일을 어떻게 진행했는지 볼 수 있는 최소한의 명세였던 것 같다. 이거라도 없었으면 다음단계로 나아가기를 주저했을 것 같다.</td></tr></tbody></table>
+<table><thead><tr><th style="text-align:left">항목</th><th style="text-align:left">내용</th></tr></thead><tbody><tr><td style="text-align:left">작업 내용</td><td style="text-align:left">Step 1 (설계) 완료 및 Core 인프라 구축 성공.<br/>- 기능 설계 에이전트 스크립트(<code>01</code>, <code>02</code> 파일)의 Q&amp;A 흐름 완성.<br/>- Core 파일 구축 완료: TDD 전반의 통제권을 확보하기 위해 <code>core/agent_prompts.js</code> (프롬프트 규칙), <code>core/runAgent.js</code> (API 안정화/재시도), <code>core/checklistUtils.js</code> (흐름 추적 및 자가 평가) 3가지 핵심 모듈을 구현.<br/>- Final Spec 작성: <code>seriesId</code>, 2단계 API 호출 등 복잡한 데이터 모델 및 API 흐름을 명확히 정의하여 모든 에이전트가 매 작업마다 최우선적으로 참고해야 할 명세를 확정.</td></tr><tr><td style="text-align:left">사용한 툴</td><td style="text-align:left">Gemini Pro (대화/분석), Node.js/@google/generative-ai, Gemini Gems (컨텍스트 주입 및 페르소나 부여한 Gemini),</td></tr><tr><td style="text-align:left">느낀점</td><td style="text-align:left">명세 구체화 과정에서 <code>core/agent_prompts.js</code>에 담긴 세밀한 제약 규칙과 <code>core/runAgent.js</code>의 안정화 로직 덕분에 AI가 명세를 정확히 이해하고 따를 수 있었다. 특히 <code>core/checklistUtil.js</code>로 에이전트가 수정 및 생성한 작업에 대한 흐름을 확보한 것이 이번 에이전트 과제에서 내가 무슨일을 시켰고, 시킨일을 어떻게 진행했는지 볼 수 있는 최소한의 명세였던 것 같다. 이거라도 없었으면 다음단계로 나아가기를 주저했을 것 같다.</td></tr></tbody></table>
 <hr/>
 <p>2025년 10월 29일 (화)</p>
 
@@ -602,10 +602,10 @@
 
     gtag('config', 'G-6J8QP7YK1E');
   </script>
-  <script type="module" crossorigin src="/front_7th/assets/index-C7wrzndj.js"></script>
-  <link rel="stylesheet" crossorigin href="/front_7th/assets/index-BXO68frB.css">
+  <script type="module" crossorigin src="/front_7th/assets/index-CTQxwDRf.js"></script>
+  <link rel="stylesheet" crossorigin href="/front_7th/assets/index-B1cXSvNG.css">
 </head>
 <body>
-<div id="root"><!--app-html--></div>
+<div id="root"><!--app-html--></div>
 </body>
 </html>

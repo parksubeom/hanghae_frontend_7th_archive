@@ -557,7 +557,17 @@ if (!canAddCoupon(coupons, couponForm)) {
 <li>비즈니스 로직의 훅 분리, 어느 시점에서 하는 게 적절할까요?</li>
 <li>훅으로 분리했을 때의 이점이 &quot;로직 추적 복잡도 증가&quot;를 상쇄할 만큼 명확한 기준이 있을까요?</li>
 </ul></div></div><div class="overflow-auto mt-9"><div data-color-mode="dark" class="wmde-markdown wmde-markdown-color p-6 max-w-full" style="word-wrap:break-word;overflow-wrap:break-word"><h2 id="과제-피드백"><a class="anchor" aria-hidden="true" tabindex="-1" href="#과제-피드백"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>과제 피드백</h2>
-<p>undefined</p></div></div><div class="mt-9"></div></div></main></div></div></div>
+<p>잘했어요 용태! 기본 과제랑 심화 과제 모두 완료한 거 잘했습니다.</p>
+<p>회고가 정말 깊이 있게 작성되어 있어요. 특히 &quot;납득 가능한 수준의 함수형 사고 적용&quot;에 집중했다는 부분이 인상적이었어요. &quot;&#x27;왜 이렇게 해야 할까?&#x27;를 스스로 설명할 수 있는 범위 내에서 작업을 진행했다&quot;는 게 좋은 접근이라 생각합니다. 납득 없이 적용한 패턴은 체화되지 않는다는 말에 동의합니다.</p>
+<p>적용 사례도 잘 정리했습니다. Origin vs Advanced 비교가 명확하고, 왜 그렇게 바꿨는지 이유가 있어서 좋아요. 매직 넘버 상수화, 검증 로직 분리(canAddCoupon), 불변성 유지 등 실무에서도 바로 쓸 수 있는 패턴들이죠.</p>
+<p>props의 경우 어떤 props는 남기고 어떤 props는 hook으로 내리면 좋을지도 한번 더 고민해보시면 좋겠습니다.</p>
+<p>수고했습니다!</p>
+<p>Q1) HOC, 합성 함수 같은 고급 패턴은 언제 적용해야 하나요?</p>
+<p>회괴에 작성 해준 한 판단 동의합니다. &quot;패턴화할 만큼 반복되는 케이스가 2개 이하&quot;면 안 하는 게 좋죠. 하지만 &quot;지금이니?&quot; 싶으면 한번 해보세요. 오버엔지니어링인지 알기 위해서는 시행착오는 해봐야 하니까요. 어쨌든 실무에서 자연스럽게 활용하려면, 일단 안 쓰고 버티다가 안되겠다 하는 순간에 하는게 제일 좋긴 하지만 안해봤다면 한번 해보는걸 추천합니다.</p>
+<p>Q2) 비즈니스 로직 훅 분리는 언제 해야 하나요?</p>
+<p>&quot;충분히 복잡해졌을 때 분리해도 괜찮지 않을까?&quot;라고 했는데, 맞는 이야기죠. 훅으로 분리하는 이점은 &quot;여러 컴포넌트에서 같은 로직을 쓸 때&quot; 생기는데, 한 컴포넌트에서만 쓰는 로직을 훅으로 빼면 오히려 &quot;이 로직 어디 있지?&quot; 하고 찾아다녀야 합니다.</p>
+<p>분리 여부의 판단은 이렇게 한번 물어보세요. &quot;이 컴포넌트를 삭제하면 이 로직도 같이 사라져야 하나?&quot; 같이 사라져야 하면 컴포넌트에 두는게 맞습니다. 그렇지 않고 다른 데서도 쓸 것 같으면 훅으로 빼세요. 핸들러가 컴포넌트의 것인지 엔티티의 것인지는 미묘하지만 구분할 수 있을 거에요.</p>
+<p>과제 채점이 너무 늦어져서 미안해요. 수고 많았어요! 마지막 챕터도 화이팅입니다!</p></div></div><div class="mt-9"></div></div></main></div></div></div>
     <title>[1팀 박용태] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계 - 박용태 | 항해플러스 프론트엔드 7기</title>
     <meta name="description" content=" [항해플러스 프론트엔드 7기] 박용태님이 제출한 [1팀 박용태] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계 과제를 확인하세요. 코드 구현, 문제 해결 과정, 피드백 내용을 상세히 살펴볼 수 있습니다." />
     <meta name="keywords" content="항해플러스, 프론트엔드, 개발자교육, React, TypeScript, JavaScript, 기술면접, 웹개발, 박용태, [1팀 박용태] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계, 과제상세, 코드리뷰, 피드백, Pull Request" />
@@ -571,25 +581,23 @@ if (!canAddCoupon(coupons, couponForm)) {
     <meta name="twitter:image" content="/defaultThumbnail.jpg" />
   <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/front_7th/favicon.ico" />
-    <!--app-head-->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J8QP7YK1E"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/front_7th/favicon.ico"/>
+  <!--app-head-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J8QP7YK1E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-      gtag("config", "G-6J8QP7YK1E");
-    </script>
-    <script type="module" crossorigin src="/front_7th/assets/index-C7wrzndj.js"></script>
-    <link rel="stylesheet" crossorigin href="/front_7th/assets/index-BXO68frB.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+    gtag('config', 'G-6J8QP7YK1E');
+  </script>
+  <script type="module" crossorigin src="/front_7th/assets/index-RTTRX4Ru.js"></script>
+  <link rel="stylesheet" crossorigin href="/front_7th/assets/index-B1cXSvNG.css">
+</head>
+<body>
+<div id="root"><!--app-html--></div>
+</body>
 </html>

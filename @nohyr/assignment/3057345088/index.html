@@ -401,7 +401,22 @@ Q&amp;A에서 &quot;계층을 나누는 이유는 격리&quot;라고 배웠는�
 Q&amp;A에서 &quot;좋은 설계는 단방향&quot;이라고 하셨는데, 제 코드가 정말 단방향인지 검증하는 방법이 있을까요? 지금은 &quot;느낌적으로&quot; 판단하는데, 더 객관적인 기준이 궁금합니다.</p>
 <p><strong>4. 폴더 구조</strong>
 다음 주차가 FSD라고 하셨는데, 지금 제 폴더 구조(<code>/utils</code>, <code>/hooks</code>, <code>/components</code>)에서 엔티티 개념을 도입하면 어떻게 바뀌어야 할까요? 미리 감을 잡고 싶습니다.</p></div></div><div class="overflow-auto mt-9"><div data-color-mode="dark" class="wmde-markdown wmde-markdown-color p-6 max-w-full" style="word-wrap:break-word;overflow-wrap:break-word"><h2 id="과제-피드백"><a class="anchor" aria-hidden="true" tabindex="-1" href="#과제-피드백"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>과제 피드백</h2>
-<p>undefined</p></div></div><div class="mt-9"></div></div></main></div></div></div>
+<p>잘했어요 유리! 기본 과제랑 심화 과제 모두 완료한 거 잘했습니다. 그리고 회고가 정말 잘 작성되어 있어요. 과정과 깨달음이 구체적으로 담겨 있어서 읽으면서 유리가 뭘 배웠는지 명확하게 느껴졌어요.</p>
+<p>그리고 formatPrice 리팩토링의 의도를 잘 이해해줘서 고마워요. 과제다 보니 의도를 가지고 억지로 만든거라 실무적인 감각은 떨어졌겠지만 isAdmin을 파라미터로 받던 함수를 formatCurrency와 formatCurrencyWon으로 분리하고, 비즈니스 로직은 컴포넌트에서 처리하도록 바꾼 거요. &quot;이 함수가 비즈니스 로직을 알아야 하는가?&quot;라는 질문을 스스로 던진 게 정확히 핵심을 짚은 거예요. Utils는 어떤 프로젝트에 가져가도 바로 쓸 수 있어야 해요.</p>
+<p>한 가지 챙겨보면 좋을 부분이 있어요. Advanced에서 CartPage, ProductCard, CartItem은 내부에서 atom을 직접 호출해서 props가 많이 줄었는데, AdminPage 쪽은 여전히 props가 많이 남아있더라고요. 우리가 코드를 세세하게 분리하는 이유는 떨어뜨려놓기 쉽게, 그래서 다시 필요한 대로 모아두고 붙여놓기 쉽게 유지하기 위함이에요. onDelete, onUpdate 같은 콜백을 props로 받으면 그 컴포넌트는 부모와 결합이 생겨요. 근데 엔티티 컴포넌트는 UI 컴포넌트와 달리 재사용하거나 props에 따라 분기할 일이 거의 없거든요. 그래서 내부에서 직접 hooks나 atom을 호출하면 부모와의 불필요한 결합을 없앨 수 있어요.</p>
+<p><strong>Q1) formatCurrency vs formatCurrencyWon 분리가 과한가요?</strong></p>
+<p>아니요, 지금 방식이 사실 제가 의도한 바이긴 합니다. 대안 2처럼 컴포넌트에서 <code>{isAdmin ? formatCurrencyWon(price) : formatCurrency(price)}</code> 하는 게 가장 명확해요. 왜냐하면 &quot;관리자일 때 다르게 보여준다&quot;는 건 UI의 책임이거든요. 이 분기 로직이 컴포넌트에 있으면 코드를 읽는 사람이 &quot;아, 관리자 모드에서는 다르게 표시하는구나&quot;를 바로 알 수 있어요. useFormatProduct 같은 helper를 만들면 오히려 그 의도가 숨겨지고, &quot;이 hook은 어디서 쓰지?&quot; 하고 찾아다녀야 하거든요.</p>
+<p><strong>Q2) &quot;격리&quot;를 실무에서 얼마나 엄격하게 지키나요? 빨리 만들어야 하는 기능과 제대로 격리해야 하는 코드 사이에서 어떻게 균형을 잡나요?</strong></p>
+<p>사실 격리가 익숙해지면 더 빨리 만들 수 있어요. 왜냐하면 &quot;이 코드는 어디에 둬야 하지?&quot;라는 고민이 줄어들거든요. 순수함수는 utils로, 상태 변경은 hooks로, UI는 components로 - 이 패턴이 몸에 배면 생각 없이 손이 가요. 처음엔 &quot;나눠야 하니까 시간이 더 걸린다&quot;고 느껴지는데, 익숙해지면 오히려 한 덩어리로 짜는 게 더 느려요. 나중에 &quot;이거 어디 있더라?&quot; 하고 찾아다니는 시간이 생기니까요.</p>
+<p>저는 처음부터 파일을 쪼개두지 않아요. 대신 나만의 &quot;관절&quot;들을 만들어둡니다. 순수함수로, api로, params로, 컴포넌트와 핸들러로 분리하기 쉽도록 - export만 하면 바로 뜯어지게 - 코드를 작성해요. 개발할 때는 같이 모여 있는 게 편하거든요. 그리고 기능이 완성되면 그때 어디에 둘지 제자리에 배치하면서 놓쳤던 것들을 정리합니다.</p>
+<p>그러니까 &quot;빨리 만들기 vs 제대로 격리하기&quot;가 trade-off처럼 느껴지는 건 아직 격리가 손에 안 익어서예요. 지금 과제하면서 연습하는 게 나중에 오히려 속도로 돌아올 거예요.</p>
+<p><strong>Q3) 단방향 의존성 검증 방법?</strong></p>
+<p>가장 간단한 방법은 import 방향을 보거나 아니만 한번 삭제해보는 겁니다. 그러면 어떤 파일들을 의존하고 있었는지 영향을 볼 수 있거든요. 이때 방향이 잘못되면 문제인 거죠. 가령, utils 파일이 hooks를 import하고 있으면 뭔가 잘못된 겁니다.</p>
+<p>그리고 &quot;이 파일을 삭제하면 어디가 깨지나?&quot; 생각해보세요. utils를 삭제하면 hooks가 깨지고, hooks를 삭제하면 components가 깨지는 게 정상이에요. 반대 방향이면 의존성이 꼬인 거예요. 의존성이 한 방향으로만 흐르면 변경의 영향 범위를 예측할 수 있어요. &quot;utils를 고치면 hooks와 components를 확인해야겠구나&quot; 이렇게요.</p>
+<p><strong>Q4) FSD 폴더 구조는요?</strong></p>
+<p>하하하... 과제 채점이 너무 늦어져서 미안해요. 이미 과제를 끝냈을거라 어떤 내용인지 감을 잡았을거에요! ^^ 역할만으로 구분하는 것에서 엔티티를 추가하고 화면 행동 데이터의 관점을 추가해서 조금 더 다양한 관점을 담아낼 수 있도록 약속하는 방식입니다.</p>
+<p>과제 채점이 너무 늦어졌네요. 수고 많았습니다. 앞으로 남은 과제 화이팅입니다!!</p>
+<p>BP인 이유: 과제의 회고가 스스로의 관점과 생각과 철학을 잘 담아내고 있었기 때문에 BP로 선정했습니다.</p></div></div><div class="mt-9"></div></div></main></div></div></div>
     <title>[6팀 노유리] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계  - 노유리 | 항해플러스 프론트엔드 7기</title>
     <meta name="description" content=" [항해플러스 프론트엔드 7기] 노유리님이 제출한 [6팀 노유리] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계  과제를 확인하세요. 코드 구현, 문제 해결 과정, 피드백 내용을 상세히 살펴볼 수 있습니다." />
     <meta name="keywords" content="항해플러스, 프론트엔드, 개발자교육, React, TypeScript, JavaScript, 기술면접, 웹개발, 노유리, [6팀 노유리] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계 , 과제상세, 코드리뷰, 피드백, Pull Request" />
@@ -415,25 +430,23 @@ Q&amp;A에서 &quot;좋은 설계는 단방향&quot;이라고 하셨는데, 제 
     <meta name="twitter:image" content="/defaultThumbnail.jpg" />
   <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/front_7th/favicon.ico" />
-    <!--app-head-->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J8QP7YK1E"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/front_7th/favicon.ico"/>
+  <!--app-head-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J8QP7YK1E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-      gtag("config", "G-6J8QP7YK1E");
-    </script>
-    <script type="module" crossorigin src="/front_7th/assets/index-C7wrzndj.js"></script>
-    <link rel="stylesheet" crossorigin href="/front_7th/assets/index-BXO68frB.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+    gtag('config', 'G-6J8QP7YK1E');
+  </script>
+  <script type="module" crossorigin src="/front_7th/assets/index-RTTRX4Ru.js"></script>
+  <link rel="stylesheet" crossorigin href="/front_7th/assets/index-B1cXSvNG.css">
+</head>
+<body>
+<div id="root"><!--app-html--></div>
+</body>
 </html>

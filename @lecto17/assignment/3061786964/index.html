@@ -189,7 +189,20 @@
 <li>이 컴포넌트들의 계층 구조를 어떻게 잡을지를 먼저 정리한다고 설명합니다.
 코치님께서는 실제로 컴포넌트를 설계하실 때 어떤 관점과 기준으로 구조를 잡으시는지, 그리고 주니어 개발자들이 초기에 특히 의식하면 좋은 포인트가 있다면 알려주시면 감사하겠습니다.</li>
 </ol></div></div><div class="overflow-auto mt-9"><div data-color-mode="dark" class="wmde-markdown wmde-markdown-color p-6 max-w-full" style="word-wrap:break-word;overflow-wrap:break-word"><h2 id="과제-피드백"><a class="anchor" aria-hidden="true" tabindex="-1" href="#과제-피드백"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>과제 피드백</h2>
-<p>undefined</p></div></div><div class="mt-9"></div></div></main></div></div></div>
+<p>잘했어요 현우! 기본 과제랑 심화 과제 모두 완료한 거 잘했습니다.</p>
+<p>회고가 정말 깊이 있게 작성되어 있어요. &quot;React로 사고하기&quot; 아티클을 읽고 &quot;UI와 데이터 모델은 보통 같은 정보 아키텍처를 가진다&quot;는 점을 발견한 건 중요한 인사이트예요. FE 개발자가 단순히 화면을 그리는 역할이 아니라 BE 개발자, 기획자와 함께 데이터를 설계하는 데 참여해야 한다는 생각도 맞아요. 데이터 모델이 잘 설계되어 있으면 컴포넌트 구조가 자연스럽게 따라오거든요.</p>
+<p>zustand의 store/slice 결정 근거를 정리한 것도 좋았어요. &quot;별도 store로 분리할 때 vs 하나의 store 내부 slice로 분리할 때&quot;를 구분한 기준이 명확해요. 특히 &quot;변경 시 다른 도메인에 불필요한 리렌더를 일으키지 않도록 렌더링 영향 범위를 줄이는 것&quot;을 고려한 건 실무에서도 중요한 포인트예요.</p>
+<p>점진적 리팩토링에 대한 깨달음도 인상적이었어요. &quot;처음에는 큰 도메인을 통으로 바꾸려 했는데, 작은 부분부터 수정해나가는 것이 더 안정적&quot;이라는 경험이요. 이게 맞아요. 한 번에 다 바꾸면 뭐가 깨졌는지 찾기 어렵거든요.</p>
+<p>한 가지 챙겨보면 좋을 부분이 있어요. Zustand를 도입해서 전역상태를 만들었는데, 컴포넌트들에 여전히 props가 많이 남아있더라고요. 전역상태를 도입한 이점 중 하나가 &quot;필요한 곳에서 직접 가져다 쓸 수 있다&quot;는 건데, 지금은 부모에서 상태를 가져와서 props로 내려주는 패턴이 남아있어요. 우리가 코드를 세세하게 분리하는 이유는 떨어뜨려놓기 쉽게, 그래서 다시 필요한 대로 모아두고 붙여놓기 쉽게 유지하기 위함이에요. onDelete, onUpdate 같은 콜백을 props로 받으면 그 컴포넌트는 부모와 결합이 생겨요. 엔티티 컴포넌트는 내부에서 직접 store를 호출하면 부모와의 불필요한 결합을 없앨 수 있어요.</p>
+<p><strong>Q1) &#x27;확장성 있는 설계&#x27;와 &#x27;섣부른 추상화&#x27;를 구분하는 기준이 뭔가요?</strong></p>
+<p>제일 중요한건 일관성입니다. 우선 코드가 일관성이 있어야 그 기준이라는걸 검증을 해볼 수 있으니까요. 그래서 미리 만들어준 설계의 틀이 있다면 &quot;만들때 처음부터 나중에 분리하기 쉽게 관절을 만들어둔다&quot;라는 생각으로 분리 기준에 맞게 개발을 합니다. 그러면 일단 한 파일에 때려놓고 만든다해도 이미 함수가 순수함수로 hooks로 엔티티를 기준으로 이미 분리는 되어 있기에 재조립이나 정리정돈이 쉬워지는 거죠.</p>
+<p>그렇지만 섣부른 추상화는 &quot;아직 두 번째 케이스가 없는데 미리 일반화하는 것&quot;이에요. 예를 들어 컴포넌트에서 이벤트 핸들러와 데이터 처리로직이 하나 밖에 없는 나중에 커질 수 있으니까 하면서 그걸 세세하게 다 분리시켜주는 거에요. 관절은 만들어두되 분리는 필요할때 하면 됩니다.</p>
+<p>그래서 기준은 이렇습니다. &quot;같은 방법으로 코드에서 추상화를 하고 있는게 있나?&quot; &quot;그리고 내가 이 추상화를 하면활용할 곳이 있나?&quot; 그렇지 않다면 굳이 하지 않는 거죠.</p>
+<p><strong>Q2) 컴포넌트를 설계할 때 어떤 관점과 기준으로 구조를 잡으시나요?</strong></p>
+<p>저는 먼저 &quot;이 화면에서 다루는 엔티티가 뭐지?&quot;를 봐요. 쇼핑몰이면 Product, Cart, Coupon, Order 같은 것들이요. 그러면 자연스럽게 ProductCard, CartItem, CouponSelector 같은 엔티티 컴포넌트가 나오고, 이걸 조합하는 ProductList, CartPage 같은 컴포넌트가 나와요.</p>
+<p>주니어가 의식하면 좋은 포인트는 &quot;UI 컴포넌트&quot;와 &quot;엔티티 컴포넌트&quot;를 구분하는 거예요. Button, Modal, Input은 UI 컴포넌트예요. 어떤 데이터든 받아서 보여줄 수 있어야 하니까 props로 유연하게 받아요. 반면 ProductCard, CartItem은 엔티티 컴포넌트예요. 특정 엔티티를 다루는 용도로 만들어졌기 때문에 재사용성을 크게 고민할 필요 없어요. 오히려 내부에서 필요한 hooks나 store를 직접 호출해서 props를 줄이는 게 더 나아요. 모든 컴포넌트가 재사용 가능해야 한다는 강박을 버리면 설계가 훨씬 편해집니다.</p>
+<p>이후에는 서버 상태관리로 가능한 것끼리 모으고 전역 상태 관리끼리 가능한 것으로 모으고 나머지는 화면으로 모아서 정리하는 식으로 설계를 하고 있어요!</p>
+<p>과제 채점이 늦어져서 정말 죄송해요. 수고많았습니다. 다음 챕터도 화이팅입니다!</p></div></div><div class="mt-9"></div></div></main></div></div></div>
     <title>[6팀 김현우] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계 - 김현우 | 항해플러스 프론트엔드 7기</title>
     <meta name="description" content=" [항해플러스 프론트엔드 7기] 김현우님이 제출한 [6팀 김현우] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계 과제를 확인하세요. 코드 구현, 문제 해결 과정, 피드백 내용을 상세히 살펴볼 수 있습니다." />
     <meta name="keywords" content="항해플러스, 프론트엔드, 개발자교육, React, TypeScript, JavaScript, 기술면접, 웹개발, 김현우, [6팀 김현우] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계, 과제상세, 코드리뷰, 피드백, Pull Request" />
@@ -203,25 +216,23 @@
     <meta name="twitter:image" content="/defaultThumbnail.jpg" />
   <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/front_7th/favicon.ico" />
-    <!--app-head-->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J8QP7YK1E"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/front_7th/favicon.ico"/>
+  <!--app-head-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J8QP7YK1E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-      gtag("config", "G-6J8QP7YK1E");
-    </script>
-    <script type="module" crossorigin src="/front_7th/assets/index-C7wrzndj.js"></script>
-    <link rel="stylesheet" crossorigin href="/front_7th/assets/index-BXO68frB.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+    gtag('config', 'G-6J8QP7YK1E');
+  </script>
+  <script type="module" crossorigin src="/front_7th/assets/index-RTTRX4Ru.js"></script>
+  <link rel="stylesheet" crossorigin href="/front_7th/assets/index-B1cXSvNG.css">
+</head>
+<body>
+<div id="root"><!--app-html--></div>
+</body>
 </html>

@@ -439,7 +439,23 @@ useCart ───────────────► cartModel (순수 함�
 </ul>
 <p><code>jotai</code>를 사용하여 <code>hook</code>로직을 간소화하고, <code>atom</code>내부에서 전역으로 로직을 관리하는 방법이 더 좋은 방향이었을까요?
 사실 심화과제 요구사항에 zustand를 언급 안하신 이유가 있으신지도 궁금합니다!</p></div></div><div class="overflow-auto mt-9"><div data-color-mode="dark" class="wmde-markdown wmde-markdown-color p-6 max-w-full" style="word-wrap:break-word;overflow-wrap:break-word"><h2 id="과제-피드백"><a class="anchor" aria-hidden="true" tabindex="-1" href="#과제-피드백"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>과제 피드백</h2>
-<p>undefined</p></div></div><div class="mt-9"></div></div></main></div></div></div>
+<p>잘했어요! 채은 기본 과제랑 심화 과제 모두 완료한 거 잘했습니다. 회고에서 데이터/계산/액션 관점으로 코드를 이해하고 분리해본 경험이 새로웠다고 했는데, 이게 이번 과제의 핵심 목표 중 하나였어요. 훅 간 의존성 다이어그램까지 그려서 설계한 것도 인상적이었습니다.</p>
+<p>&quot;AI는 리팩토링을 진짜 못하는 것 같다&quot;는 발견도 중요한 인사이트입니다. 맞아요. AI가 새로 만드는 건 잘하는데, 기존 코드의 맥락을 유지하면서 점진적으로 개선하는 건 아직 어려워하더라구요. 그만큼 리팩토링을 하는 방법에 대해서는 각자가 다른 관점을 가지고 있고 뭔가 고유한 패턴들이 덜하다 생각해서 자신의 고유성을 발견하는 것들이 중요하다고 생각합니다.</p>
+<p>Basic의 코드 분리는 역할별로 그리고 데이터 / 행동 / 계산 관점에서 너무 잘 분리가 되었습니다. 그리고 분리를 잘하려다보면 props가 주렁 주렁 따라오게 되는 것을 느꼈을거에요. 심화과제의 경우 이러한 props들 가운데 굳이 내가 쓰지 않는데 넘겨줘야 하는 것들을 발견하고 해소하기를 바랬습니다. 하지만 전반적으로 컴포넌트들의 Props들이 아직 남아 있더라구요. 가령 CouponCard에서 onDelete의 경우 실제로 삭제하는 로직이 컴포넌트마다 달라지지 않기에, 결합도를 가질 필요가 없는데 불필요한 결합도를 제공하는 형태가 되어버렸어요.</p>
+<p>우리가 코드를 세세하게 분리를 하는 이유는 떨어뜨려놓기 쉽게 그래서 다시 필요한대로 모아두고 붙여놓기 쉽게 유지 하기 위함입니다. 기왕이면 따로 관리가 가능하도록 그래서 컴포넌트간 결합도는 최소화 할 수 있게 최소한의 엔티티 props정도만 제공하고 나머지는 전역상태, 혹은 서버전역상태를 활용하려고 합니다.</p>
+<p>엔티티 컴포넌트의 경우는 UI Component와 달리 재사용을 하거나 props에 따른 분기를 해야하는 경우는 잘 없습니다. 그래서 분기를 포기하고 props를 최소화하고 분기가 필요할 경우에는 그냥 컴포넌트를 새로 만드는 방식을 하면 훨씬 더 간결한 코드 구성을 만들 수 가 있을거에요.</p>
+<p>Q) 코치님은 평소에 어떤 방향으로 리팩토링을 설계해나가시는지 궁금합니다.</p>
+<p>-&gt; 저는 이제 워낙 익숙해져서 어떻게 하면 잘 잘려져 있고 이후에 조립하기 쉬울지 관절들을 알고 있습니다. 그래서 엔티티별로 인터페이스, 순수함수, api, useQuery/Mutation, params hooks, 컴포넌트, 기타 유틸리티, 포매터, validator, hooks 등 미리 분리를 해서 코딩을 합니다. 다만 처음부터 두는게 아니라 기능을 개발할 떄에는 한 파일에서 개발을 하는데 잘 잘라두는 거죠. 그렇게 개발이 잘 끝나면 둬야할 곳에 두는 식으로 마무리를 하고 이 과정에서 조금 더 리팩토링을 잘 할 수 있도록 작성하고 있습니다.</p>
+<p>Q) 이번 과제에서 searchValue는 layout에서 관리하는 방식으로 사용하고 전역으로 설계하지 않았습니다. 코치님은 전역상태에 대한 판단 근거를 어떤 방향으로 잡아가시는지 궁금합니다.</p>
+<p>-&gt; 저는 상태관리는 컴포넌트의 구성과 관계없이 하나로 관리되는게 편한 데이터라고 정의하고 있어요. 대부분의 런타임 환경설정이나 로그인 계정, locale등등 전역변수성 데이터들은 전역상태가 유리하죠. 이 밖의 경우 특이한건 params를 만들어내는 모든 Input데이터들도 전역변수인 경우가 더 편하다 생각합니다. 가령 search + dropdown + check 이런 UI들도 어떤 API를 호출해야 하는게 있다면 UI는 필히 파편화가 되기 마련인데 API르 기준으로는 params가 한 묶음이 될 수 밖에 없잖아요? 이런 경우에도 전역상태를 쓰는게 훨씬 더 좋았습니다.</p>
+<p>전역상태는 프로젝트 성격에 따라 전략이 달라져요. 웹 어플리케이션을 만든다면 100% 전역 기반으로 만드는 게 훨씬 낫습니다. 반면 홈페이지나 관리도구라면 전역상태를 최소화하고 컴포넌트 중심으로 만드는 게 낫습니다. 홈페이지는 비주얼이 중심이고, 관리도구는 비주얼이 대개 고정이니까요.</p>
+<p>이번 과제는 서버 상태는 없었고 도메인 관련 코드들을 전역상태로 만들어서 props drilling 해소를 이해하기 위한 의도된 코드였어요. 서버상태관리 개념이 나오기 전에 모든 도메인 데이터를 전역상태로 관리했었습니다. 보편적인 방식으로는 서버상태관리를 중심으로 만들고 서버상태관리가 더 편하기 위한 전역상태를 추가하는 식으로 많이들 사용하고 있습니다.</p>
+<p>Q) 현재 model 내부에서 add, delete 관련 액션을 다 선언하고 hooks에서는 model 내부 로직을 활용하여 결과를 기반으로 전역 상태를 업데이트하고 알림을 관리하는 방식으로 설계되어있습니다.(액션의 흐름만 읽힐 수 있도록) 코치님이 의도하신 방향은 순수 계산 로직만 model로 관리하고, hooks에서는 순수 계산함수만 사용하고, 이 외 add, delete와 같은 액션 로직은 전부 hooks에서 관리할 수 있도록 하는 방향이었던 것 같다고 생각합니다. 혹시 제가 이해한 방향이 맞을까요?</p>
+<p>=&gt; 네, 맞습니다. 참고로 실전에는 model의 비중이 지금보다 훨씬 낮을 수 있어요. 과제는 실전과 달리 학습 의도가 있어서, 오버엔지니어링이 되더라도 일단 해보기를 권장하는 식으로 구성되어 있어요. 그래서 model에 순수함수나 계산 로직을 많이 만들어본 건 좋은 시도였습니다. 실무에서는 이 정도까지 분리할 필요가 없을 수도 있지만, 한번 과하게 나눠봐야 적정선이 어딘지 감이 잡히거든요.</p>
+<p>Q) * 현재 구조가 atom을 선언하고 이를 기반으로 hooks에서 로직을 관리하는 방식으로 진행했습니다. 만약에 zustand를 사용하였다면 store 기반으로 내부에 액션을 같이 관리했을 것 같은데, jotai로 진행한 방식에서는 이 접근 방식이 맞았을지 궁금합니다. 사실 atom 내부에서 관리한다고 해도, 사용하는 곳이 많지 않은 액션이 많아서, 이미 훅에 정의되어있는 로직에 전역 상태를 적용하고 전역상태 도입 전과 동일하게 사용하는 곳에서는 훅을 호출하는 방식으로 진행했습니다. jotai를 사용하여 hook로직을 간소화하고, atom내부에서 전역으로 로직을 관리하는 방법이 더 좋은 방향이었을까요? 사실 심화과제 요구사항에 zustand를 언급 안하신 이유가 있으신지도 궁금합니다!</p>
+<p>=&gt; 아! jotai로도 내부에 액션을 같이 관리할 수 있어요. 그래서 프로젝트의 코드가 그렇게 된거였군요. zustand를 일부러 언급 안 한 건 아니었구요. 리팩토링할 때 zustand로 하려면 기존 코드를 유지하지 못하고 거의 다 다시 만들어야 하는데 jotai는 기존 useState 사용법이랑 비슷해서 전환이 편하거든요. 일종의 배려 차원이었어요. zustnad가 익숙하다면 그래서 내부 액션을 두고 만들었다면 지금 보다 훨씬 더 간결하게 만들었겠네요!</p>
+<p>수고하셨습니다.</p>
+<p>채점이 너무 늦어져서 정말로 정말로 미안해요 채은! 앞으로 남은 시간도 화이팅입니다!</p></div></div><div class="mt-9"></div></div></main></div></div></div>
     <title>[6팀 현채은] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계  - 현채은 | 항해플러스 프론트엔드 7기</title>
     <meta name="description" content=" [항해플러스 프론트엔드 7기] 현채은님이 제출한 [6팀 현채은] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계  과제를 확인하세요. 코드 구현, 문제 해결 과정, 피드백 내용을 상세히 살펴볼 수 있습니다." />
     <meta name="keywords" content="항해플러스, 프론트엔드, 개발자교육, React, TypeScript, JavaScript, 기술면접, 웹개발, 현채은, [6팀 현채은] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계 , 과제상세, 코드리뷰, 피드백, Pull Request" />
@@ -453,25 +469,23 @@ useCart ───────────────► cartModel (순수 함�
     <meta name="twitter:image" content="/defaultThumbnail.jpg" />
   <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/front_7th/favicon.ico" />
-    <!--app-head-->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J8QP7YK1E"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/front_7th/favicon.ico"/>
+  <!--app-head-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J8QP7YK1E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-      gtag("config", "G-6J8QP7YK1E");
-    </script>
-    <script type="module" crossorigin src="/front_7th/assets/index-C7wrzndj.js"></script>
-    <link rel="stylesheet" crossorigin href="/front_7th/assets/index-BXO68frB.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+    gtag('config', 'G-6J8QP7YK1E');
+  </script>
+  <script type="module" crossorigin src="/front_7th/assets/index-RTTRX4Ru.js"></script>
+  <link rel="stylesheet" crossorigin href="/front_7th/assets/index-B1cXSvNG.css">
+</head>
+<body>
+<div id="root"><!--app-html--></div>
+</body>
 </html>

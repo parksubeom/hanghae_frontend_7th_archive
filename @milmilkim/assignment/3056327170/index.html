@@ -140,7 +140,14 @@ basic
 <p>이 훅은 짧고 간단한 듯 하여 useEffect 기반으로 구현했습니다.
 다만 value setter에 localStorage 업데이트를 포함시키면 useEffect를 제거할 수도 있습니다.
 어떤 방식이 더 React적일까요?</p></div></div><div class="overflow-auto mt-9"><div data-color-mode="dark" class="wmde-markdown wmde-markdown-color p-6 max-w-full" style="word-wrap:break-word;overflow-wrap:break-word"><h2 id="과제-피드백"><a class="anchor" aria-hidden="true" tabindex="-1" href="#과제-피드백"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>과제 피드백</h2>
-<p>undefined</p></div></div><div class="mt-9"></div></div></main></div></div></div>
+<p>잘했어요 소리! 기본 과제랑 심화 과제 모두 완료한 거 잘했습니다.</p>
+<p>&quot;평소에 컴포넌트를 쪼개는 기준은 그냥 &#x27;내가 보기 좋은가?&#x27; 정도였다&quot;고 했는데 좋은 감각입니다. 엄밀히 말하면 그게 틀린 건 아니에요. 코드 관리는 감각적인 영역이 분명이 있는 거라 경험에서 나오는게 있으니까요. 다만 그걸 언어화하고 명세화하고 형식화를 하면 훨씬 더 일관성있게 다룰 수 이게 됩니다. &quot;다른 작업자에게 방향을 설명하지 못했었는데, 언어를 알게 되어서 도움이 되었다&quot;는 말처럼 그 감각에 언어를 붙여주는 경험이 되었다니 기쁘네요.</p>
+<p>&quot;Context는 Props drilling을 해결하기 위한 것이 아니다&quot;라는 말에 혼란스러웠다고 했는데 어떤 느낌일지 이해가 됩니다. Context는 원래 &quot;여러 레벨에 걸쳐 데이터를 공유&quot;하기 위한 거고, props drilling 해결은 결과적 부수 효과이니 &quot;Context의 본래 목적을 props drilling으로만 생각하지는 마라.&quot; 정도의 뉘앙스로 생각해주세요. 실무에서는 결과적으로 그 용도로 많이 쓰이게 되니 그냥 그렇게 이해해도 괜찮아요.</p>
+<p>그리고 한 가지 챙겨보면 좋을 부분이 있습니다. Context를 도입했는데 실제로 props drilling이 해결되지 않고 여전히 컴포넌트들에 props가 많이 남아있네요. 솔루션 코드를 통해 props drilling이 제거된 코드도 한번 만들어 보면서 엔티티 컴포넌트가 onDelete 같은 콜백을 props로 받는 대신 내부에서 직접 context나 hooks를 호출하면 어떻게 달라지 감각적으로 한번 느껴보기를 바랍니다.</p>
+<p><strong>Q) useLocalStorage에서 useEffect vs setter 방식 중 어떤 게 더 좋은가요?</strong></p>
+<p>지금 useEffect 방식이 맞아요. 그리고 &quot;useEffect를 최대한 걷어내려 했다&quot;고 했는데, useEffect를 지양하라는 건 쓰지말라가 아니라 &quot;컴포넌트에서 직접 쓰지 말고 훅 안에 숨겨라&quot;는 뜻이에요. 소리가 만든 useLocalStorage가 정확히 그걸 한 거예요. useEffect를 훅 내부에 캡슐화해서, 이 훅을 쓰는 쪽에서는 그냥 useState처럼 쓸 수 있게 만든 거죠.</p>
+<p>참고로 이렇게 잘 만들어진 훅들이 라이브러리로 많이 나와있어요. usehooks-ts나 @uidotdev/usehooks 같은 데 useLocalStorage가 이미 있거든요. 직접 만들어보는 건 학습 차원에서 좋은 경험이고, 실무에서는 검증된 라이브러리 쓰는 것도 좋은 선택이에요.</p>
+<p>과제 채점이 너무 늦어져서 미안해요. 수고 많았어요!</p></div></div><div class="mt-9"></div></div></main></div></div></div>
     <title>[6팀 김소리] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계  - 김소리 | 항해플러스 프론트엔드 7기</title>
     <meta name="description" content=" [항해플러스 프론트엔드 7기] 김소리님이 제출한 [6팀 김소리] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계  과제를 확인하세요. 코드 구현, 문제 해결 과정, 피드백 내용을 상세히 살펴볼 수 있습니다." />
     <meta name="keywords" content="항해플러스, 프론트엔드, 개발자교육, React, TypeScript, JavaScript, 기술면접, 웹개발, 김소리, [6팀 김소리] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계 , 과제상세, 코드리뷰, 피드백, Pull Request" />
@@ -154,25 +161,23 @@ basic
     <meta name="twitter:image" content="/defaultThumbnail.jpg" />
   <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/front_7th/favicon.ico" />
-    <!--app-head-->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J8QP7YK1E"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/front_7th/favicon.ico"/>
+  <!--app-head-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J8QP7YK1E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-      gtag("config", "G-6J8QP7YK1E");
-    </script>
-    <script type="module" crossorigin src="/front_7th/assets/index-C7wrzndj.js"></script>
-    <link rel="stylesheet" crossorigin href="/front_7th/assets/index-BXO68frB.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+    gtag('config', 'G-6J8QP7YK1E');
+  </script>
+  <script type="module" crossorigin src="/front_7th/assets/index-RTTRX4Ru.js"></script>
+  <link rel="stylesheet" crossorigin href="/front_7th/assets/index-B1cXSvNG.css">
+</head>
+<body>
+<div id="root"><!--app-html--></div>
+</body>
 </html>

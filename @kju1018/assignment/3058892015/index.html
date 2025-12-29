@@ -120,7 +120,14 @@
     },
   });
 "><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre></div></div><div class="overflow-auto mt-9"><div data-color-mode="dark" class="wmde-markdown wmde-markdown-color p-6 max-w-full" style="word-wrap:break-word;overflow-wrap:break-word"><h2 id="과제-피드백"><a class="anchor" aria-hidden="true" tabindex="-1" href="#과제-피드백"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>과제 피드백</h2>
-<p>undefined</p></div></div><div class="mt-9"></div></div></main></div></div></div>
+<p>잘했어요 민석! 기본 과제랑 심화 과제 모두 완료한 거 잘했습니다.</p>
+<p>&quot;지금까지의 리팩토링은 컴포넌트 분리나 공통 코드 정리 수준이었는데, 이번엔 UI만 담당하는 컴포넌트 분리, 비즈니스 로직 분리 등 훨씬 더 깊게 고민했다&quot;는 부분 좋습니다. 이게 이번 과제의 핵심 포인트죠. &quot;이건 나눠야 한다 / 이건 굳이 나누지 않아도 된다&quot;는 판단이 아직 즉각적으로 안 된다고 했는데, 그건 경험이 쌓이면 자연스럽게 돼요. 감각적으로 이해하면서 나만의 판단 기준을 언어로 명세화를 해보려고 노력하면 조금 더 빨리 잘 할 수 있게 될거에요.</p>
+<p><strong>Q) selectedCoupon을 cart에서 관리하는데, 쿠폰 삭제 시 콜백으로 clearSelectedCouponByCode를 주입하는 구조가 괜찮은가요?</strong></p>
+<p>민석이 고민한 것처럼 selectedCoupon을 어디에 둘지는 좀 애매한 영역이 있죠. 다음과 같이 두 가지 관점이 있을것 같아요.</p>
+<p>첫 번째는 &quot;selectedCoupon은 결제 금액에 영향을 미치니까 cart 도메인&quot;이라는 관점입니다. 민석이 선택한 방식이죠. 이 경우 쿠폰 삭제 시 cart에 알려줘야 하니까 콜백이 필요해요.</p>
+<p>두 번째는 &quot;selectedCoupon은 쿠폰을 선택한 거니까 coupon 도메인&quot;이라는 관점이에요. 이 경우 useCoupons에서 selectedCoupon을 관리하고, cart는 계산할 때 selectedCoupon을 받아서 쓰면 됩니다.</p>
+<p>저는 두 번째 방식을 더 선호합니다 왜냐하면 콜백으로 주입하는 구조는 &quot;useCoupons가 useCart의 존재를 알아야 한다&quot;는 결합이 생기거든요. 대신 coupon 도메인에서 selectedCoupon을 관리하고, cart는 계산 시점에 selectedCoupon을 파라미터로 받으면 서로 몰라도 돼요. 뭔가 이 방식이 낫다라기 보다는 같은 구현이라면 더 쉬운방식으로 관리하는 방향대로가 좋습니다.</p>
+<p>과제 채점이 너무 늦어져서 미안해요. 수고 많았어요! 마지막 챕터도 화이팅입니다</p></div></div><div class="mt-9"></div></div></main></div></div></div>
     <title>[1팀 김민석] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계 - 김민석 | 항해플러스 프론트엔드 7기</title>
     <meta name="description" content=" [항해플러스 프론트엔드 7기] 김민석님이 제출한 [1팀 김민석] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계 과제를 확인하세요. 코드 구현, 문제 해결 과정, 피드백 내용을 상세히 살펴볼 수 있습니다." />
     <meta name="keywords" content="항해플러스, 프론트엔드, 개발자교육, React, TypeScript, JavaScript, 기술면접, 웹개발, 김민석, [1팀 김민석] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계, 과제상세, 코드리뷰, 피드백, Pull Request" />
@@ -134,25 +141,23 @@
     <meta name="twitter:image" content="/defaultThumbnail.jpg" />
   <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/front_7th/favicon.ico" />
-    <!--app-head-->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J8QP7YK1E"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/front_7th/favicon.ico"/>
+  <!--app-head-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J8QP7YK1E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-      gtag("config", "G-6J8QP7YK1E");
-    </script>
-    <script type="module" crossorigin src="/front_7th/assets/index-C7wrzndj.js"></script>
-    <link rel="stylesheet" crossorigin href="/front_7th/assets/index-BXO68frB.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+    gtag('config', 'G-6J8QP7YK1E');
+  </script>
+  <script type="module" crossorigin src="/front_7th/assets/index-RTTRX4Ru.js"></script>
+  <link rel="stylesheet" crossorigin href="/front_7th/assets/index-B1cXSvNG.css">
+</head>
+<body>
+<div id="root"><!--app-html--></div>
+</body>
 </html>

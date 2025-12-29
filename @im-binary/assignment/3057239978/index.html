@@ -144,7 +144,18 @@
 제가 진행한 리팩토링이 의미가 있는... 리팩토링이었을까요?</p>
 <p>또 굳이 관리자가 아니면 페이지 전환이 일어나지 않을 것 같아 상태 초기화 되는 건 괜찮다고 판단했는데, 만약 상태 유지가 더 중요한 경우라면 어떻게 개선하는 게 좋을까요?</p>
 <p>더 나아가 context를 읽기/쓰기로 분리하기도 하는 것 같던데 그렇게 세분화하는 것에 대해 어떻게 생각하시는지도 궁금합니다.</p></div></div><div class="overflow-auto mt-9"><div data-color-mode="dark" class="wmde-markdown wmde-markdown-color p-6 max-w-full" style="word-wrap:break-word;overflow-wrap:break-word"><h2 id="과제-피드백"><a class="anchor" aria-hidden="true" tabindex="-1" href="#과제-피드백"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>과제 피드백</h2>
-<p>undefined</p></div></div><div class="mt-9"></div></div></main></div></div></div>
+<p>잘했어요 이진! 기본 과제랑 심화 과제 모두 완료한 거 너무 잘했습니다.</p>
+<p>&quot;추상화 계층을 나눈다는 게 더 나아지거나 편리해진다는 개념이 아니다. 계층을 나눈다는 것은 더 좋게 만드려고 하는 게 아니라 격리가 목적이다&quot; 라는 말 기억해줘서 고마워요! 이 말을 듣고 코드 구조를 바라보는 관점이 넓어졌다고 했는데 너무 좋네요. 코드의 변화의 속도는 저마다 달라요. 격리라고 하는 개념은 각 코드의 변화의 속도와 영향력에 맞춰 한군데 모아두면 좋은 것 끼리 구분하는 것이라는 큰 시각으로 어떤 방법론이 아닌 원리를 스스로 이해해가기를 바래요.</p>
+<p>그러면에서 분리 기준을 스스로 세운 것도 좋았어요. &quot;재사용되지 않으면 분리하지 않는다&quot;, &quot;테스트하기 어려우면 분리한다&quot;, &quot;100줄 넘으면 고려한다&quot; 외에도 내가 은연중에 무심코 하고 있었던 것들을 더 세밀하게 언어화해보고 명세화 해보려고 해보세요. 그리고 다시 눈에 보이는 그 규칙들을 지켜가려고 하다보면 훨씬 더 선명한 시각을 가지게 될거에요.</p>
+<p>한 가지 챙겨보면 좋을 부분이 있어요. Context를 도입해서 전역상태를 만들었는데, 여전히 컴포넌트들에 props가 많이 남아있더라고요. 우리가 코드를 세세하게 분리하는 이유는 떨어뜨려놓기 쉽게, 그래서 다시 필요한 대로 모아두고 붙여놓기 쉽게 유지하기 위함이에요. 엔티티 컴포넌트의 경우는 UI 컴포넌트와 달리 재사용을 하거나 props에 따른 분기를 해야 하는 경우가 거의 없어요. 그래서 onDelete 같은 콜백을 props로 받기보다는 컴포넌트 내부에서 직접 context나 hooks를 호출하는 방식이 더 간결해질 수 있어요. props를 최소화하고, 분기가 필요하면 그냥 컴포넌트를 새로 만드는 방식을 고려해보세요.</p>
+<p><strong>Q) Provider를 페이지별로 분리한 리팩토링이 의미 있었나요?</strong></p>
+<p>의미 있었어요. AdminPage에서 Cart context를 안 쓰는데 굳이 감싸고 있을 이유가 없으니까요. 의존성이 명확해진 건 좋은 변화입니다. 조금 더 괜찮게 만들고자 했다면 완전히 페이지를 분리하고 Provider는 각 페이지에서 사용하는 방식으로 만들었다면 더 좋았을 거에요. 이 페이지의 변화의 이유가 지금은 NotificationsProvider
+AdminPageProvider, CartPageProvider 3군데인데 각각이 변하는 이유는 다를테니까요. 기왕이면 코드가 변해야 할 때 함께 변하는 것 끼리 묶어둔다 생각하면 좋아요.</p>
+<p><strong>Q) 상태 유지가 더 중요한 경우는요?</strong></p>
+<p>새로고침을 해도 보관을 하는게 UX적으로 유리하면 좋죠. 최근에 charGPT나 채팅앱에서 글자를 적다가 새로고침했을때 날아가면 엄청 화가 나잖아요? 그래서 보통은 localStorage에 저장하고 전역상태로 활용하는 방법을 많이 사용하죠. key:value의 형태로 충분히 보관하고 가져올수 있으니 전역상태 + local(session)Storgage방법을 고민해보세요.</p>
+<p><strong>Q) Context를 읽기/쓰기로 분리하는 건요?</strong></p>
+<p>최적화 관점에서 의미가 있을 수도 잇습니다. 읽기만 하는 컴포넌트가 쓰기 함수 변경 때문에 리렌더링되는 걸 막을 수 있거든요. 하지만 대부분의 관점에서는 그런 최적화 보다는 유지보수의 측면을 좀 더 중요시하게 됩니다. 수정을 해야하는 이유가 같은 것끼리 모아두는게 편하다는 관점이 뭔지를 잘 느껴보기를 바랍니다.</p>
+<p>과제 채점이 너무 너무 늦어져서 죄송해요. 수고많았습니다, 남은 마무리까지 화이팅입니다!</p></div></div><div class="mt-9"></div></div></main></div></div></div>
     <title>[6팀 전이진] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계 - 전이진 | 항해플러스 프론트엔드 7기</title>
     <meta name="description" content=" [항해플러스 프론트엔드 7기] 전이진님이 제출한 [6팀 전이진] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계 과제를 확인하세요. 코드 구현, 문제 해결 과정, 피드백 내용을 상세히 살펴볼 수 있습니다." />
     <meta name="keywords" content="항해플러스, 프론트엔드, 개발자교육, React, TypeScript, JavaScript, 기술면접, 웹개발, 전이진, [6팀 전이진] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계, 과제상세, 코드리뷰, 피드백, Pull Request" />
@@ -158,25 +169,23 @@
     <meta name="twitter:image" content="/defaultThumbnail.jpg" />
   <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/front_7th/favicon.ico" />
-    <!--app-head-->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J8QP7YK1E"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/front_7th/favicon.ico"/>
+  <!--app-head-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J8QP7YK1E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-      gtag("config", "G-6J8QP7YK1E");
-    </script>
-    <script type="module" crossorigin src="/front_7th/assets/index-C7wrzndj.js"></script>
-    <link rel="stylesheet" crossorigin href="/front_7th/assets/index-BXO68frB.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+    gtag('config', 'G-6J8QP7YK1E');
+  </script>
+  <script type="module" crossorigin src="/front_7th/assets/index-RTTRX4Ru.js"></script>
+  <link rel="stylesheet" crossorigin href="/front_7th/assets/index-B1cXSvNG.css">
+</head>
+<body>
+<div id="root"><!--app-html--></div>
+</body>
 </html>

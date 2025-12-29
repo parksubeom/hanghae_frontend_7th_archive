@@ -1,0 +1,810 @@
+<div data-slot="sidebar-wrapper" style="--sidebar-width:16rem;--sidebar-width-icon:3rem" class="group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full"><div class="min-h-screen flex w-full"><div class="group peer text-sidebar-foreground hidden md:block" data-state="expanded" data-collapsible="" data-variant="sidebar" data-side="left" data-slot="sidebar"><div data-slot="sidebar-gap" class="relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear group-data-[collapsible=offcanvas]:w-0 group-data-[side=right]:rotate-180 group-data-[collapsible=icon]:w-(--sidebar-width-icon)"></div><div data-slot="sidebar-container" class="fixed inset-y-0 z-10 hidden h-svh transition-[left,right,width] duration-200 ease-linear md:flex left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)] group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l w-64"><div data-sidebar="sidebar" data-slot="sidebar-inner" class="bg-sidebar group-data-[variant=floating]:border-sidebar-border flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm"><div data-slot="sidebar-content" data-sidebar="content" class="flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden bg-card border-r border-border"><a class="p-4" href="/front_7th/" data-discover="true"><div class="flex items-center space-x-2 mb-6"><div class="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center"><span class="text-white font-bold text-sm">7기</span></div><h4 class="text-lg font-bold text-primary">항해플러스 프론트엔드</h4></div></a><div data-slot="sidebar-group" data-sidebar="group" class="relative flex w-full min-w-0 flex-col p-2"><div data-slot="sidebar-group-label" data-sidebar="group-label" class="ring-sidebar-ring flex h-8 shrink-0 items-center rounded-md text-xs font-medium outline-hidden transition-[margin,opacity] duration-200 ease-linear focus-visible:ring-2 [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0 text-muted-foreground px-4">학습 관리</div><div data-slot="sidebar-group-content" data-sidebar="group-content" class="w-full text-sm"><ul data-slot="sidebar-menu" data-sidebar="menu" class="flex w-full min-w-0 flex-col gap-1 px-2"><li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative"><a data-slot="sidebar-menu-button" data-sidebar="menu-button" data-size="default" data-active="false" class="peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left outline-hidden ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sm h-12 text-foreground hover:bg-secondary hover:text-secondary-foreground rounded-lg transition-all duration-300" href="/front_7th/" data-discover="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users h-5 w-5" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg><span class="ml-3">수강생 목록</span></a></li><li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative"><a data-slot="sidebar-menu-button" data-sidebar="menu-button" data-size="default" data-active="false" class="peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left outline-hidden ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sm h-12 text-foreground hover:bg-secondary hover:text-secondary-foreground rounded-lg transition-all duration-300" href="/front_7th/assignments/" data-discover="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open h-5 w-5" aria-hidden="true"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg><span class="ml-3">과제 목록</span></a></li></ul></div></div></div></div></div></div><div class="flex-1 min-w-0"><header class="h-12 flex items-center border-b border-border bg-card px-4"><button data-slot="sidebar-trigger" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*=&#x27;size-&#x27;])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 size-7 mr-4 text-white" data-sidebar="trigger"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-left" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M9 3v18"></path></svg><span class="sr-only">Toggle Sidebar</span></button><h4 class="text-lg font-semibold "><a href="/front_7th/@jy0813/" data-discover="true">jy0813<!-- --> 님의 상세페이지</a> ＞ <!-- -->[5팀 진재윤] Chapter 4-2. 코드 관점의 성능 최적화</h4></header><main class="p-6"><div><div class="card-wrap"><div data-slot="card" class="card text-card-foreground flex flex-col gap-6 shadow-sm mb-6 p-6 border border-gray-700 bg-gray-800 rounded-lg"><a href="https://github.com/hanghae-plus/front_7th_chapter4-2/pull/12" target="_blank"><div class="flex items-start gap-4"><div class="flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" height="32" aria-hidden="true" viewBox="0 0 24 24" width="32" fill="white" class="w-8 h-8"><path d="M12 1C5.923 1 1 5.923 1 12c0 4.867 3.149 8.979 7.521 10.436.55.096.756-.233.756-.522 0-.262-.013-1.128-.013-2.049-2.764.509-3.479-.674-3.699-1.292-.124-.317-.66-1.293-1.127-1.554-.385-.207-.936-.715-.014-.729.866-.014 1.485.797 1.691 1.128.99 1.663 2.571 1.196 3.204.907.096-.715.385-1.196.701-1.471-2.448-.275-5.005-1.224-5.005-5.432 0-1.196.426-2.186 1.128-2.956-.111-.275-.496-1.402.11-2.915 0 0 .921-.288 3.024 1.128a10.193 10.193 0 0 1 2.75-.371c.936 0 1.871.123 2.75.371 2.104-1.43 3.025-1.128 3.025-1.128.605 1.513.221 2.64.111 2.915.701.77 1.127 1.747 1.127 2.956 0 4.222-2.571 5.157-5.019 5.432.399.344.743 1.004.743 2.035 0 1.471-.014 2.654-.014 3.025 0 .289.206.632.756.522C19.851 20.979 23 16.854 23 12c0-6.077-4.922-11-11-11Z"></path></svg></div><div class="flex-1 min-w-0"><div class="flex items-center gap-2 mb-2"><h3 class="text-lg font-semibold text-white truncate">[5팀 진재윤] Chapter 4-2. 코드 관점의 성능 최적화</h3></div><div class="flex items-center gap-4 text-xs text-gray-500"><span>by <!-- -->jy0813</span><span>2025.12.21</span></div></div></div></a></div></div><div class="overflow-auto"><div data-color-mode="dark" class="wmde-markdown wmde-markdown-color p-6 max-w-full" style="word-wrap:break-word;overflow-wrap:break-word"><h2 id="배포링크"><a class="anchor" aria-hidden="true" tabindex="-1" href="#배포링크"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>배포링크</h2>
+<p><a href="https://jy0813.github.io/front_7th_chapter4-2/">링크</a></p>
+<h1 id="과제-체크포인트"><a class="anchor" aria-hidden="true" tabindex="-1" href="#과제-체크포인트"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>과제 체크포인트</h1>
+<h2 id="과제-요구사항"><a class="anchor" aria-hidden="true" tabindex="-1" href="#과제-요구사항"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>과제 요구사항</h2>
+<ul class="contains-task-list">
+<li class="task-list-item">
+<p><input type="checkbox" disabled="" checked=""/> 배포 후 url 제출</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled="" checked=""/> API 호출 최적화(<code>Promise.all</code> 이해)</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled="" checked=""/> SearchDialog 불필요한 연산 최적화</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled="" checked=""/> SearchDialog 불필요한 리렌더링 최적화</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled="" checked=""/> 시간표 블록 드래그시 렌더링 최적화</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled="" checked=""/> 시간표 블록 드롭시 렌더링 최적화</p>
+</li>
+</ul>
+<h2 id="과제-셀프회고"><a class="anchor" aria-hidden="true" tabindex="-1" href="#과제-셀프회고"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>과제 셀프회고</h2>
+<!-- -->
+<h3 id="기술적-성장"><a class="anchor" aria-hidden="true" tabindex="-1" href="#기술적-성장"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>기술적 성장</h3>
+<!-- -->
+<h3 id="1-react-최적화-기법-체득"><a class="anchor" aria-hidden="true" tabindex="-1" href="#1-react-최적화-기법-체득"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>1. React 최적화 기법 체득</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>영역</th><th>Before</th><th>After</th></tr></thead><tbody><tr><td><strong>memo 이해</strong></td><td>감싸면 최적화</td><td>커스텀 비교 함수로 세밀한 제어 가능</td></tr><tr><td><strong>Context 이해</strong></td><td>전역 상태 관리 도구</td><td>구독 범위와 리렌더링 관계 명확히 이해</td></tr><tr><td><strong>useMemo/useCallback</strong></td><td>캐싱 도구</td><td>참조 안정성 확보의 핵심임을 이해</td></tr><tr><td><strong>렌더링 원리</strong></td><td>state 바뀌면 렌더링</td><td>Context 구독, 부모 리렌더링, 참조 비교의 관계</td></tr></tbody></table>
+<h3 id="2-핵심-패턴-습득"><a class="anchor" aria-hidden="true" tabindex="-1" href="#2-핵심-패턴-습득"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2. 핵심 패턴 습득</h3>
+<h4 id="statedispatch-context-분리"><a class="anchor" aria-hidden="true" tabindex="-1" href="#statedispatch-context-분리"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>State/Dispatch Context 분리</h4>
+<pre class="language-typescript"><code class="language-typescript code-highlight"><span class="code-line"><span class="token comment">// Before: 단일 Context - 모든 구독자가 리렌더링</span>
+</span><span class="code-line"><span class="token keyword">const</span> ScheduleContext <span class="token operator">=</span> <span class="token function">createContext</span><span class="token punctuation">(</span><span class="token punctuation">{</span> schedulesMap<span class="token punctuation">,</span> setSchedulesMap <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// After: 분리 - 필요한 것만 구독</span>
+</span><span class="code-line"><span class="token keyword">const</span> ScheduleStateContext <span class="token operator">=</span> <span class="token function">createContext</span><span class="token punctuation">(</span>schedulesMap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">const</span> ScheduleDispatchContext <span class="token operator">=</span> <span class="token function">createContext</span><span class="token punctuation">(</span>setSchedulesMap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code><div class="copied" data-code="// Before: 단일 Context - 모든 구독자가 리렌더링
+const ScheduleContext = createContext({ schedulesMap, setSchedulesMap });
+
+// After: 분리 - 필요한 것만 구독
+const ScheduleStateContext = createContext(schedulesMap);
+const ScheduleDispatchContext = createContext(setSchedulesMap);
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p><strong>학습 포인트</strong>: <code>setSchedulesMap</code>은 React의 setState로 참조가 안정적. Dispatch만 구독하면 State 변경에 리렌더링되지 않음.</p>
+<h4 id="dndcontext-테이블별-분리"><a class="anchor" aria-hidden="true" tabindex="-1" href="#dndcontext-테이블별-분리"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>DndContext 테이블별 분리</h4>
+<pre><code class="code-highlight"><span class="code-line">Before: App 레벨 단일 DndContext → 모든 시간표 리렌더링
+</span><span class="code-line">After: 테이블별 독립 DndContext → 해당 시간표만 영향
+</span></code><div class="copied" data-code="Before: App 레벨 단일 DndContext → 모든 시간표 리렌더링
+After: 테이블별 독립 DndContext → 해당 시간표만 영향
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p><strong>학습 포인트</strong>: Context 범위를 좁히면 리렌더링 범위도 좁아짐. 하지만 같은 Context 내 <code>useDndContext()</code> 구독자는 여전히 리렌더링됨 (라이브러리 한계).</p>
+<h3 id="3-tanstack-query-분석-및-promise-캐싱-패턴"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3-tanstack-query-분석-및-promise-캐싱-패턴"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>3. TanStack Query 분석 및 Promise 캐싱 패턴</h3>
+<h4 id="기존-코드의-문제점-분석"><a class="anchor" aria-hidden="true" tabindex="-1" href="#기존-코드의-문제점-분석"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>기존 코드의 문제점 분석</h4>
+<pre class="language-typescript"><code class="language-typescript code-highlight"><span class="code-line"><span class="token comment">// Before: Promise.all 오용 - 실제로는 순차 실행됨!</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">fetchAllLectures</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">await</span> <span class="token builtin">Promise</span><span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token punctuation">(</span><span class="token keyword">await</span> <span class="token function">fetchMajors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>      <span class="token comment">// ← 이미 await 완료</span>
+</span><span class="code-line">    <span class="token punctuation">(</span><span class="token keyword">await</span> <span class="token function">fetchLiberalArts</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// ← 이미 await 완료</span>
+</span><span class="code-line">    <span class="token punctuation">(</span><span class="token keyword">await</span> <span class="token function">fetchMajors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">(</span><span class="token keyword">await</span> <span class="token function">fetchLiberalArts</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">(</span><span class="token keyword">await</span> <span class="token function">fetchMajors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">(</span><span class="token keyword">await</span> <span class="token function">fetchLiberalArts</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code><div class="copied" data-code="// Before: Promise.all 오용 - 실제로는 순차 실행됨!
+async function fetchAllLectures() {
+  await Promise.all([
+    (await fetchMajors()),      // ← 이미 await 완료
+    (await fetchLiberalArts()), // ← 이미 await 완료
+    (await fetchMajors()),
+    (await fetchLiberalArts()),
+    (await fetchMajors()),
+    (await fetchLiberalArts()),
+  ]);
+}
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p><strong>문제 분석</strong></p>
+<ul>
+<li><code>Promise.all()</code> 안에서 각 함수 앞에 <code>await</code>가 있어 순차 실행됨</li>
+<li>총 6번의 API 호출이 순차적으로 발생</li>
+</ul>
+<h4 id="tanstack-query-내부-구조-분석"><a class="anchor" aria-hidden="true" tabindex="-1" href="#tanstack-query-내부-구조-분석"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>TanStack Query 내부 구조 분석</h4>
+<p>TanStack Query의 동작 원리를 분석하며 핵심 인사이트를 얻었습니다.</p>
+<pre class="language-typescript"><code class="language-typescript code-highlight"><span class="code-line"><span class="token comment">// TanStack Query 내부 (간략화)</span>
+</span><span class="code-line"><span class="token keyword">class</span> <span class="token class-name">QueryCache</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">private</span> queries <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token function">find</span><span class="token punctuation">(</span>queryKey<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>queries<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token function">hashKey</span><span class="token punctuation">(</span>queryKey<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token function">build</span><span class="token punctuation">(</span>queryKey<span class="token punctuation">,</span> queryFn<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">let</span> query <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>queryKey<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>query<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      query <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Query</span><span class="token punctuation">(</span>queryKey<span class="token punctuation">,</span> queryFn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token keyword">this</span><span class="token punctuation">.</span>queries<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token function">hashKey</span><span class="token punctuation">(</span>queryKey<span class="token punctuation">)</span><span class="token punctuation">,</span> query<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token keyword">return</span> query<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">class</span> <span class="token class-name">Query</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">private</span> promise<span class="token operator">:</span> <span class="token builtin">Promise</span> <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token comment">// 핵심: 이미 진행 중인 Promise가 있으면 재사용!</span>
+</span><span class="code-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>promise<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>promise<span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token keyword">this</span><span class="token punctuation">.</span>promise <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">queryFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">finally</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token keyword">this</span><span class="token punctuation">.</span>promise <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">// 완료 후 초기화</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>promise<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code><div class="copied" data-code="// TanStack Query 내부 (간략화)
+class QueryCache {
+  private queries = new Map();
+
+  find(queryKey) {
+    return this.queries.get(hashKey(queryKey));
+  }
+
+  build(queryKey, queryFn) {
+    let query = this.find(queryKey);
+    if (!query) {
+      query = new Query(queryKey, queryFn);
+      this.queries.set(hashKey(queryKey), query);
+    }
+    return query;
+  }
+}
+
+class Query {
+  private promise: Promise | null = null;
+
+  fetch() {
+    // 핵심: 이미 진행 중인 Promise가 있으면 재사용!
+    if (this.promise) {
+      return this.promise;
+    }
+
+    this.promise = this.queryFn().finally(() =&gt; {
+      this.promise = null; // 완료 후 초기화
+    });
+
+    return this.promise;
+  }
+}
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p><strong>핵심 발견</strong></p>
+<ul>
+<li><strong>데이터가 아닌 Promise 자체를 캐싱</strong>함</li>
+<li>같은 요청이 동시에 여러 번 발생해도 <strong>하나의 네트워크 요청만 실행</strong></li>
+<li><strong>중복 호출 방지(request deduplication)</strong> 패턴</li>
+</ul>
+<h4 id="promise-캐싱-패턴-직접-구현"><a class="anchor" aria-hidden="true" tabindex="-1" href="#promise-캐싱-패턴-직접-구현"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Promise 캐싱 패턴 직접 구현</h4>
+<p>TanStack Query의 원리를 학습하여 직접 구현하였습니다.</p>
+<pre class="language-typescript"><code class="language-typescript code-highlight"><span class="code-line"><span class="token comment">// api.ts - Promise 캐싱 구현</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">type</span> <span class="token class-name">CacheKey</span> <span class="token operator">=</span> <span class="token string">&#x27;majors&#x27;</span> <span class="token operator">|</span> <span class="token string">&#x27;liberalArts&#x27;</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 핵심: Promise 자체를 캐싱하는 Map</span>
+</span><span class="code-line"><span class="token keyword">const</span> cache <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">const</span> fetchers<span class="token operator">:</span> Record<span class="token operator">&lt;</span>CacheKey<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token builtin">Promise</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function-variable function">majors</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">fetchMajors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> res<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token function-variable function">liberalArts</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">fetchLiberalArts</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> res<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">getCachedLectures</span><span class="token punctuation">(</span>key<span class="token operator">:</span> CacheKey<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Promise</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">// 캐시에 Promise가 없을 때만 새로 생성</span>
+</span><span class="code-line">  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>cache<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    cache<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> fetchers<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token comment">// 같은 Promise 반환 - 결과 공유!</span>
+</span><span class="code-line">  <span class="token keyword">return</span> cache<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token operator">!</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 모든 호출이 병렬로 실행되면서 중복 요청은 자동으로 방지됨</span>
+</span><span class="code-line"><span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">getAllLectures</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Promise</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">const</span> results <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token builtin">Promise</span><span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token function">getCachedLectures</span><span class="token punctuation">(</span><span class="token string">&#x27;majors&#x27;</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token comment">// FETCH</span>
+</span><span class="code-line">    <span class="token function">getCachedLectures</span><span class="token punctuation">(</span><span class="token string">&#x27;liberalArts&#x27;</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// FETCH</span>
+</span><span class="code-line">    <span class="token function">getCachedLectures</span><span class="token punctuation">(</span><span class="token string">&#x27;majors&#x27;</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token comment">// CACHE HIT!</span>
+</span><span class="code-line">    <span class="token function">getCachedLectures</span><span class="token punctuation">(</span><span class="token string">&#x27;liberalArts&#x27;</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// CACHE HIT!</span>
+</span><span class="code-line">    <span class="token function">getCachedLectures</span><span class="token punctuation">(</span><span class="token string">&#x27;majors&#x27;</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token comment">// CACHE HIT!</span>
+</span><span class="code-line">    <span class="token function">getCachedLectures</span><span class="token punctuation">(</span><span class="token string">&#x27;liberalArts&#x27;</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// CACHE HIT!</span>
+</span><span class="code-line">  <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token keyword">return</span> results<span class="token punctuation">.</span><span class="token function">flat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code><div class="copied" data-code="// api.ts - Promise 캐싱 구현
+
+type CacheKey = &#x27;majors&#x27; | &#x27;liberalArts&#x27;;
+
+// 핵심: Promise 자체를 캐싱하는 Map
+const cache = new Map&gt;();
+
+const fetchers: Record&lt;CacheKey, () =&gt; Promise&gt; = {
+  majors: () =&gt; fetchMajors().then((res) =&gt; res.data),
+  liberalArts: () =&gt; fetchLiberalArts().then((res) =&gt; res.data),
+};
+
+export function getCachedLectures(key: CacheKey): Promise {
+  // 캐시에 Promise가 없을 때만 새로 생성
+  if (!cache.has(key)) {
+    cache.set(key, fetchers[key]());
+  }
+  // 같은 Promise 반환 - 결과 공유!
+  return cache.get(key)!;
+}
+
+// 모든 호출이 병렬로 실행되면서 중복 요청은 자동으로 방지됨
+export async function getAllLectures(): Promise {
+  const results = await Promise.all([
+    getCachedLectures(&#x27;majors&#x27;, 1),     // FETCH
+    getCachedLectures(&#x27;liberalArts&#x27;, 2), // FETCH
+    getCachedLectures(&#x27;majors&#x27;, 3),     // CACHE HIT!
+    getCachedLectures(&#x27;liberalArts&#x27;, 4), // CACHE HIT!
+    getCachedLectures(&#x27;majors&#x27;, 5),     // CACHE HIT!
+    getCachedLectures(&#x27;liberalArts&#x27;, 6), // CACHE HIT!
+  ]);
+
+  return results.flat();
+}
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h4 id="promise-캐싱-vs-데이터-캐싱"><a class="anchor" aria-hidden="true" tabindex="-1" href="#promise-캐싱-vs-데이터-캐싱"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Promise 캐싱 vs 데이터 캐싱</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>구분</th><th>데이터 캐싱</th><th>Promise 캐싱 (TanStack Query 방식)</th></tr></thead><tbody><tr><td>저장 대상</td><td>완료된 데이터</td><td>진행 중인 Promise</td></tr><tr><td>중복 요청</td><td>첫 번째 완료 전에는 방지 못함</td><td>완벽히 방지</td></tr><tr><td>타이밍</td><td>완료 후 캐시</td><td>요청 시작 시 즉시 캐시</td></tr><tr><td>동시 호출 처리</td><td>N개의 네트워크 요청</td><td>1개의 네트워크 요청</td></tr></tbody></table>
+<pre><code class="code-highlight"><span class="code-line">시간축 →
+</span><span class="code-line">
+</span><span class="code-line">데이터 캐싱:
+</span><span class="code-line">호출1 ────요청────→ 완료 (캐시 저장)
+</span><span class="code-line">호출2 ────요청────→ 완료
+</span><span class="code-line">호출3 ────요청────→ 완료
+</span><span class="code-line">결과: 3개의 네트워크 요청!
+</span><span class="code-line">
+</span><span class="code-line">Promise 캐싱:
+</span><span class="code-line">호출1 ────요청────→ 완료
+</span><span class="code-line">호출2 ──(캐시)────→ ↗ 같은 Promise 공유
+</span><span class="code-line">호출3 ──(캐시)────→ ↗
+</span><span class="code-line">결과: 1개의 네트워크 요청!
+</span></code><div class="copied" data-code="시간축 →
+
+데이터 캐싱:
+호출1 ────요청────→ 완료 (캐시 저장)
+호출2 ────요청────→ 완료
+호출3 ────요청────→ 완료
+결과: 3개의 네트워크 요청!
+
+Promise 캐싱:
+호출1 ────요청────→ 완료
+호출2 ──(캐시)────→ ↗ 같은 Promise 공유
+호출3 ──(캐시)────→ ↗
+결과: 1개의 네트워크 요청!
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="4-react-devtools-profiler-활용법-습득"><a class="anchor" aria-hidden="true" tabindex="-1" href="#4-react-devtools-profiler-활용법-습득"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>4. React DevTools Profiler 활용법 습득</h3>
+<h4 id="이전의-디버깅-방식"><a class="anchor" aria-hidden="true" tabindex="-1" href="#이전의-디버깅-방식"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>이전의 디버깅 방식</h4>
+<pre class="language-typescript"><code class="language-typescript code-highlight"><span class="code-line"><span class="token comment">// Before: console.log 의존</span>
+</span><span class="code-line"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&#x27;렌더링됨:&#x27;</span><span class="token punctuation">,</span> componentName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&#x27;props:&#x27;</span><span class="token punctuation">,</span> props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code><div class="copied" data-code="// Before: console.log 의존
+console.log(&#x27;렌더링됨:&#x27;, componentName);
+console.log(&#x27;props:&#x27;, props);
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p><strong>문제점</strong></p>
+<ul>
+<li>어떤 컴포넌트가 리렌더링되는지 파악 어려움</li>
+<li>렌더링 시간 측정 불가</li>
+<li>memo가 제대로 작동하는지 확인 불가</li>
+<li>프로덕션에서 제거 필요</li>
+</ul>
+<h4 id="profiler-핵심-사용법"><a class="anchor" aria-hidden="true" tabindex="-1" href="#profiler-핵심-사용법"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Profiler 핵심 사용법</h4>
+<p><strong>렌더링 원인 분석</strong></p>
+<pre><code class="code-highlight"><span class="code-line">Components 탭 → 설정 → Highlight updates when components render 체크
+</span><span class="code-line">→ 리렌더링되는 컴포넌트가 시각적으로 하이라이트됨
+</span></code><div class="copied" data-code="Components 탭 → 설정 → Highlight updates when components render 체크
+→ 리렌더링되는 컴포넌트가 시각적으로 하이라이트됨
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p><strong>Profiler 탭 녹화</strong></p>
+<pre><code class="code-highlight"><span class="code-line">Profiler 탭 → Record → 동작 수행 → Stop
+</span><span class="code-line">→ 각 컴포넌트별 렌더링 횟수, 시간 확인 가능
+</span></code><div class="copied" data-code="Profiler 탭 → Record → 동작 수행 → Stop
+→ 각 컴포넌트별 렌더링 횟수, 시간 확인 가능
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h4 id="실제-활용했던-예시"><a class="anchor" aria-hidden="true" tabindex="-1" href="#실제-활용했던-예시"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>실제 활용했던 예시</h4>
+<p><strong>memo가 작동하지 않는 문제 발견</strong></p>
+<pre><code class="code-highlight"><span class="code-line">Profiler 결과:
+</span><span class="code-line">ScheduleTableBody - 렌더링됨 (노란색)
+</span><span class="code-line">  └── &quot;Why did this render?&quot; → &quot;Context changed&quot;
+</span><span class="code-line">
+</span><span class="code-line">원인 발견: Context를 직접 구독하면 memo가 무시됨
+</span><span class="code-line">해결: Container/Presenter 패턴으로 분리
+</span></code><div class="copied" data-code="Profiler 결과:
+ScheduleTableBody - 렌더링됨 (노란색)
+  └── &quot;Why did this render?&quot; → &quot;Context changed&quot;
+
+원인 발견: Context를 직접 구독하면 memo가 무시됨
+해결: Container/Presenter 패턴으로 분리
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p><strong>드래그 시 전체 리렌더링 확인</strong></p>
+<pre><code class="code-highlight"><span class="code-line">드래그 동작 녹화 후 확인:
+</span><span class="code-line">ScheduleTable 1 - 렌더링됨
+</span><span class="code-line">ScheduleTable 2 - 렌더링됨  ← 드래그 안 했는데?
+</span><span class="code-line">ScheduleTable 3 - 렌더링됨  ← 드래그 안 했는데?
+</span><span class="code-line">
+</span><span class="code-line">원인 발견: 전역 DndContext로 인한 전파
+</span><span class="code-line">해결: 테이블별 DndContext 분리
+</span></code><div class="copied" data-code="드래그 동작 녹화 후 확인:
+ScheduleTable 1 - 렌더링됨
+ScheduleTable 2 - 렌더링됨  ← 드래그 안 했는데?
+ScheduleTable 3 - 렌더링됨  ← 드래그 안 했는데?
+
+원인 발견: 전역 DndContext로 인한 전파
+해결: 테이블별 DndContext 분리
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p><strong>커스텀 비교 함수 효과 검증</strong></p>
+<pre><code class="code-highlight"><span class="code-line">Before (기본 memo):
+</span><span class="code-line">SearchTableRow × 100개 - 모두 렌더링됨 (노란색)
+</span><span class="code-line">
+</span><span class="code-line">After (커스텀 비교 + id만 비교):
+</span><span class="code-line">SearchTableRow × 100개 - 모두 스킵됨 (회색) ✅
+</span></code><div class="copied" data-code="Before (기본 memo):
+SearchTableRow × 100개 - 모두 렌더링됨 (노란색)
+
+After (커스텀 비교 + id만 비교):
+SearchTableRow × 100개 - 모두 스킵됨 (회색) ✅
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Before</th><th>After</th></tr></thead><tbody><tr><td>이렇게 하면 빨라질 것 같다 (추측)</td><td>Profiler로 측정 후 검증 (증명)</td></tr><tr><td>memo 적용 후 됐겠지</td><td>회색(스킵) 확인으로 작동 검증</td></tr><tr><td>왜 느리지? 막연함</td><td>Why did this render? 로 원인 특정</td></tr><tr><td>console.log 남발</td><td>프로덕션 코드 깔끔 유지</td></tr></tbody></table>
+<p>사실 advancedChunks 로  브라우저 캐싱, 초기 로딩 속도, 병렬 다운로드 등 적을게 산더미 같은데..진짜 너무 많이 PR이 길어져서,
+짜잘하게 최적화를 위해 적용해본것들은 제외하였습니다. lazy loading도 적용해보고, 다시 제거하기는 했지만, 이버 주차에는 많은걸
+적용해보고 학습한내용이 많았습니다!</p>
+<h3 id="코드-품질"><a class="anchor" aria-hidden="true" tabindex="-1" href="#코드-품질"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>코드 품질</h3>
+<!-- -->
+<h3 id="1-아키텍처-개선"><a class="anchor" aria-hidden="true" tabindex="-1" href="#1-아키텍처-개선"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>1. 아키텍처 개선</h3>
+<h4 id="관심사-분리"><a class="anchor" aria-hidden="true" tabindex="-1" href="#관심사-분리"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>관심사 분리</h4>
+<pre><code class="code-highlight"><span class="code-line">src/
+</span><span class="code-line">├── hooks/          # 로직 분리
+</span><span class="code-line">│   ├── useLectures.ts       # 강의 데이터 로딩 (API 추상화)
+</span><span class="code-line">│   ├── useSearchOptions.ts  # 검색 옵션 상태 관리
+</span><span class="code-line">│   ├── useLectureFilter.ts  # 필터링 로직 (순수 연산)
+</span><span class="code-line">│   ├── useInfiniteScroll.ts # 무한스크롤 (UI 로직)
+</span><span class="code-line">│   └── useAutoCallback.ts   # 안정적 콜백 참조
+</span><span class="code-line">│
+</span><span class="code-line">├── context/        # 상태 관리 분리
+</span><span class="code-line">│   ├── ScheduleContext.ts      # Context 정의 (State/Dispatch 분리)
+</span><span class="code-line">│   ├── ScheduleProvider.tsx    # Provider 컴포넌트
+</span><span class="code-line">│   ├── ScheduleDndProvider.tsx # 테이블별 DnD Context
+</span><span class="code-line">│   ├── useSchedule.ts          # Context 훅들
+</span><span class="code-line">│   └── index.ts                # exports
+</span><span class="code-line">│
+</span><span class="code-line">├── api.ts          # API 및 Promise 캐싱
+</span><span class="code-line">│
+</span><span class="code-line">└── components/     # UI 분리
+</span><span class="code-line">    ├── schedule/
+</span><span class="code-line">    │   ├── ScheduleTables.tsx     # Context 구독, 리스트 렌더링
+</span><span class="code-line">    │   ├── ScheduleTableItem.tsx  # 개별 시간표 컨테이너
+</span><span class="code-line">    │   ├── ScheduleTable.tsx      # 테이블 그리드 (Container)
+</span><span class="code-line">    │   ├── ScheduleTablePresenter # 순수 UI (Presenter)
+</span><span class="code-line">    │   ├── ScheduleGrid.tsx       # 정적 그리드
+</span><span class="code-line">    │   └── DraggableSchedule.tsx  # 드래그 가능 블록
+</span><span class="code-line">    │
+</span><span class="code-line">    └── searchDialog/
+</span><span class="code-line">        ├── SearchDialog.tsx   # 메인 컴포넌트
+</span><span class="code-line">        ├── SearchFilters.tsx  # 필터 컨테이너
+</span><span class="code-line">        ├── filters/           # 개별 필터들
+</span><span class="code-line">        ├── SearchTable.tsx    # 테이블
+</span><span class="code-line">        ├── SearchTableBody.tsx
+</span><span class="code-line">        └── SearchTableRow.tsx
+</span></code><div class="copied" data-code="src/
+├── hooks/          # 로직 분리
+│   ├── useLectures.ts       # 강의 데이터 로딩 (API 추상화)
+│   ├── useSearchOptions.ts  # 검색 옵션 상태 관리
+│   ├── useLectureFilter.ts  # 필터링 로직 (순수 연산)
+│   ├── useInfiniteScroll.ts # 무한스크롤 (UI 로직)
+│   └── useAutoCallback.ts   # 안정적 콜백 참조
+│
+├── context/        # 상태 관리 분리
+│   ├── ScheduleContext.ts      # Context 정의 (State/Dispatch 분리)
+│   ├── ScheduleProvider.tsx    # Provider 컴포넌트
+│   ├── ScheduleDndProvider.tsx # 테이블별 DnD Context
+│   ├── useSchedule.ts          # Context 훅들
+│   └── index.ts                # exports
+│
+├── api.ts          # API 및 Promise 캐싱
+│
+└── components/     # UI 분리
+    ├── schedule/
+    │   ├── ScheduleTables.tsx     # Context 구독, 리스트 렌더링
+    │   ├── ScheduleTableItem.tsx  # 개별 시간표 컨테이너
+    │   ├── ScheduleTable.tsx      # 테이블 그리드 (Container)
+    │   ├── ScheduleTablePresenter # 순수 UI (Presenter)
+    │   ├── ScheduleGrid.tsx       # 정적 그리드
+    │   └── DraggableSchedule.tsx  # 드래그 가능 블록
+    │
+    └── searchDialog/
+        ├── SearchDialog.tsx   # 메인 컴포넌트
+        ├── SearchFilters.tsx  # 필터 컨테이너
+        ├── filters/           # 개별 필터들
+        ├── SearchTable.tsx    # 테이블
+        ├── SearchTableBody.tsx
+        └── SearchTableRow.tsx
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h4 id="컴포넌트-계층-구조"><a class="anchor" aria-hidden="true" tabindex="-1" href="#컴포넌트-계층-구조"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>컴포넌트 계층 구조</h4>
+<pre><code class="code-highlight"><span class="code-line">SearchDialog (98줄, memo)
+</span><span class="code-line">├── useLectures()        # API 데이터 로딩
+</span><span class="code-line">├── useSearchOptions()   # 검색 옵션 상태
+</span><span class="code-line">├── useLectureFilter()   # 필터링 연산
+</span><span class="code-line">├── useInfiniteScroll()  # 무한스크롤
+</span><span class="code-line">├── SearchFilters (memo)
+</span><span class="code-line">│   └── 6개 개별 필터 (각각 memo)
+</span><span class="code-line">└── SearchTable (memo)
+</span><span class="code-line">    ├── SearchTableBody (memo)
+</span><span class="code-line">    └── SearchTableRow (memo + 커스텀 비교)
+</span></code><div class="copied" data-code="SearchDialog (98줄, memo)
+├── useLectures()        # API 데이터 로딩
+├── useSearchOptions()   # 검색 옵션 상태
+├── useLectureFilter()   # 필터링 연산
+├── useInfiniteScroll()  # 무한스크롤
+├── SearchFilters (memo)
+│   └── 6개 개별 필터 (각각 memo)
+└── SearchTable (memo)
+    ├── SearchTableBody (memo)
+    └── SearchTableRow (memo + 커스텀 비교)
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="2-개선된-패턴"><a class="anchor" aria-hidden="true" tabindex="-1" href="#2-개선된-패턴"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2. 개선된 패턴</h3>
+<h4 id="memo-커스텀-비교-함수"><a class="anchor" aria-hidden="true" tabindex="-1" href="#memo-커스텀-비교-함수"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>memo 커스텀 비교 함수</h4>
+<pre class="language-typescript"><code class="language-typescript code-highlight"><span class="code-line"><span class="token comment">// 불변 데이터 → id만 비교</span>
+</span><span class="code-line"><span class="token keyword">const</span> SearchTableRow <span class="token operator">=</span> <span class="token function">memo</span><span class="token punctuation">(</span>Component<span class="token punctuation">,</span> <span class="token punctuation">(</span>prev<span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> prev<span class="token punctuation">.</span>id <span class="token operator">===</span> next<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 무한스크롤 패턴 → 길이 + 첫/마지막 비교</span>
+</span><span class="code-line"><span class="token keyword">const</span> SearchTable <span class="token operator">=</span> <span class="token function">memo</span><span class="token punctuation">(</span>Component<span class="token punctuation">,</span> <span class="token punctuation">(</span>prev<span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>prev<span class="token punctuation">.</span>items<span class="token punctuation">.</span>length <span class="token operator">!==</span> next<span class="token punctuation">.</span>items<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">return</span> prev<span class="token punctuation">.</span>items<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">?.</span>id <span class="token operator">===</span> next<span class="token punctuation">.</span>items<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">?.</span>id<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// Context 구독 분리 → 모든 관련 props 비교</span>
+</span><span class="code-line"><span class="token keyword">const</span> ScheduleTablePresenter <span class="token operator">=</span> <span class="token function">memo</span><span class="token punctuation">(</span>Component<span class="token punctuation">,</span> <span class="token punctuation">(</span>prev<span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>prev<span class="token punctuation">.</span>tableId <span class="token operator">!==</span> next<span class="token punctuation">.</span>tableId<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>prev<span class="token punctuation">.</span>isDragging <span class="token operator">!==</span> next<span class="token punctuation">.</span>isDragging<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// 드래그 상태!</span>
+</span><span class="code-line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>prev<span class="token punctuation">.</span>schedules <span class="token operator">===</span> next<span class="token punctuation">.</span>schedules <span class="token operator">&amp;&amp;</span> prev<span class="token punctuation">.</span>colorMap <span class="token operator">===</span> next<span class="token punctuation">.</span>colorMap<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token keyword">return</span> prev<span class="token punctuation">.</span>schedules<span class="token punctuation">.</span><span class="token function">every</span><span class="token punctuation">(</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> i<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> s <span class="token operator">===</span> next<span class="token punctuation">.</span>schedules<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code><div class="copied" data-code="// 불변 데이터 → id만 비교
+const SearchTableRow = memo(Component, (prev, next) =&gt; prev.id === next.id);
+
+// 무한스크롤 패턴 → 길이 + 첫/마지막 비교
+const SearchTable = memo(Component, (prev, next) =&gt; {
+  if (prev.items.length !== next.items.length) return false;
+  return prev.items[0]?.id === next.items[0]?.id;
+});
+
+// Context 구독 분리 → 모든 관련 props 비교
+const ScheduleTablePresenter = memo(Component, (prev, next) =&gt; {
+  if (prev.tableId !== next.tableId) return false;
+  if (prev.isDragging !== next.isDragging) return false; // 드래그 상태!
+  if (prev.schedules === next.schedules &amp;&amp; prev.colorMap === next.colorMap) {
+    return true;
+  }
+  return prev.schedules.every((s, i) =&gt; s === next.schedules[i]);
+});
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p>결론적으로, 단일 책임 원칙 적용과, 타입 안정성, 재사용성이 증가했습니다.</p>
+<h3 id="학습-효과-분석"><a class="anchor" aria-hidden="true" tabindex="-1" href="#학습-효과-분석"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>학습 효과 분석</h3>
+<!-- -->
+<h3 id="1-학습-방법론"><a class="anchor" aria-hidden="true" tabindex="-1" href="#1-학습-방법론"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>1. 학습 방법론</h3>
+<h4 id="bottom-up-학습"><a class="anchor" aria-hidden="true" tabindex="-1" href="#bottom-up-학습"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Bottom-up 학습</h4>
+<pre><code class="code-highlight"><span class="code-line">문제 발견 → 해결책 구현 → &quot;라이브러리는 어떻게?&quot; → 소스코드 분석 → 원리 이해
+</span><span class="code-line">
+</span><span class="code-line">예시:
+</span><span class="code-line">API 중복 호출 문제
+</span><span class="code-line">→ Promise 캐싱으로 해결
+</span><span class="code-line">→ &quot;TanStack Query는 어떻게?&quot;
+</span><span class="code-line">→ 소스코드 분석 (QueryCache, Query 클래스)
+</span><span class="code-line">→ &quot;데이터가 아닌 Promise를 캐싱한다!&quot; 인사이트 획득
+</span></code><div class="copied" data-code="문제 발견 → 해결책 구현 → &quot;라이브러리는 어떻게?&quot; → 소스코드 분석 → 원리 이해
+
+예시:
+API 중복 호출 문제
+→ Promise 캐싱으로 해결
+→ &quot;TanStack Query는 어떻게?&quot;
+→ 소스코드 분석 (QueryCache, Query 클래스)
+→ &quot;데이터가 아닌 Promise를 캐싱한다!&quot; 인사이트 획득
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h4 id="실험적-학습"><a class="anchor" aria-hidden="true" tabindex="-1" href="#실험적-학습"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>실험적 학습</h4>
+<pre><code class="code-highlight"><span class="code-line">가설 설정 → React DevTools Profiler로 측정 → 검증 → 개선
+</span><span class="code-line">
+</span><span class="code-line">예시:
+</span><span class="code-line">&quot;memo를 적용하면 리렌더링이 줄어들 것이다&quot;
+</span><span class="code-line">→ Profiler로 측정 → 여전히 리렌더링 발생
+</span><span class="code-line">→ &quot;Context 직접 구독 시 memo 무시됨&quot; 발견
+</span><span class="code-line">→ Container/Presenter 패턴으로 해결
+</span></code><div class="copied" data-code="가설 설정 → React DevTools Profiler로 측정 → 검증 → 개선
+
+예시:
+&quot;memo를 적용하면 리렌더링이 줄어들 것이다&quot;
+→ Profiler로 측정 → 여전히 리렌더링 발생
+→ &quot;Context 직접 구독 시 memo 무시됨&quot; 발견
+→ Container/Presenter 패턴으로 해결
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="2-핵심-깨달음"><a class="anchor" aria-hidden="true" tabindex="-1" href="#2-핵심-깨달음"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2. 핵심 깨달음</h3>
+<h4 id="memo의-한계-이해"><a class="anchor" aria-hidden="true" tabindex="-1" href="#memo의-한계-이해"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>memo의 한계 이해</h4>
+<pre><code class="code-highlight"><span class="code-line">memo는 &quot;부모 리렌더링 시&quot; props를 비교함.
+</span><span class="code-line">컴포넌트가 직접 Context를 구독하면 memo 비교 함수가 호출되지 않고 바로 리렌더링됨.
+</span><span class="code-line">
+</span><span class="code-line">// 잘못된 예: memo가 작동하지 않음
+</span><span class="code-line">const ScheduleTableBody = memo(({ tableId }) =&gt; {
+</span><span class="code-line">  const schedules = useSchedulesByTableId(tableId);  // Context 직접 구독!
+</span><span class="code-line">  // schedulesMap 변경 시 → 리렌더링 (memo 무시)
+</span><span class="code-line">});
+</span><span class="code-line">
+</span><span class="code-line">// 올바른 예: memo 정상 작동
+</span><span class="code-line">const ScheduleTable = ({ tableId }) =&gt; {
+</span><span class="code-line">  const schedulesMap = useSchedulesMap();  // Container에서 구독
+</span><span class="code-line">  return &lt;ScheduleTablePresenter schedules={schedulesMap[tableId]} /&gt;;
+</span><span class="code-line">};
+</span></code><div class="copied" data-code="memo는 &quot;부모 리렌더링 시&quot; props를 비교함.
+컴포넌트가 직접 Context를 구독하면 memo 비교 함수가 호출되지 않고 바로 리렌더링됨.
+
+// 잘못된 예: memo가 작동하지 않음
+const ScheduleTableBody = memo(({ tableId }) =&gt; {
+  const schedules = useSchedulesByTableId(tableId);  // Context 직접 구독!
+  // schedulesMap 변경 시 → 리렌더링 (memo 무시)
+});
+
+// 올바른 예: memo 정상 작동
+const ScheduleTable = ({ tableId }) =&gt; {
+  const schedulesMap = useSchedulesMap();  // Container에서 구독
+  return &lt;ScheduleTablePresenter schedules={schedulesMap[tableId]} /&gt;;
+};
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h4 id="context-api의-근본적-한계"><a class="anchor" aria-hidden="true" tabindex="-1" href="#context-api의-근본적-한계"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Context API의 근본적 한계</h4>
+<pre><code class="code-highlight"><span class="code-line">Context는 &quot;세분화된 구독(selective subscription)&quot;을 지원하지 않음.
+</span><span class="code-line">Context 값이 변경되면 모든 useContext 호출 컴포넌트가 리렌더링됨.
+</span><span class="code-line">
+</span><span class="code-line">해결책:
+</span><span class="code-line">1. Context 분리 (State/Dispatch)
+</span><span class="code-line">2. Context 범위 좁히기 (테이블별 DndContext)
+</span><span class="code-line">3. 구독 위치 최상위로 올리기 (Container 패턴)
+</span></code><div class="copied" data-code="Context는 &quot;세분화된 구독(selective subscription)&quot;을 지원하지 않음.
+Context 값이 변경되면 모든 useContext 호출 컴포넌트가 리렌더링됨.
+
+해결책:
+1. Context 분리 (State/Dispatch)
+2. Context 범위 좁히기 (테이블별 DndContext)
+3. 구독 위치 최상위로 올리기 (Container 패턴)
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h4 id="dnd-kit-라이브러리-한계"><a class="anchor" aria-hidden="true" tabindex="-1" href="#dnd-kit-라이브러리-한계"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>@dnd-kit 라이브러리 한계</h4>
+<pre class="language-typescript"><code class="language-typescript code-highlight"><span class="code-line"><span class="token comment">// @dnd-kit 내부 구조</span>
+</span><span class="code-line"><span class="token keyword">function</span> <span class="token function">useDraggable</span><span class="token punctuation">(</span><span class="token punctuation">{</span> id <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">const</span> context <span class="token operator">=</span> <span class="token function">useDndContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 내부적으로 전체 Context 구독!</span>
+</span><span class="code-line">  <span class="token comment">// → 같은 DndContext 내 모든 드래그 가능 컴포넌트가 리렌더링</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code><div class="copied" data-code="// @dnd-kit 내부 구조
+function useDraggable({ id }) {
+  const context = useDndContext();  // 내부적으로 전체 Context 구독!
+  // → 같은 DndContext 내 모든 드래그 가능 컴포넌트가 리렌더링
+}
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h4 id="참조-비교의-중요성"><a class="anchor" aria-hidden="true" tabindex="-1" href="#참조-비교의-중요성"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>참조 비교의 중요성</h4>
+<pre class="language-typescript"><code class="language-typescript code-highlight"><span class="code-line"><span class="token comment">// 복제 시 상태 업데이트</span>
+</span><span class="code-line"><span class="token function">setSchedulesMap</span><span class="token punctuation">(</span><span class="token punctuation">(</span>prev<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token operator">...</span>prev<span class="token punctuation">,</span>  <span class="token comment">// 기존 배열들은 참조 유지!</span>
+</span><span class="code-line">  <span class="token punctuation">[</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">schedule-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token operator">...</span>prev<span class="token punctuation">[</span>targetId<span class="token punctuation">]</span><span class="token punctuation">]</span>  <span class="token comment">// 새 배열만 생성</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 결과:</span>
+</span><span class="code-line">prev<span class="token punctuation">[</span><span class="token string">&#x27;schedule-1&#x27;</span><span class="token punctuation">]</span> <span class="token operator">===</span> newMap<span class="token punctuation">[</span><span class="token string">&#x27;schedule-1&#x27;</span><span class="token punctuation">]</span>  <span class="token comment">// true! 참조 동일</span>
+</span><span class="code-line">prev<span class="token punctuation">[</span><span class="token string">&#x27;schedule-2&#x27;</span><span class="token punctuation">]</span> <span class="token operator">===</span> newMap<span class="token punctuation">[</span><span class="token string">&#x27;schedule-2&#x27;</span><span class="token punctuation">]</span>  <span class="token comment">// true! 참조 동일</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// → 기존 시간표의 memo 비교에서 true 반환 → 리렌더링 스킵!</span>
+</span></code><div class="copied" data-code="// 복제 시 상태 업데이트
+setSchedulesMap((prev) =&gt; ({
+  ...prev,  // 기존 배열들은 참조 유지!
+  [`schedule-${Date.now()}`]: [...prev[targetId]]  // 새 배열만 생성
+}));
+
+// 결과:
+prev[&#x27;schedule-1&#x27;] === newMap[&#x27;schedule-1&#x27;]  // true! 참조 동일
+prev[&#x27;schedule-2&#x27;] === newMap[&#x27;schedule-2&#x27;]  // true! 참조 동일
+
+// → 기존 시간표의 memo 비교에서 true 반환 → 리렌더링 스킵!
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h4 id="promise-캐싱-인사이트-tanstack-query-분석에서"><a class="anchor" aria-hidden="true" tabindex="-1" href="#promise-캐싱-인사이트-tanstack-query-분석에서"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Promise 캐싱 인사이트 (TanStack Query 분석에서)</h4>
+<pre><code class="code-highlight"><span class="code-line">일반적인 캐싱: 결과 데이터를 저장
+</span><span class="code-line">TanStack Query: Promise 자체를 저장
+</span><span class="code-line">
+</span><span class="code-line">차이점:
+</span><span class="code-line">- 데이터 캐싱: 완료 전 중복 요청 시 여러 네트워크 호출
+</span><span class="code-line">- Promise 캐싱: 완료 전 중복 요청도 같은 Promise 재사용
+</span><span class="code-line">
+</span><span class="code-line">핵심 코드:
+</span><span class="code-line">if (!cache.has(key)) {
+</span><span class="code-line">  cache.set(key, fetchers[key]());  // Promise 저장
+</span><span class="code-line">}
+</span><span class="code-line">return cache.get(key)!;  // 같은 Promise 반환
+</span></code><div class="copied" data-code="일반적인 캐싱: 결과 데이터를 저장
+TanStack Query: Promise 자체를 저장
+
+차이점:
+- 데이터 캐싱: 완료 전 중복 요청 시 여러 네트워크 호출
+- Promise 캐싱: 완료 전 중복 요청도 같은 Promise 재사용
+
+핵심 코드:
+if (!cache.has(key)) {
+  cache.set(key, fetchers[key]());  // Promise 저장
+}
+return cache.get(key)!;  // 같은 Promise 반환
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h4 id="측정-없는-최적화는-추측"><a class="anchor" aria-hidden="true" tabindex="-1" href="#측정-없는-최적화는-추측"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>측정 없는 최적화는 추측</h4>
+<pre><code class="code-highlight"><span class="code-line">React DevTools Profiler로 실제 렌더링 확인 필수.
+</span><span class="code-line">&quot;이렇게 하면 빨라질 것 같다&quot; → 측정으로 증명해야 함.
+</span></code><div class="copied" data-code="React DevTools Profiler로 실제 렌더링 확인 필수.
+&quot;이렇게 하면 빨라질 것 같다&quot; → 측정으로 증명해야 함.
+"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p>최종적으로, 성능 최적화 과제이긴 하지만, 오히려 성능 최적화를 하기위해 시도한 학습 방법, 라이브러리의 작동 방식 등에 대해서 직접 code를 확인하고 어떤식으로 동작하는지 파악하는 등, 다시 한번 좋은 경험을 통해 배워갔습니다!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>영역</th><th>Before</th><th>After</th></tr></thead><tbody><tr><td><strong>문제 해결</strong></td><td>증상 해결</td><td>근본 원인 파악 후 해결</td></tr><tr><td><strong>디버깅</strong></td><td>console.log 의존</td><td>DevTools Profiler/Network/Performance 활용</td></tr><tr><td><strong>코드 분석</strong></td><td>작동하면 OK</td><td>왜 이렇게 설계했는가 분석</td></tr><tr><td><strong>라이브러리 이해</strong></td><td>분석없이 사용</td><td>내부 구조 파악 후 한계 인식</td></tr><tr><td><strong>캐싱 이해</strong></td><td>데이터 캐싱만 앎</td><td>Promise 캐싱 패턴 습득</td></tr></tbody></table>
+<h3 id="과제-피드백"><a class="anchor" aria-hidden="true" tabindex="-1" href="#과제-피드백"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>과제 피드백</h3>
+<!-- -->
+<p>실제 프로덕션에서 마주칠 수 있는 성능 문제들을 직접 해결본거같아 좋았습니다. Context 전역 구독으로 인한 리렌더링 문제나,
+무한 스크롤 성능, React DevTools Profiler 사용법, 퍼포먼스, 라이트 하우스 탭 등 을 이번에 활용을 아주 많이 해볼수있어서 좋았습니다.</p>
+<p>그리고, 개인적으로 복제할때 렌더링이 일어나지 않아야하는 부분이 가장 시간이 많이 들고 힘들었던 작업같습니다.여기서 React DevTools Profiler 로 가장 많이 분석해서 근본적인 원인 등을 찾아서 해결할수있었습니다.</p>
+<h2 id="리뷰-받고-싶은-내용"><a class="anchor" aria-hidden="true" tabindex="-1" href="#리뷰-받고-싶은-내용"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>리뷰 받고 싶은 내용</h2>
+<ol>
+<li>
+<p>과제에서는 무한스크롤로 구현했지만, 실무에서 무한스크롤 → 가상스크롤로 전환하는 기준이 있을까요?</p>
+</li>
+<li>
+<p>이번 과제에서 대부분의 컴포넌트에 memo를 적용했습니다. 모든 컴포넌트에 memo를 붙이는 것은 오버헤드인지, 아니면 기본으로 적용하는 편인지 궁금합니다.</p>
+</li>
+<li>
+<p>이번 과제에서 Context의 전체 구독으로 인한 리렌더링를 경험하고 State/Dispatch 분리로 해결했습니다. 실무에서는 보통 전역 상태관리로 zustand를 사용하기도하고, 사실 이렇게 React DevTools Profiler 로 렌더링 부분에 대해서 자세히 살펴본적이 없어서 몰랐는데, 렌더링 문제로 인해서 Zustand 같은 상태관리 라이브러리를 도입하기도하나요?</p>
+</li>
+</ol>
+</div></div><div class="overflow-auto mt-9"><div data-color-mode="dark" class="wmde-markdown wmde-markdown-color p-6 max-w-full" style="word-wrap:break-word;overflow-wrap:break-word"><h2 id="과제-피드백"><a class="anchor" aria-hidden="true" tabindex="-1" href="#과제-피드백"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>과제 피드백</h2>
+<p>Q. 과제에서는 무한스크롤로 구현했지만, 실무에서 무한스크롤 → 가상스크롤로 전환하는 기준이 있을까요?</p>
+<p>A. 무한 스크롤과 가상스크롤은 목적이 다른 것 같아요~
+무한 스크롤은 성능보다는 사용자가 끝에 다다르면 자동으로 데이터 로드하는 즉 페이지네이션류의 UI종류 라고 볼 수 있는 반면,
+가상스크롤은 많은 데이터를 그릴때 성능을 고려하는 방법이지요..</p>
+<p>Q. 이번 과제에서 대부분의 컴포넌트에 memo를 적용했습니다. 모든 컴포넌트에 memo를 붙이는 것은 오버헤드인지, 아니면 기본으로 적용하는 편인지 궁금합니다.</p>
+<p>A. 그냥 무조건 적용한다기보다는 말씀하신대로 필요할때 적용합니다. 하지만 대부분 필요한 경우가 많긴 하죠 ㅎㅎ
+다만 부모가 렌더링되면 조건없이 다시 렌더링해야 하는 상황이면 성능 때문이 아니라 안씀으로 &quot;의도&quot;를 표현할 수 있을 것 같아요.
+생각보다 메모가 비용이 별로 안들어서 필요할때 부담없이 사용하셔도 됩니다.</p>
+<p>Q.  렌더링 문제로 인해서 Zustand 같은 상태관리 라이브러리를 도입하기도하나요?</p>
+<p>A.
+컨텍스트는 말씀하신대로 세밀한 렌더링 조율이 힘들기 때문에 상태가 자주 변경되지 않는 말그대로 &quot;공유&quot;자체가 목적일때 적합할 것 같아요.
+상태가 자주 변경되고 상태가 많은 경우라면 주스탠드같은 상태관리를 사용하는 것이 나은 것이죠.
+렌더링 뿐만 아니라 상태관리자체에도 여러가지 기능을 포함하고 있어서 상태관리도구를 사용합니다.
+반대로 탄스택쿼리와 같은 캐싱 기반 패치도구로 인해 공유해야할 상태를 캐시를 통해하게 되서
+상태관리도구의 커버범위가 조금 줄어들기도 했습니다.</p>
+<p>수고하셨습니다!</p></div></div><div class="mt-9"></div></div></main></div></div></div>
+    <title>[5팀 진재윤] Chapter 4-2. 코드 관점의 성능 최적화 - 진재윤 | 항해플러스 프론트엔드 7기</title>
+    <meta name="description" content=" [항해플러스 프론트엔드 7기] 진재윤님이 제출한 [5팀 진재윤] Chapter 4-2. 코드 관점의 성능 최적화 과제를 확인하세요. 코드 구현, 문제 해결 과정, 피드백 내용을 상세히 살펴볼 수 있습니다." />
+    <meta name="keywords" content="항해플러스, 프론트엔드, 개발자교육, React, TypeScript, JavaScript, 기술면접, 웹개발, 진재윤, [5팀 진재윤] Chapter 4-2. 코드 관점의 성능 최적화, 과제상세, 코드리뷰, 피드백, Pull Request" />
+    <meta property="og:title" content="[5팀 진재윤] Chapter 4-2. 코드 관점의 성능 최적화 - 진재윤 | 항해플러스 프론트엔드 7기" />
+    <meta property="og:description" content=" [항해플러스 프론트엔드 7기] 진재윤님이 제출한 [5팀 진재윤] Chapter 4-2. 코드 관점의 성능 최적화 과제를 확인하세요. 코드 구현, 문제 해결 과정, 피드백 내용을 상세히 살펴볼 수 있습니다." />
+    <meta property="og:image" content="/defaultThumbnail.jpg" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="[5팀 진재윤] Chapter 4-2. 코드 관점의 성능 최적화 - 진재윤 | 항해플러스 프론트엔드 7기" />
+    <meta name="twitter:description" content=" [항해플러스 프론트엔드 7기] 진재윤님이 제출한 [5팀 진재윤] Chapter 4-2. 코드 관점의 성능 최적화 과제를 확인하세요. 코드 구현, 문제 해결 과정, 피드백 내용을 상세히 살펴볼 수 있습니다." />
+    <meta name="twitter:image" content="/defaultThumbnail.jpg" />
+  <!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/front_7th/favicon.ico"/>
+  <!--app-head-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J8QP7YK1E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-6J8QP7YK1E');
+  </script>
+  <script type="module" crossorigin src="/front_7th/assets/index-RTTRX4Ru.js"></script>
+  <link rel="stylesheet" crossorigin href="/front_7th/assets/index-B1cXSvNG.css">
+</head>
+<body>
+<div id="root"><!--app-html--></div>
+</body>
+</html>

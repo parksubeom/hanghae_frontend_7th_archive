@@ -126,7 +126,13 @@ props drilling 이라는 용어를 처음 알게되었고, 기존에는 처음�
 <li>위에서 설명한 공통 컴포넌트와 각 페이지에 쓰이는 컴포넌트의 관리 방식이 좋은 방식인지 아직 잘 모르겠습니다. 다른 분들은 컴포넌트를 어떤 방식으로 구분하여 작업하시나요?</li>
 <li>context로 상태관리하는 것보다 props 로 값을 전달받으면 좀 더 빠르게 반응할 수 있다고 들었는데 실제로 성능 이슈가 있나요? 아니면 단순히 계속 끌고 가야 하는 props에 의한 코드 결합 이슈 때문에 상태관리로 관리하는 것인가요? basic에서는 상태관리 없이 작업하다가 hard 부분에서는 상태관리를 사용하라고 하셨는데...크게 무슨 차이인지 정확히 모르겠습니다.(pr 마지막 하단에 결합도가 낮아졌는지에 대한 물음이 정확히 무슨 뜻인지 와닿지 않습니다)</li>
 </ol></div></div><div class="overflow-auto mt-9"><div data-color-mode="dark" class="wmde-markdown wmde-markdown-color p-6 max-w-full" style="word-wrap:break-word;overflow-wrap:break-word"><h2 id="과제-피드백"><a class="anchor" aria-hidden="true" tabindex="-1" href="#과제-피드백"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>과제 피드백</h2>
-<p>undefined</p></div></div><div class="mt-9"></div></div></main></div></div></div>
+<p>Q1) 공통 컴포넌트와 페이지 컴포넌트 관리 방식이 좋은 방식인가요?</p>
+<p>네, 좋은 방식이에요. components/card.tsx는 &quot;어떤 데이터든 받아서 카드 형태로 보여주는&quot; UI 컴포넌트고, pages/shop/components/ProductCard.tsx는 &quot;상품이라는 엔티티를 보여주는&quot; 엔티티 컴포넌트예요. 이렇게 구분하면 디자인 시스템과 비즈니스 로직이 분리돼요. 카드 디자인이 바뀌면 공통 컴포넌트만 수정하고, 상품 표시 방식이 바뀌면 ProductCard만 수정하면 됩니다. 대개 Page에는 엔티티 컴포넌트들이 공용에는 UI 컴포넌트들이 모이게 되기에 훨씬 더 계층적이고 응집도 높게 관리를 할 수 있게 되어 좋답니다.</p>
+<p>Q2) context vs props 성능 이슈가 있나요? 결합도가 낮아졌다는 게 무슨 뜻인가요?</p>
+<p>성능 이슈는 대부분의 경우 거의 체감하기 어렵습니다. 엄밀하게 말하고 싶어 거의 대부분 이렇게 썼지만 무의미한 수준입니다. Context가 props보다 느리다는 건 맞지만, 진짜 문제가 되는 규모가 되기까지는 상당히 큰 규모를 필요로 합니다.</p>
+<p>props drilling이 어떤 문제인지 살펴보면 중간 컴포넌트가 자기는 안 쓰는 props를 그냥 넘겨주기만 하는데도 그 넘겨주기를 하기 위해서 props가 필요한 상황을 말합니다. 예를 들어 Page → Section → Card로 onDelete를 넘긴다면, Section은 onDelete를 안 쓰는데도 &quot;Card한테 넘겨줘야 하니까&quot; 받고 있는 거죠. 이러면 Section은 사실 onDelete와 전혀 연관이 없는 코드임에도 Page와 Card를 연결해주기 위해 항상 이 둘 사이에 있어야 하죠. 이런 경우 결합도가 높다고 합니다. Secion은 Page와 Card와 무관한데 어쩔수 없이 함께 해야 하니까요.</p>
+<p>반면 전역상태를 쓰면 Card가 직접 context에서 onDelete를 가져올 수 있습니다. 그러면 Section은 Page와 Card의 존재를 몰라도 되고, 나중에 Section을 수정할 때에도 &quot;이 props 건드려도 되나?&quot; 고민 안 해도 돼요. 그래서 &quot;떨어뜨려놓기 쉬워진다&quot;, 즉 결합도가 낮아진다는 의미입니다. 이 설명이 도움이 되었으면 좋겠네요.</p>
+<p>과제 채점이 너무 늦어져서 미안해요. 수고 많았어요! 마지막 챕터도 화이팅입니다!</p></div></div><div class="mt-9"></div></div></main></div></div></div>
     <title>[1팀 도희정] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계 - 도희정 | 항해플러스 프론트엔드 7기</title>
     <meta name="description" content=" [항해플러스 프론트엔드 7기] 도희정님이 제출한 [1팀 도희정] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계 과제를 확인하세요. 코드 구현, 문제 해결 과정, 피드백 내용을 상세히 살펴볼 수 있습니다." />
     <meta name="keywords" content="항해플러스, 프론트엔드, 개발자교육, React, TypeScript, JavaScript, 기술면접, 웹개발, 도희정, [1팀 도희정] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계, 과제상세, 코드리뷰, 피드백, Pull Request" />
@@ -140,25 +146,23 @@ props drilling 이라는 용어를 처음 알게되었고, 기존에는 처음�
     <meta name="twitter:image" content="/defaultThumbnail.jpg" />
   <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/front_7th/favicon.ico" />
-    <!--app-head-->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J8QP7YK1E"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/front_7th/favicon.ico"/>
+  <!--app-head-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J8QP7YK1E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-      gtag("config", "G-6J8QP7YK1E");
-    </script>
-    <script type="module" crossorigin src="/front_7th/assets/index-C7wrzndj.js"></script>
-    <link rel="stylesheet" crossorigin href="/front_7th/assets/index-BXO68frB.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+    gtag('config', 'G-6J8QP7YK1E');
+  </script>
+  <script type="module" crossorigin src="/front_7th/assets/index-RTTRX4Ru.js"></script>
+  <link rel="stylesheet" crossorigin href="/front_7th/assets/index-B1cXSvNG.css">
+</head>
+<body>
+<div id="root"><!--app-html--></div>
+</body>
 </html>

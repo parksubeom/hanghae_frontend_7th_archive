@@ -100,7 +100,16 @@
 <li>Product, Coupon, Cart를 각각 별도 스토어로 분리했는데, 하나의 스토어로 합치는 것이 더 나을까요?</li>
 <li><code>ProductCard</code>에 <code>product</code>만 전달하고 나머지는 스토어에서 가져오도록 했는데, 이 기준이 적절한지 궁금합니다.</li>
 </ul></div></div><div class="overflow-auto mt-9"><div data-color-mode="dark" class="wmde-markdown wmde-markdown-color p-6 max-w-full" style="word-wrap:break-word;overflow-wrap:break-word"><h2 id="과제-피드백"><a class="anchor" aria-hidden="true" tabindex="-1" href="#과제-피드백"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>과제 피드백</h2>
-<p>undefined</p></div></div><div class="mt-9"></div></div></main></div></div></div>
+<p>잘했어요 창수! 기본 과제랑 심화 과제 모두 완료한 거 잘했습니다. 코드도 엄청 깔끔하게 잘 정리했더라고요.</p>
+<p>회고에서 &quot;엔티티 데이터(product, item)는 props로 전달, 액션/콜백은 컴포넌트 내부에서 스토어 직접 호출&quot;이라고 기준을 세운 부분이 인상적이었어요. 이게 정확히 이번 과제에서 찾아보길 바랐던 기준이에요. 다른 분들 코드를 보면 전역상태를 도입했는데도 onDelete, onUpdate 같은 콜백을 여전히 props로 내려보내는 경우가 많았거든요. 그 기준을 명확하게 잘 잡아서 간결한 코드가 만들어지는 것을 경험했으리라 생각합니다.</p>
+<p>utils → hooks → components 순서로 의존성 흐름을 설계한 것도 좋았어요. 계층을 분리하면서 정리한다는 게 어떤 건지 이번 과제를 통해 잘 느꼈을 거라 생각해요.</p>
+<p>다음 질문 주신 것들에 답변입니다.</p>
+<p>Q) Product, Coupon, Cart를 각각 별도 스토어로 분리 vs 하나로 합치기?</p>
+<p>지금처럼 분리하는 게 맞아요. 함께 변하는 것끼리 묶어두는 게 원칙인데, Product가 변할 때 Cart가 항상 같이 변하진 않잖아요. 합치면 오히려 &quot;상품 수정했는데 왜 장바구니 관련 코드도 같이 보여?&quot; 하는 상황이 생겨요. 엔티티별로 스토어를 나눈 건 좋은 선택입니다. 중앙집중형 방식의 Zustand도 결국 엔티티별 Slice로 구분하라고 권장하고 있죠. 엔티티를 기준으로 스토어를 나누는 것은 좋은 방식입니다.</p>
+<p>Q) ProductCard에 product만 전달하고 나머지는 스토어에서 가져오는 기준이 적절한가요?</p>
+<p>네, 아주 적절합니다. product는 &quot;이 카드가 어떤 상품을 보여줄지&quot; 결정하는 핵심 데이터니까 props로 받는 게 맞아요. 반면 addToCart 같은 액션은 어떤 상품이든 동일한 로직이니까 내부에서 스토어를 호출하는 게 낫죠. 창수가 세운 기준 그대로 가면 됩니다.</p>
+<p>Compound Component 패턴에 대해서는, Cart의 경우 굳이 컴파운드로 만들 필요 없어요. 컴파운드 패턴은 컴포넌트를 조립하기 쉽게 제공하려고 만드는 패턴이에요. 그런데 엔티티 컴포넌트는 &quot;활용하라고 제공하는 컴포넌트&quot;가 아니라 &quot;이미 활용된 컴포넌트&quot;예요. Button이나 Modal 같은 UI 컴포넌트는 여러 곳에서 다양하게 조합해서 쓰니까 유연하게 만들어야 하지만, CartItem이나 ProductCard는 그 자체로 완결된 용도가 있어요. 모든 컴포넌트가 재사용성과 독립성을 유지할 필요는 없습니다.</p>
+<p>너무 너무 잘했습니다. 이번 과제 채점이 필요 이상으로 너무 지연된 점 정말 미안해요! 앞으로 남은 기간도 파이팅입니다!</p></div></div><div class="mt-9"></div></div></main></div></div></div>
     <title>[6팀 박창수] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계  - 박창수 | 항해플러스 프론트엔드 7기</title>
     <meta name="description" content=" [항해플러스 프론트엔드 7기] 박창수님이 제출한 [6팀 박창수] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계  과제를 확인하세요. 코드 구현, 문제 해결 과정, 피드백 내용을 상세히 살펴볼 수 있습니다." />
     <meta name="keywords" content="항해플러스, 프론트엔드, 개발자교육, React, TypeScript, JavaScript, 기술면접, 웹개발, 박창수, [6팀 박창수] Chapter3-2. 디자인 패턴과 함수형 프로그래밍 그리고 상태 관리 설계 , 과제상세, 코드리뷰, 피드백, Pull Request" />
@@ -114,25 +123,23 @@
     <meta name="twitter:image" content="/defaultThumbnail.jpg" />
   <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/front_7th/favicon.ico" />
-    <!--app-head-->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J8QP7YK1E"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/front_7th/favicon.ico"/>
+  <!--app-head-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6J8QP7YK1E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-      gtag("config", "G-6J8QP7YK1E");
-    </script>
-    <script type="module" crossorigin src="/front_7th/assets/index-C7wrzndj.js"></script>
-    <link rel="stylesheet" crossorigin href="/front_7th/assets/index-BXO68frB.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+    gtag('config', 'G-6J8QP7YK1E');
+  </script>
+  <script type="module" crossorigin src="/front_7th/assets/index-RTTRX4Ru.js"></script>
+  <link rel="stylesheet" crossorigin href="/front_7th/assets/index-B1cXSvNG.css">
+</head>
+<body>
+<div id="root"><!--app-html--></div>
+</body>
 </html>

@@ -145,12 +145,12 @@ async function generate(url) {
     // 메타데이터 생성
     const metadata = await generateMetadata(url);
 
-    // 🚨 [핵심 수정] 빈 문자열(``)이 아니라 주석()을 타겟팅하여 교체
-    // 이렇게 해야 HTML 구조가 깨지지 않고 root 태그 안으로 정확히 들어갑니다.
+    // [수정] 주석을 타겟팅하여 정확한 위치에 삽입
+    // Vite SSR은 html만 반환하므로 <!--app-html--> 주석을 교체
+    // 메타데이터는 <!--app-head--> 주석 뒤에 삽입
     const html = template
-      .replace("", `${rendered.body ?? ""}`)
-      .replace("", `${metadata}${rendered.head ?? ""}`)
-      .replace("", rendered.html ?? "");
+      .replace("<!--app-head-->", `<!--app-head-->${metadata}${rendered.head ?? ""}`)
+      .replace("<!--app-html-->", rendered.html ?? "");
 
     const dirPath = path.join("./dist/client", url);
     if (!fs.existsSync(dirPath)) {

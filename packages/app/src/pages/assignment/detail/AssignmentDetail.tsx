@@ -7,6 +7,7 @@ import { IconGithub } from "@/assets";
 import { Card } from "@/components";
 import { AssignmentComment } from "./AssignmentComment";
 import { baseMetadata, type MetadataConfig } from "@/utils/metadata";
+import { formatDate } from "@/lib";
 
 const AssignmentDetailProvider = ({ children }: PropsWithChildren) => {
   const { assignmentId = "" } = useParams<{ assignmentId: string }>();
@@ -27,25 +28,6 @@ const AssignmentDetailProvider = ({ children }: PropsWithChildren) => {
     </PageProvider>
   );
 };
-
-function formatDate(date: string | Date): string {
-  const dateObj = typeof date === "string" ? new Date(date) : date;
-
-  const formatter = new Intl.DateTimeFormat("ko-KR", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    timeZone: "Asia/Seoul",
-  });
-
-  const parts = formatter.formatToParts(dateObj);
-
-  const year = parts.find((p) => p.type === "year")?.value;
-  const month = parts.find((p) => p.type === "month")?.value;
-  const day = parts.find((p) => p.type === "day")?.value;
-
-  return `${year}.${month}.${day}`;
-}
 
 export interface AssignmentMetadataParams {
   assignmentId: string;
@@ -94,7 +76,7 @@ export const AssignmentDetail = Object.assign(
                   </div>
                   <div className="flex items-center gap-4 text-xs text-gray-500">
                     <span>by {data.user}</span>
-                    <span>{formatDate(data.createdAt)}</span>
+                    <span suppressHydrationWarning>{formatDate(data.createdAt)}</span>
                   </div>
                 </div>
               </div>

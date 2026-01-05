@@ -78,8 +78,11 @@ function SidebarProvider({
         _setOpen(openState);
       }
 
-      // This sets the cookie to keep the sidebar state.
-      document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
+      // [수정] document.cookie 접근을 클라이언트에서만 실행하도록 수정
+      // 서버에서는 document가 없으므로 하이드레이션 불일치 방지
+      if (typeof document !== "undefined") {
+        document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
+      }
     },
     [setOpenProp, open],
   );
@@ -124,6 +127,7 @@ function SidebarProvider({
       <TooltipProvider delayDuration={0}>
         <div
           data-slot="sidebar-wrapper"
+          suppressHydrationWarning
           style={
             { "--sidebar-width": SIDEBAR_WIDTH, "--sidebar-width-icon": SIDEBAR_WIDTH_ICON, ...style } as CSSProperties
           }
@@ -560,10 +564,9 @@ function SidebarMenuSkeleton({
 }: ComponentProps<"div"> & {
   showIcon?: boolean;
 }) {
-  // Random width between 50 to 90%.
-  const width = useMemo(() => {
-    return `${Math.floor(Math.random() * 40) + 50}%`;
-  }, []);
+  // [수정] 랜덤 값을 제거하고 고정값 사용하여 서버/클라이언트 일관성 보장
+  // 하이드레이션 불일치 방지를 위해 항상 동일한 값 사용
+  const width = "70%";
 
   return (
     <div

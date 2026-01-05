@@ -69,9 +69,12 @@ function stripMdHtmlKeepContent(s: string) {
 }
 
 // CJK 문자 수 카운팅 (공백 제외)
+// [수정] 유니코드 속성 이스케이프 대신 유니코드 범위를 직접 사용하여 서버/클라이언트 일관성 보장
 function countCjkChars(text: string) {
   const t = text.replace(/\s+/g, "");
-  const m = t.match(/[\p{Script=Hangul}\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/gu);
+  // 유니코드 범위를 직접 사용: 한글(AC00-D7AF), 한자(4E00-9FFF), 히라가나(3040-309F), 가타카나(30A0-30FF)
+  // 유니코드 속성 이스케이프(\p{Script=...})는 Node.js와 브라우저에서 다르게 동작할 수 있음
+  const m = t.match(/[\uAC00-\uD7AF\u4E00-\u9FFF\u3040-\u309F\u30A0-\u30FF]/g);
   return m ? m.length : 0;
 }
 

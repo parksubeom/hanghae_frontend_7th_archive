@@ -33,6 +33,7 @@ export const SortFilter = ({ className }: SortFilterProps) => {
         <SelectContent className="bg-slate-800 border-slate-700">
           <SelectItem value={SORT_TYPE.NAME}>이름</SelectItem>
           <SelectItem value={SORT_TYPE.SCORE}>점수</SelectItem>
+          <SelectItem value={SORT_TYPE.BP}>BP</SelectItem>
         </SelectContent>
       </Select>
 

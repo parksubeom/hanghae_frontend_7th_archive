@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router";
 export const SORT_TYPE = {
   NAME: "name",
   SCORE: "score",
+  BP: "bp",
 } as const;
 
 // 정렬 방향 상수

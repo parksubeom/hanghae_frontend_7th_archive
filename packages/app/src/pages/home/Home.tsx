@@ -90,6 +90,12 @@ const HomePage = () => {
         return filterValues.sortDirection === "asc" ? a.score - b.score : b.score - a.score;
       }
 
+      if (filterValues.sortType === "bp") {
+        const aBpCount = a.assignments.filter((v) => v.theBest).length;
+        const bBpCount = b.assignments.filter((v) => v.theBest).length;
+        return filterValues.sortDirection === "asc" ? aBpCount - bBpCount : bBpCount - aBpCount;
+      }
+
       return 0;
     });
   }, [users, filterValues]);

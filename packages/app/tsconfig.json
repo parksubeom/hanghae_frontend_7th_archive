@@ -8,6 +8,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "module": "ESNext", 
+    "moduleResolution": "bundler", // Vite 사용 시 'bundler' 권장 (혹은 'node')
+    "target": "ES2020", // 타겟도 모던 브라우저에 맞춰 올리는 것을 권장
   }
 }

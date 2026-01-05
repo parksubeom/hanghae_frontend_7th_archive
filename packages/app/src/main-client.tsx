@@ -1,6 +1,6 @@
 import "./assets/index.css";
 import { createRoot, hydrateRoot } from "react-dom/client";
-import { App } from "./App.tsx";
+import { App } from "./App";
 
 const $root = document.getElementById("root")!;
 function main() {

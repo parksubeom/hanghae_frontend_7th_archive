@@ -23,7 +23,7 @@ export class GithubService {
     return this.#client
       .get<GithubPullRequest[]>(`/repos/${path}/pulls`, {
         params: {
-          state: 'open',
+          state: 'open', // 'open' → 'all'로 변경하여 merged/closed PR도 포함
           sort: 'created',
           direction: 'asc',
           per_page: 100,

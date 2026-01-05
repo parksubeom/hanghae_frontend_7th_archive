@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-// Node.js 버전에 따라 assert 문법이 다를 수 있으니 주의하세요. 
+// Node.js 버전에 따라 assert 문법이 다를 수 있으니 주의하세요.
 // 최신 Node에서는 'with', 구버전에서는 'assert'를 사용합니다.
 import appData from "../../docs/data/app-data.json" with { type: "json" };
 
@@ -148,9 +148,9 @@ async function generate(url) {
     // 🚨 [핵심 수정] 빈 문자열(``)이 아니라 주석()을 타겟팅하여 교체
     // 이렇게 해야 HTML 구조가 깨지지 않고 root 태그 안으로 정확히 들어갑니다.
     const html = template
-      .replace('', `${rendered.body ?? ""}`)
-      .replace('', `${metadata}${rendered.head ?? ''}`)
-      .replace('', rendered.html ?? '');
+      .replace("", `${rendered.body ?? ""}`)
+      .replace("", `${metadata}${rendered.head ?? ""}`)
+      .replace("", rendered.html ?? "");
 
     const dirPath = path.join("./dist/client", url);
     if (!fs.existsSync(dirPath)) {
@@ -225,13 +225,13 @@ Sitemap: ${baseUrl}/sitemap.xml`;
 // 메인 실행 로직
 getUrls().then(async (urls) => {
   console.log(`🚀 총 ${urls.length}개의 페이지 생성을 시작합니다...`);
-  
+
   // 🚨 [수정] forEach 대신 Promise.all 사용
   // 모든 페이지 생성이 끝날 때까지 기다렸다가 사이트맵을 만듭니다.
   await Promise.all(urls.map(generate));
-  
+
   await generateSitemap(urls);
   await generateRobotsTxt();
-  
+
   console.log("✨ 모든 빌드 작업이 완료되었습니다.");
 });

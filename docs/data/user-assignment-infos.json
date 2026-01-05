@@ -5368,7 +5368,7 @@
     }
   },
   {
-    "passed": false,
+    "passed": true,
     "name": "강승훈",
     "feedback": "",
     "assignment": {
@@ -5440,7 +5440,7 @@
     }
   },
   {
-    "passed": false,
+    "passed": true,
     "name": "김민석",
     "feedback": "",
     "assignment": {
@@ -5568,7 +5568,7 @@
     }
   },
   {
-    "passed": false,
+    "passed": true,
     "name": "박창수",
     "feedback": "",
     "assignment": {
@@ -5703,7 +5703,7 @@
     }
   },
   {
-    "passed": false,
+    "passed": true,
     "name": "전이진",
     "feedback": "",
     "assignment": {
@@ -5766,7 +5766,7 @@
     }
   },
   {
-    "passed": false,
+    "passed": true,
     "name": "천진아",
     "feedback": "",
     "assignment": {
@@ -5793,7 +5793,7 @@
     }
   },
   {
-    "passed": false,
+    "passed": true,
     "name": "현채은",
     "feedback": "",
     "assignment": {
@@ -5811,9 +5811,9 @@
     }
   },
   {
-    "passed": false,
+    "passed": true,
     "name": "강승훈",
-    "feedback": "",
+    "feedback": "잘했어요 승훈! 기본 과제랑 심화 과제 모두 완료한 거 잘했습니다.\n\n순수함수의 개념에 대해서 이해하고 model 계층을 분리하는 것에 의의를 알게 된 것 같아서 좋네요.\" 하나의 함수가 많은 역할을 한다\"는 걸 발견하고, \"외부 변수 cart를 참조하면 같은 입력에 다른 결과가 나올 수 있다\"는 문제를 짚은 게 정확합니다. 매개변수로 명시적으로 받도록 바꾼 건 순수함수의 핵심을 잘 이해했습니다.\n\n\"더 복잡한 로직에서도 잘 분류할 수 있을까 의문이 든다\"고 했는데, 지금 1,000줄짜리 파일을 분리하면서 감을 잡았으면 더 복잡한 것도 할 수 있을거에요! 순수함수는 utils/models로, 상태 변경은 hooks로, 여러 곳에서 쓰는 상태는 전역으로. 규모가 커져도 원리는 같으니 어느 순간 습관처럼 하고 있을거에요. \n\n채점이 너무 늦어져서 이미 FSD 과제를 했을텐데 항상 경계를 정해두고 정해진대로 분리하고 배치하는 습관을 들이면 개발을 훨씬 더 빠르게 잘 할 수 있습니다.\n\n한 가지 챙겨보면 좋을 부분이 있습니다. Jotai를 도입했는데 컴포넌트들에 props가 여전히 남아있지는 않은지 확인해보세요. 엔티티 컴포넌트는 onDelete 같은 콜백을 props로 받기보다 내부에서 직접 atom을 호출하는 게 더 간결하답니다.\n\n과제 채점이 너무 늦어져서 미안합니다. 수고 많았어요!",
     "assignment": {
       "name": "STEP14 프론트엔드 아키텍처 설계 및 디자인 시스템 심화과제",
       "url": "https://github.com/hanghae-plus/front_7th_chapter3-2/pull/43"
@@ -5883,9 +5883,9 @@
     }
   },
   {
-    "passed": false,
+    "passed": true,
     "name": "김민석",
-    "feedback": "",
+    "feedback": "잘했어요 민석! 기본 과제랑 심화 과제 모두 완료한 거 잘했습니다.\n\n\"지금까지의 리팩토링은 컴포넌트 분리나 공통 코드 정리 수준이었는데, 이번엔 UI만 담당하는 컴포넌트 분리, 비즈니스 로직 분리 등 훨씬 더 깊게 고민했다\"는 부분 좋습니다. 이게 이번 과제의 핵심 포인트죠. \"이건 나눠야 한다 / 이건 굳이 나누지 않아도 된다\"는 판단이 아직 즉각적으로 안 된다고 했는데, 그건 경험이 쌓이면 자연스럽게 돼요. 감각적으로 이해하면서 나만의 판단 기준을 언어로 명세화를 해보려고 노력하면 조금 더 빨리 잘 할 수 있게 될거에요.\n\n**Q) selectedCoupon을 cart에서 관리하는데, 쿠폰 삭제 시 콜백으로 clearSelectedCouponByCode를 주입하는 구조가 괜찮은가요?**\n\n민석이 고민한 것처럼 selectedCoupon을 어디에 둘지는 좀 애매한 영역이 있죠. 다음과 같이 두 가지 관점이 있을것 같아요.\n\n첫 번째는 \"selectedCoupon은 결제 금액에 영향을 미치니까 cart 도메인\"이라는 관점입니다. 민석이 선택한 방식이죠. 이 경우 쿠폰 삭제 시 cart에 알려줘야 하니까 콜백이 필요해요.\n\n두 번째는 \"selectedCoupon은 쿠폰을 선택한 거니까 coupon 도메인\"이라는 관점이에요. 이 경우 useCoupons에서 selectedCoupon을 관리하고, cart는 계산할 때 selectedCoupon을 받아서 쓰면 됩니다.\n\n저는 두 번째 방식을 더 선호합니다 왜냐하면 콜백으로 주입하는 구조는 \"useCoupons가 useCart의 존재를 알아야 한다\"는 결합이 생기거든요. 대신 coupon 도메인에서 selectedCoupon을 관리하고, cart는 계산 시점에 selectedCoupon을 파라미터로 받으면 서로 몰라도 돼요. 뭔가 이 방식이 낫다라기 보다는 같은 구현이라면 더 쉬운방식으로 관리하는 방향대로가 좋습니다.\n\n과제 채점이 너무 늦어져서 미안해요. 수고 많았어요! 마지막 챕터도 화이팅입니다\n",
     "assignment": {
       "name": "STEP14 프론트엔드 아키텍처 설계 및 디자인 시스템 심화과제",
       "url": "https://github.com/hanghae-plus/front_7th_chapter3-2/pull/24"
@@ -5912,7 +5912,7 @@
   {
     "passed": true,
     "name": "김소리",
-    "feedback": "",
+    "feedback": "잘했어요 소리! 기본 과제랑 심화 과제 모두 완료한 거 잘했습니다.\n\n\"평소에 컴포넌트를 쪼개는 기준은 그냥 '내가 보기 좋은가?' 정도였다\"고 했는데 좋은 감각입니다. 엄밀히 말하면 그게 틀린 건 아니에요. 코드 관리는 감각적인 영역이 분명이 있는 거라 경험에서 나오는게 있으니까요. 다만 그걸 언어화하고 명세화하고 형식화를 하면 훨씬 더 일관성있게 다룰 수 이게 됩니다. \"다른 작업자에게 방향을 설명하지 못했었는데, 언어를 알게 되어서 도움이 되었다\"는 말처럼 그 감각에 언어를 붙여주는 경험이 되었다니 기쁘네요.\n\n\"Context는 Props drilling을 해결하기 위한 것이 아니다\"라는 말에 혼란스러웠다고 했는데 어떤 느낌일지 이해가 됩니다. Context는 원래 \"여러 레벨에 걸쳐 데이터를 공유\"하기 위한 거고, props drilling 해결은 결과적 부수 효과이니 \"Context의 본래 목적을 props drilling으로만 생각하지는 마라.\" 정도의 뉘앙스로 생각해주세요. 실무에서는 결과적으로 그 용도로 많이 쓰이게 되니 그냥 그렇게 이해해도 괜찮아요.\n\n그리고 한 가지 챙겨보면 좋을 부분이 있습니다. Context를 도입했는데 실제로 props drilling이 해결되지 않고 여전히 컴포넌트들에 props가 많이 남아있네요. 솔루션 코드를 통해 props drilling이 제거된 코드도 한번 만들어 보면서 엔티티 컴포넌트가 onDelete 같은 콜백을 props로 받는 대신 내부에서 직접 context나 hooks를 호출하면 어떻게 달라지 감각적으로 한번 느껴보기를 바랍니다.\n\n**Q) useLocalStorage에서 useEffect vs setter 방식 중 어떤 게 더 좋은가요?**\n\n지금 useEffect 방식이 맞아요. 그리고 \"useEffect를 최대한 걷어내려 했다\"고 했는데, useEffect를 지양하라는 건 쓰지말라가 아니라 \"컴포넌트에서 직접 쓰지 말고 훅 안에 숨겨라\"는 뜻이에요. 소리가 만든 useLocalStorage가 정확히 그걸 한 거예요. useEffect를 훅 내부에 캡슐화해서, 이 훅을 쓰는 쪽에서는 그냥 useState처럼 쓸 수 있게 만든 거죠.\n\n참고로 이렇게 잘 만들어진 훅들이 라이브러리로 많이 나와있어요. usehooks-ts나 @uidotdev/usehooks 같은 데 useLocalStorage가 이미 있거든요. 직접 만들어보는 건 학습 차원에서 좋은 경험이고, 실무에서는 검증된 라이브러리 쓰는 것도 좋은 선택이에요.\n\n과제 채점이 너무 늦어져서 미안해요. 수고 많았어요!",
     "assignment": {
       "name": "STEP14 프론트엔드 아키텍처 설계 및 디자인 시스템 심화과제",
       "url": "https://github.com/hanghae-plus/front_7th_chapter3-2/pull/10"
@@ -5948,7 +5948,7 @@
   {
     "passed": true,
     "name": "김현우",
-    "feedback": "",
+    "feedback": "잘했어요 현우! 기본 과제랑 심화 과제 모두 완료한 거 잘했습니다.\n\n회고가 정말 깊이 있게 작성되어 있어요. \"React로 사고하기\" 아티클을 읽고 \"UI와 데이터 모델은 보통 같은 정보 아키텍처를 가진다\"는 점을 발견한 건 중요한 인사이트예요. FE 개발자가 단순히 화면을 그리는 역할이 아니라 BE 개발자, 기획자와 함께 데이터를 설계하는 데 참여해야 한다는 생각도 맞아요. 데이터 모델이 잘 설계되어 있으면 컴포넌트 구조가 자연스럽게 따라오거든요.\n\nzustand의 store/slice 결정 근거를 정리한 것도 좋았어요. \"별도 store로 분리할 때 vs 하나의 store 내부 slice로 분리할 때\"를 구분한 기준이 명확해요. 특히 \"변경 시 다른 도메인에 불필요한 리렌더를 일으키지 않도록 렌더링 영향 범위를 줄이는 것\"을 고려한 건 실무에서도 중요한 포인트예요.\n\n점진적 리팩토링에 대한 깨달음도 인상적이었어요. \"처음에는 큰 도메인을 통으로 바꾸려 했는데, 작은 부분부터 수정해나가는 것이 더 안정적\"이라는 경험이요. 이게 맞아요. 한 번에 다 바꾸면 뭐가 깨졌는지 찾기 어렵거든요.\n\n한 가지 챙겨보면 좋을 부분이 있어요. Zustand를 도입해서 전역상태를 만들었는데, 컴포넌트들에 여전히 props가 많이 남아있더라고요. 전역상태를 도입한 이점 중 하나가 \"필요한 곳에서 직접 가져다 쓸 수 있다\"는 건데, 지금은 부모에서 상태를 가져와서 props로 내려주는 패턴이 남아있어요. 우리가 코드를 세세하게 분리하는 이유는 떨어뜨려놓기 쉽게, 그래서 다시 필요한 대로 모아두고 붙여놓기 쉽게 유지하기 위함이에요. onDelete, onUpdate 같은 콜백을 props로 받으면 그 컴포넌트는 부모와 결합이 생겨요. 엔티티 컴포넌트는 내부에서 직접 store를 호출하면 부모와의 불필요한 결합을 없앨 수 있어요.\n\n**Q1) '확장성 있는 설계'와 '섣부른 추상화'를 구분하는 기준이 뭔가요?**\n\n제일 중요한건 일관성입니다. 우선 코드가 일관성이 있어야 그 기준이라는걸 검증을 해볼 수 있으니까요. 그래서 미리 만들어준 설계의 틀이 있다면 \"만들때 처음부터 나중에 분리하기 쉽게 관절을 만들어둔다\"라는 생각으로 분리 기준에 맞게 개발을 합니다. 그러면 일단 한 파일에 때려놓고 만든다해도 이미 함수가 순수함수로 hooks로 엔티티를 기준으로 이미 분리는 되어 있기에 재조립이나 정리정돈이 쉬워지는 거죠.\n\n그렇지만 섣부른 추상화는 \"아직 두 번째 케이스가 없는데 미리 일반화하는 것\"이에요. 예를 들어 컴포넌트에서 이벤트 핸들러와 데이터 처리로직이 하나 밖에 없는 나중에 커질 수 있으니까 하면서 그걸 세세하게 다 분리시켜주는 거에요. 관절은 만들어두되 분리는 필요할때 하면 됩니다. \n\n그래서 기준은 이렇습니다. \"같은 방법으로 코드에서 추상화를 하고 있는게 있나?\" \"그리고 내가 이 추상화를 하면활용할 곳이 있나?\" 그렇지 않다면 굳이 하지 않는 거죠. \n\n**Q2) 컴포넌트를 설계할 때 어떤 관점과 기준으로 구조를 잡으시나요?**\n\n저는 먼저 \"이 화면에서 다루는 엔티티가 뭐지?\"를 봐요. 쇼핑몰이면 Product, Cart, Coupon, Order 같은 것들이요. 그러면 자연스럽게 ProductCard, CartItem, CouponSelector 같은 엔티티 컴포넌트가 나오고, 이걸 조합하는 ProductList, CartPage 같은 컴포넌트가 나와요.\n\n주니어가 의식하면 좋은 포인트는 \"UI 컴포넌트\"와 \"엔티티 컴포넌트\"를 구분하는 거예요. Button, Modal, Input은 UI 컴포넌트예요. 어떤 데이터든 받아서 보여줄 수 있어야 하니까 props로 유연하게 받아요. 반면 ProductCard, CartItem은 엔티티 컴포넌트예요. 특정 엔티티를 다루는 용도로 만들어졌기 때문에 재사용성을 크게 고민할 필요 없어요. 오히려 내부에서 필요한 hooks나 store를 직접 호출해서 props를 줄이는 게 더 나아요. 모든 컴포넌트가 재사용 가능해야 한다는 강박을 버리면 설계가 훨씬 편해집니다. \n\n이후에는 서버 상태관리로 가능한 것끼리 모으고 전역 상태 관리끼리 가능한 것으로 모으고 나머지는 화면으로 모아서 정리하는 식으로 설계를 하고 있어요!\n\n과제 채점이 늦어져서 정말 죄송해요. 수고많았습니다. 다음 챕터도 화이팅입니다!\n",
     "assignment": {
       "name": "STEP14 프론트엔드 아키텍처 설계 및 디자인 시스템 심화과제",
       "url": "https://github.com/hanghae-plus/front_7th_chapter3-2/pull/33"
@@ -5967,7 +5967,7 @@
     "passed": true,
     "theBest": true,
     "name": "노유리",
-    "feedback": "",
+    "feedback": "잘했어요 유리! 기본 과제랑 심화 과제 모두 완료한 거 잘했습니다. 그리고 회고가 정말 잘 작성되어 있어요. 과정과 깨달음이 구체적으로 담겨 있어서 읽으면서 유리가 뭘 배웠는지 명확하게 느껴졌어요.\n\n그리고 formatPrice 리팩토링의 의도를 잘 이해해줘서 고마워요. 과제다 보니 의도를 가지고 억지로 만든거라 실무적인 감각은 떨어졌겠지만 isAdmin을 파라미터로 받던 함수를 formatCurrency와 formatCurrencyWon으로 분리하고, 비즈니스 로직은 컴포넌트에서 처리하도록 바꾼 거요. \"이 함수가 비즈니스 로직을 알아야 하는가?\"라는 질문을 스스로 던진 게 정확히 핵심을 짚은 거예요. Utils는 어떤 프로젝트에 가져가도 바로 쓸 수 있어야 해요.\n\n한 가지 챙겨보면 좋을 부분이 있어요. Advanced에서 CartPage, ProductCard, CartItem은 내부에서 atom을 직접 호출해서 props가 많이 줄었는데, AdminPage 쪽은 여전히 props가 많이 남아있더라고요. 우리가 코드를 세세하게 분리하는 이유는 떨어뜨려놓기 쉽게, 그래서 다시 필요한 대로 모아두고 붙여놓기 쉽게 유지하기 위함이에요. onDelete, onUpdate 같은 콜백을 props로 받으면 그 컴포넌트는 부모와 결합이 생겨요. 근데 엔티티 컴포넌트는 UI 컴포넌트와 달리 재사용하거나 props에 따라 분기할 일이 거의 없거든요. 그래서 내부에서 직접 hooks나 atom을 호출하면 부모와의 불필요한 결합을 없앨 수 있어요.\n\n**Q1) formatCurrency vs formatCurrencyWon 분리가 과한가요?**\n\n아니요, 지금 방식이 사실 제가 의도한 바이긴 합니다. 대안 2처럼 컴포넌트에서 `{isAdmin ? formatCurrencyWon(price) : formatCurrency(price)}` 하는 게 가장 명확해요. 왜냐하면 \"관리자일 때 다르게 보여준다\"는 건 UI의 책임이거든요. 이 분기 로직이 컴포넌트에 있으면 코드를 읽는 사람이 \"아, 관리자 모드에서는 다르게 표시하는구나\"를 바로 알 수 있어요. useFormatProduct 같은 helper를 만들면 오히려 그 의도가 숨겨지고, \"이 hook은 어디서 쓰지?\" 하고 찾아다녀야 하거든요.\n\n**Q2) \"격리\"를 실무에서 얼마나 엄격하게 지키나요? 빨리 만들어야 하는 기능과 제대로 격리해야 하는 코드 사이에서 어떻게 균형을 잡나요?**\n\n사실 격리가 익숙해지면 더 빨리 만들 수 있어요. 왜냐하면 \"이 코드는 어디에 둬야 하지?\"라는 고민이 줄어들거든요. 순수함수는 utils로, 상태 변경은 hooks로, UI는 components로 - 이 패턴이 몸에 배면 생각 없이 손이 가요. 처음엔 \"나눠야 하니까 시간이 더 걸린다\"고 느껴지는데, 익숙해지면 오히려 한 덩어리로 짜는 게 더 느려요. 나중에 \"이거 어디 있더라?\" 하고 찾아다니는 시간이 생기니까요.\n\n저는 처음부터 파일을 쪼개두지 않아요. 대신 나만의 \"관절\"들을 만들어둡니다. 순수함수로, api로, params로, 컴포넌트와 핸들러로 분리하기 쉽도록 - export만 하면 바로 뜯어지게 - 코드를 작성해요. 개발할 때는 같이 모여 있는 게 편하거든요. 그리고 기능이 완성되면 그때 어디에 둘지 제자리에 배치하면서 놓쳤던 것들을 정리합니다.\n\n그러니까 \"빨리 만들기 vs 제대로 격리하기\"가 trade-off처럼 느껴지는 건 아직 격리가 손에 안 익어서예요. 지금 과제하면서 연습하는 게 나중에 오히려 속도로 돌아올 거예요.\n\n**Q3) 단방향 의존성 검증 방법?**\n\n가장 간단한 방법은 import 방향을 보거나 아니만 한번 삭제해보는 겁니다. 그러면 어떤 파일들을 의존하고 있었는지 영향을 볼 수 있거든요. 이때 방향이 잘못되면 문제인 거죠. 가령, utils 파일이 hooks를 import하고 있으면 뭔가 잘못된 겁니다.\n\n그리고 \"이 파일을 삭제하면 어디가 깨지나?\" 생각해보세요. utils를 삭제하면 hooks가 깨지고, hooks를 삭제하면 components가 깨지는 게 정상이에요. 반대 방향이면 의존성이 꼬인 거예요. 의존성이 한 방향으로만 흐르면 변경의 영향 범위를 예측할 수 있어요. \"utils를 고치면 hooks와 components를 확인해야겠구나\" 이렇게요.\n\n**Q4) FSD 폴더 구조는요?**\n\n하하하... 과제 채점이 너무 늦어져서 미안해요. 이미 과제를 끝냈을거라 어떤 내용인지 감을 잡았을거에요! ^^ 역할만으로 구분하는 것에서 엔티티를 추가하고 화면 행동 데이터의 관점을 추가해서 조금 더 다양한 관점을 담아낼 수 있도록 약속하는 방식입니다.\n\n과제 채점이 너무 늦어졌네요. 수고 많았습니다. 앞으로 남은 과제 화이팅입니다!!\n\nBP인 이유: 과제의 회고가 스스로의 관점과 생각과 철학을 잘 담아내고 있었기 때문에 BP로 선정했습니다.\n",
     "assignment": {
       "name": "STEP14 프론트엔드 아키텍처 설계 및 디자인 시스템 심화과제",
       "url": "https://github.com/hanghae-plus/front_7th_chapter3-2/pull/17"
@@ -5976,7 +5976,7 @@
   {
     "passed": false,
     "name": "도희정",
-    "feedback": "",
+    "feedback": "Q1) 공통 컴포넌트와 페이지 컴포넌트 관리 방식이 좋은 방식인가요?\n\n네, 좋은 방식이에요. components/card.tsx는 \"어떤 데이터든 받아서 카드 형태로 보여주는\" UI 컴포넌트고, pages/shop/components/ProductCard.tsx는 \"상품이라는 엔티티를 보여주는\" 엔티티 컴포넌트예요. 이렇게 구분하면 디자인 시스템과 비즈니스 로직이 분리돼요. 카드 디자인이 바뀌면 공통 컴포넌트만 수정하고, 상품 표시 방식이 바뀌면 ProductCard만 수정하면 됩니다. 대개 Page에는 엔티티 컴포넌트들이 공용에는 UI 컴포넌트들이 모이게 되기에 훨씬 더 계층적이고 응집도 높게 관리를 할 수 있게 되어 좋답니다.\n\nQ2) context vs props 성능 이슈가 있나요? 결합도가 낮아졌다는 게 무슨 뜻인가요?\n\n성능 이슈는 대부분의 경우 거의 체감하기 어렵습니다. 엄밀하게 말하고 싶어 거의 대부분 이렇게 썼지만 무의미한 수준입니다. Context가 props보다 느리다는 건 맞지만, 진짜 문제가 되는 규모가 되기까지는 상당히 큰 규모를 필요로 합니다.\n\nprops drilling이 어떤 문제인지 살펴보면 중간 컴포넌트가 자기는 안 쓰는 props를 그냥 넘겨주기만 하는데도 그 넘겨주기를 하기 위해서 props가 필요한 상황을 말합니다. 예를 들어 Page → Section → Card로 onDelete를 넘긴다면, Section은 onDelete를 안 쓰는데도 \"Card한테 넘겨줘야 하니까\" 받고 있는 거죠. 이러면 Section은 사실 onDelete와 전혀 연관이 없는 코드임에도 Page와 Card를 연결해주기 위해 항상 이 둘 사이에 있어야 하죠. 이런 경우 결합도가 높다고 합니다. Secion은 Page와 Card와 무관한데 어쩔수 없이 함께 해야 하니까요.\n\n반면 전역상태를 쓰면 Card가 직접 context에서 onDelete를 가져올 수 있습니다. 그러면 Section은 Page와 Card의 존재를 몰라도 되고, 나중에 Section을 수정할 때에도 \"이 props 건드려도 되나?\" 고민 안 해도 돼요. 그래서 \"떨어뜨려놓기 쉬워진다\", 즉 결합도가 낮아진다는 의미입니다. 이 설명이 도움이 되었으면 좋겠네요.\n\n과제 채점이 너무 늦어져서 미안해요. 수고 많았어요! 마지막 챕터도 화이팅입니다!\n",
     "assignment": {
       "name": "STEP14 프론트엔드 아키텍처 설계 및 디자인 시스템 심화과제",
       "url": "https://github.com/hanghae-plus/front_7th_chapter3-2/pull/42"
@@ -5995,7 +5995,7 @@
     "passed": true,
     "theBest": true,
     "name": "박용태",
-    "feedback": "",
+    "feedback": "잘했어요 용태! 기본 과제랑 심화 과제 모두 완료한 거 잘했습니다.\n\n회고가 정말 깊이 있게 작성되어 있어요. 특히 \"납득 가능한 수준의 함수형 사고 적용\"에 집중했다는 부분이 인상적이었어요. \"'왜 이렇게 해야 할까?'를 스스로 설명할 수 있는 범위 내에서 작업을 진행했다\"는 게 좋은 접근이라 생각합니다. 납득 없이 적용한 패턴은 체화되지 않는다는 말에 동의합니다.\n\n적용 사례도 잘 정리했습니다. Origin vs Advanced 비교가 명확하고, 왜 그렇게 바꿨는지 이유가 있어서 좋아요. 매직 넘버 상수화, 검증 로직 분리(canAddCoupon), 불변성 유지 등 실무에서도 바로 쓸 수 있는 패턴들이죠. \n\nprops의 경우 어떤 props는 남기고 어떤 props는 hook으로 내리면 좋을지도 한번 더 고민해보시면 좋겠습니다.\n\n수고했습니다!\n\nQ1) HOC, 합성 함수 같은 고급 패턴은 언제 적용해야 하나요?\n\n회괴에 작성 해준 한 판단 동의합니다. \"패턴화할 만큼 반복되는 케이스가 2개 이하\"면 안 하는 게 좋죠. 하지만 \"지금이니?\" 싶으면 한번 해보세요. 오버엔지니어링인지 알기 위해서는 시행착오는 해봐야 하니까요. 어쨌든 실무에서 자연스럽게 활용하려면, 일단 안 쓰고 버티다가 안되겠다 하는 순간에 하는게 제일 좋긴 하지만 안해봤다면 한번 해보는걸 추천합니다.\n\nQ2) 비즈니스 로직 훅 분리는 언제 해야 하나요?\n\n\"충분히 복잡해졌을 때 분리해도 괜찮지 않을까?\"라고 했는데, 맞는 이야기죠. 훅으로 분리하는 이점은 \"여러 컴포넌트에서 같은 로직을 쓸 때\" 생기는데, 한 컴포넌트에서만 쓰는 로직을 훅으로 빼면 오히려 \"이 로직 어디 있지?\" 하고 찾아다녀야 합니다.\n\n분리 여부의 판단은 이렇게 한번 물어보세요. \"이 컴포넌트를 삭제하면 이 로직도 같이 사라져야 하나?\" 같이 사라져야 하면 컴포넌트에 두는게 맞습니다. 그렇지 않고 다른 데서도 쓸 것 같으면 훅으로 빼세요. 핸들러가 컴포넌트의 것인지 엔티티의 것인지는 미묘하지만 구분할 수 있을 거에요.\n\n과제 채점이 너무 늦어져서 미안해요. 수고 많았어요! 마지막 챕터도 화이팅입니다!\n",
     "assignment": {
       "name": "STEP14 프론트엔드 아키텍처 설계 및 디자인 시스템 심화과제",
       "url": "https://github.com/hanghae-plus/front_7th_chapter3-2/pull/39"
@@ -6011,9 +6011,9 @@
     }
   },
   {
-    "passed": false,
+    "passed": true,
     "name": "박창수",
-    "feedback": "",
+    "feedback": "잘했어요 창수! 기본 과제랑 심화 과제 모두 완료한 거 잘했습니다. 코드도 엄청 깔끔하게 잘 정리했더라고요.\n\n회고에서 \"엔티티 데이터(product, item)는 props로 전달, 액션/콜백은 컴포넌트 내부에서 스토어 직접 호출\"이라고 기준을 세운 부분이 인상적이었어요. 이게 정확히 이번 과제에서 찾아보길 바랐던 기준이에요. 다른 분들 코드를 보면 전역상태를 도입했는데도 onDelete, onUpdate 같은 콜백을 여전히 props로 내려보내는 경우가 많았거든요. 그 기준을 명확하게 잘 잡아서 간결한 코드가 만들어지는 것을 경험했으리라 생각합니다.\n\nutils → hooks → components 순서로 의존성 흐름을 설계한 것도 좋았어요. 계층을 분리하면서 정리한다는 게 어떤 건지 이번 과제를 통해 잘 느꼈을 거라 생각해요.\n\n다음 질문 주신 것들에 답변입니다.\n\nQ) Product, Coupon, Cart를 각각 별도 스토어로 분리 vs 하나로 합치기?\n\n지금처럼 분리하는 게 맞아요. 함께 변하는 것끼리 묶어두는 게 원칙인데, Product가 변할 때 Cart가 항상 같이 변하진 않잖아요. 합치면 오히려 \"상품 수정했는데 왜 장바구니 관련 코드도 같이 보여?\" 하는 상황이 생겨요. 엔티티별로 스토어를 나눈 건 좋은 선택입니다. 중앙집중형 방식의 Zustand도 결국 엔티티별 Slice로 구분하라고 권장하고 있죠. 엔티티를 기준으로 스토어를 나누는 것은 좋은 방식입니다.\n\nQ) ProductCard에 product만 전달하고 나머지는 스토어에서 가져오는 기준이 적절한가요?\n\n네, 아주 적절합니다. product는 \"이 카드가 어떤 상품을 보여줄지\" 결정하는 핵심 데이터니까 props로 받는 게 맞아요. 반면 addToCart 같은 액션은 어떤 상품이든 동일한 로직이니까 내부에서 스토어를 호출하는 게 낫죠. 창수가 세운 기준 그대로 가면 됩니다.\n\nCompound Component 패턴에 대해서는, Cart의 경우 굳이 컴파운드로 만들 필요 없어요. 컴파운드 패턴은 컴포넌트를 조립하기 쉽게 제공하려고 만드는 패턴이에요. 그런데 엔티티 컴포넌트는 \"활용하라고 제공하는 컴포넌트\"가 아니라 \"이미 활용된 컴포넌트\"예요. Button이나 Modal 같은 UI 컴포넌트는 여러 곳에서 다양하게 조합해서 쓰니까 유연하게 만들어야 하지만, CartItem이나 ProductCard는 그 자체로 완결된 용도가 있어요. 모든 컴포넌트가 재사용성과 독립성을 유지할 필요는 없습니다.\n\n너무 너무 잘했습니다. 이번 과제 채점이 필요 이상으로 너무 지연된 점 정말 미안해요! 앞으로 남은 기간도 파이팅입니다!\n",
     "assignment": {
       "name": "STEP14 프론트엔드 아키텍처 설계 및 디자인 시스템 심화과제",
       "url": "https://github.com/hanghae-plus/front_7th_chapter3-2/pull/41"
@@ -6146,9 +6146,9 @@
     }
   },
   {
-    "passed": false,
+    "passed": true,
     "name": "전이진",
-    "feedback": "",
+    "feedback": "잘했어요 이진! 기본 과제랑 심화 과제 모두 완료한 거 너무 잘했습니다. \n\n\"추상화 계층을 나눈다는 게 더 나아지거나 편리해진다는 개념이 아니다. 계층을 나눈다는 것은 더 좋게 만드려고 하는 게 아니라 격리가 목적이다\" 라는 말 기억해줘서 고마워요! 이 말을 듣고 코드 구조를 바라보는 관점이 넓어졌다고 했는데 너무 좋네요. 코드의 변화의 속도는 저마다 달라요. 격리라고 하는 개념은 각 코드의 변화의 속도와 영향력에 맞춰 한군데 모아두면 좋은 것 끼리 구분하는 것이라는 큰 시각으로 어떤 방법론이 아닌 원리를 스스로 이해해가기를 바래요.\n\n그러면에서 분리 기준을 스스로 세운 것도 좋았어요. \"재사용되지 않으면 분리하지 않는다\", \"테스트하기 어려우면 분리한다\", \"100줄 넘으면 고려한다\" 외에도 내가 은연중에 무심코 하고 있었던 것들을 더 세밀하게 언어화해보고 명세화 해보려고 해보세요. 그리고 다시 눈에 보이는 그 규칙들을 지켜가려고 하다보면 훨씬 더 선명한 시각을 가지게 될거에요.\n\n한 가지 챙겨보면 좋을 부분이 있어요. Context를 도입해서 전역상태를 만들었는데, 여전히 컴포넌트들에 props가 많이 남아있더라고요. 우리가 코드를 세세하게 분리하는 이유는 떨어뜨려놓기 쉽게, 그래서 다시 필요한 대로 모아두고 붙여놓기 쉽게 유지하기 위함이에요. 엔티티 컴포넌트의 경우는 UI 컴포넌트와 달리 재사용을 하거나 props에 따른 분기를 해야 하는 경우가 거의 없어요. 그래서 onDelete 같은 콜백을 props로 받기보다는 컴포넌트 내부에서 직접 context나 hooks를 호출하는 방식이 더 간결해질 수 있어요. props를 최소화하고, 분기가 필요하면 그냥 컴포넌트를 새로 만드는 방식을 고려해보세요.\n\n**Q) Provider를 페이지별로 분리한 리팩토링이 의미 있었나요?**\n\n의미 있었어요. AdminPage에서 Cart context를 안 쓰는데 굳이 감싸고 있을 이유가 없으니까요. 의존성이 명확해진 건 좋은 변화입니다. 조금 더 괜찮게 만들고자 했다면 완전히 페이지를 분리하고 Provider는 각 페이지에서 사용하는 방식으로 만들었다면 더 좋았을 거에요. 이 페이지의 변화의 이유가 지금은 NotificationsProvider\nAdminPageProvider, CartPageProvider 3군데인데 각각이 변하는 이유는 다를테니까요. 기왕이면 코드가 변해야 할 때 함께 변하는 것 끼리 묶어둔다 생각하면 좋아요.\n\n**Q) 상태 유지가 더 중요한 경우는요?**\n\n새로고침을 해도 보관을 하는게 UX적으로 유리하면 좋죠. 최근에 charGPT나 채팅앱에서 글자를 적다가 새로고침했을때 날아가면 엄청 화가 나잖아요? 그래서 보통은 localStorage에 저장하고 전역상태로 활용하는 방법을 많이 사용하죠. key:value의 형태로 충분히 보관하고 가져올수 있으니 전역상태 + local(session)Storgage방법을 고민해보세요.\n\n**Q) Context를 읽기/쓰기로 분리하는 건요?**\n\n최적화 관점에서 의미가 있을 수도 잇습니다. 읽기만 하는 컴포넌트가 쓰기 함수 변경 때문에 리렌더링되는 걸 막을 수 있거든요. 하지만 대부분의 관점에서는 그런 최적화 보다는 유지보수의 측면을 좀 더 중요시하게 됩니다. 수정을 해야하는 이유가 같은 것끼리 모아두는게 편하다는 관점이 뭔지를 잘 느껴보기를 바랍니다.\n\n과제 채점이 너무 너무 늦어져서 죄송해요. 수고많았습니다, 남은 마무리까지 화이팅입니다!\n",
     "assignment": {
       "name": "STEP14 프론트엔드 아키텍처 설계 및 디자인 시스템 심화과제",
       "url": "https://github.com/hanghae-plus/front_7th_chapter3-2/pull/15"
@@ -6209,9 +6209,9 @@
     }
   },
   {
-    "passed": false,
+    "passed": true,
     "name": "천진아",
-    "feedback": "",
+    "feedback": "잘했어요 진아! 기본 과제랑 심화 과제 모두 완료한 거 잘했습니다.\n\n진행순서를 체계적으로 정리한 부분이 멋지네요. 지금 이렇게 회고를 작성했던 것처럼 나중에 내가 어떤 식으로 리팩토링을 하고 분리하고 정리하는지 언어화를 통해 명세를 하면 훨씬 더 일관성있고 속도감있게 작업을 할 수 있게 됩니다. 특히 products, cart, coupons, notifications로 주요 데이터를 먼저 정리하고, 각 데이터를 변경하는 함수들을 나열한 뒤 hook으로 묶은 과정이 엔티티를 발견하고 구분하는 방식으로 아주 좋네요.\n\n\"UI 기준으로 생각하던 방식에서 계층/도메인 기준으로 바라보게 되었다\"는 것도 이번 과제의 핵심 목표 중 하나였는데 너무 감사합니다. 회사 코드 리팩토링은 꼭 해보세요. 한번은 그냥 실제로 되건 안되건 복사해서 구조나 내용을 마음대로 해보면서 반영은 하지말고 실제 코드 반영은 점진적으로 조금씩 내가 코드를 건들때마다 하는 식으로 적절히 활용해보기를 바랍니다. 역시 실전이 중요하니까요! \n\n과제해준 결과를 보니 전역상태관리를 도입했지만 여전히 props drilling이 복잡한 코드들이 보여서 일단 과제인만큼 극단적으로 props drilliing을 제거해보세요. 그리고 나서 둘을 비교하면서 어떤 props는 없는게 나은지 어떤건 있는게 나은지를 한번 느껴보기를 바랍니다\n\n질문 주신 것들에 답변드릴게요.\n\n**Q1) handleApplyCoupon, handleAddToCart가 절차적인데 useCart + useCartAction으로 분리하면 좋을까요?**\n\n지금 느낀 그 감각이 맞아요. useCart는 상태와 기본 CRUD만 담당하고, useCartAction은 비즈니스 로직(쿠폰 적용 조건 체크, 재고 확인 후 담기 등)을 담당하는 식으로 분리할 수 있어요. 하지만 활용하지 않을 것을 미리 분리할 필요는 없습니다. 같은 동작을 여러 컴포넌트에서 사용할때 그 때 hook으로 분리하면 됩니다. 한 군데에서만 쓰이는 거라면 굳이 나주지 마세요. \"필요할 때 분리하기 쉽게 관절을 만들어두되, 실제 분리는 필요할 때\" 하는 거예요. 필요해질때 그 때 분리하면 됩니다. 최대한 컴포넌트에 두세요.\n\n**Q2) 컴포넌트를 어느 정도까지 분리해야 하나요?**\n\n정해진 기준은 없지만 크게 라우트를 기준으로 페이지를 나누고, 독립성과 목적을 기준으로 섹션을 나누고, 컨텐츠와 행동을 기준으로 컴포넌트를 나누고, Collection, Feature, Entitiy, UI Composition, UI Component 정도의 보편적인 분리 기준은 있습니다.\n\n어디까지 나누는가는 충분히 컴포넌트에서 한눈에 들어오는가 입니다. 누구나 이해하는데 충분하다면 굳이 나눌 필요가 없습니다. 관심사가 어려개이면 감각적으로 인지적으로 피곤하다는 것을 느낄 수 있습니다. 그때가 분리를 고민해야 하는 타이밍입니다.\n\n**Q3) notification은 entity인가요?**\n\n좋은 질문이에요. notification은 데이터는 맞지만 \"비즈니스 엔티티\"는 아니에요. Product, Cart, Coupon은 이 쇼핑몰이라는 도메인에서 의미가 있는 데이터지만, notification은 UI 피드백을 위한 데이터에 가깝죠. 다른 프로젝트에서도 똑같이 쓸 수 있는 범용적인 기능이잖아요. 그래서 entities보다는 features/notification이나 shared/notification 같은 곳에 두는 게 더 자연스럽습니다. \n\n과제 채점이 너무 늦어져서 미안해요. 수고 많았어요! 남은 챕터도 화이팅입니다!\n",
     "assignment": {
       "name": "STEP14 프론트엔드 아키텍처 설계 및 디자인 시스템 심화과제",
       "url": "https://github.com/hanghae-plus/front_7th_chapter3-2/pull/5"
@@ -6236,9 +6236,9 @@
     }
   },
   {
-    "passed": false,
+    "passed": true,
     "name": "현채은",
-    "feedback": "",
+    "feedback": "잘했어요! 채은 기본 과제랑 심화 과제 모두 완료한 거 잘했습니다. 회고에서 데이터/계산/액션 관점으로 코드를 이해하고 분리해본 경험이 새로웠다고 했는데, 이게 이번 과제의 핵심 목표 중 하나였어요. 훅 간 의존성 다이어그램까지 그려서 설계한 것도 인상적이었습니다. \n\n\"AI는 리팩토링을 진짜 못하는 것 같다\"는 발견도 중요한 인사이트입니다. 맞아요. AI가 새로 만드는 건 잘하는데, 기존 코드의 맥락을 유지하면서 점진적으로 개선하는 건 아직 어려워하더라구요. 그만큼 리팩토링을 하는 방법에 대해서는 각자가 다른 관점을 가지고 있고 뭔가 고유한 패턴들이 덜하다 생각해서 자신의 고유성을 발견하는 것들이 중요하다고 생각합니다.\n\nBasic의 코드 분리는 역할별로 그리고 데이터 / 행동 / 계산 관점에서 너무 잘 분리가 되었습니다. 그리고 분리를 잘하려다보면 props가 주렁 주렁 따라오게 되는 것을 느꼈을거에요. 심화과제의 경우 이러한 props들 가운데 굳이 내가 쓰지 않는데 넘겨줘야 하는 것들을 발견하고 해소하기를 바랬습니다. 하지만 전반적으로 컴포넌트들의 Props들이 아직 남아 있더라구요. 가령 CouponCard에서 onDelete의 경우 실제로 삭제하는 로직이 컴포넌트마다 달라지지 않기에, 결합도를 가질 필요가 없는데 불필요한 결합도를 제공하는 형태가 되어버렸어요.\n\n우리가 코드를 세세하게 분리를 하는 이유는 떨어뜨려놓기 쉽게 그래서 다시 필요한대로 모아두고 붙여놓기 쉽게 유지 하기 위함입니다. 기왕이면 따로 관리가 가능하도록 그래서 컴포넌트간 결합도는 최소화 할 수 있게 최소한의 엔티티 props정도만 제공하고 나머지는 전역상태, 혹은 서버전역상태를 활용하려고 합니다.\n\n엔티티 컴포넌트의 경우는 UI Component와 달리 재사용을 하거나 props에 따른 분기를 해야하는 경우는 잘 없습니다. 그래서 분기를 포기하고 props를 최소화하고 분기가 필요할 경우에는 그냥 컴포넌트를 새로 만드는 방식을 하면 훨씬 더 간결한 코드 구성을 만들 수 가 있을거에요.\n\nQ) 코치님은 평소에 어떤 방향으로 리팩토링을 설계해나가시는지 궁금합니다.\n\n-> 저는 이제 워낙 익숙해져서 어떻게 하면 잘 잘려져 있고 이후에 조립하기 쉬울지 관절들을 알고 있습니다. 그래서 엔티티별로 인터페이스, 순수함수, api, useQuery/Mutation, params hooks, 컴포넌트, 기타 유틸리티, 포매터, validator, hooks 등 미리 분리를 해서 코딩을 합니다. 다만 처음부터 두는게 아니라 기능을 개발할 떄에는 한 파일에서 개발을 하는데 잘 잘라두는 거죠. 그렇게 개발이 잘 끝나면 둬야할 곳에 두는 식으로 마무리를 하고 이 과정에서 조금 더 리팩토링을 잘 할 수 있도록 작성하고 있습니다.\n\nQ) 이번 과제에서 searchValue는 layout에서 관리하는 방식으로 사용하고 전역으로 설계하지 않았습니다. 코치님은 전역상태에 대한 판단 근거를 어떤 방향으로 잡아가시는지 궁금합니다.\n\n-> 저는 상태관리는 컴포넌트의 구성과 관계없이 하나로 관리되는게 편한 데이터라고 정의하고 있어요. 대부분의 런타임 환경설정이나 로그인 계정, locale등등 전역변수성 데이터들은 전역상태가 유리하죠. 이 밖의 경우 특이한건 params를 만들어내는 모든 Input데이터들도 전역변수인 경우가 더 편하다 생각합니다. 가령 search + dropdown + check 이런 UI들도 어떤 API를 호출해야 하는게 있다면 UI는 필히 파편화가 되기 마련인데 API르 기준으로는 params가 한 묶음이 될 수 밖에 없잖아요? 이런 경우에도 전역상태를 쓰는게 훨씬 더 좋았습니다.\n\n전역상태는 프로젝트 성격에 따라 전략이 달라져요. 웹 어플리케이션을 만든다면 100% 전역 기반으로 만드는 게 훨씬 낫습니다. 반면 홈페이지나 관리도구라면 전역상태를 최소화하고 컴포넌트 중심으로 만드는 게 낫습니다. 홈페이지는 비주얼이 중심이고, 관리도구는 비주얼이 대개 고정이니까요.\n\n이번 과제는 서버 상태는 없었고 도메인 관련 코드들을 전역상태로 만들어서 props drilling 해소를 이해하기 위한 의도된 코드였어요. 서버상태관리 개념이 나오기 전에 모든 도메인 데이터를 전역상태로 관리했었습니다. 보편적인 방식으로는 서버상태관리를 중심으로 만들고 서버상태관리가 더 편하기 위한 전역상태를 추가하는 식으로 많이들 사용하고 있습니다.\n\nQ) 현재 model 내부에서 add, delete 관련 액션을 다 선언하고 hooks에서는 model 내부 로직을 활용하여 결과를 기반으로 전역 상태를 업데이트하고 알림을 관리하는 방식으로 설계되어있습니다.(액션의 흐름만 읽힐 수 있도록) 코치님이 의도하신 방향은 순수 계산 로직만 model로 관리하고, hooks에서는 순수 계산함수만 사용하고, 이 외 add, delete와 같은 액션 로직은 전부 hooks에서 관리할 수 있도록 하는 방향이었던 것 같다고 생각합니다. 혹시 제가 이해한 방향이 맞을까요?\n\n=> 네, 맞습니다. 참고로 실전에는 model의 비중이 지금보다 훨씬 낮을 수 있어요. 과제는 실전과 달리 학습 의도가 있어서, 오버엔지니어링이 되더라도 일단 해보기를 권장하는 식으로 구성되어 있어요. 그래서 model에 순수함수나 계산 로직을 많이 만들어본 건 좋은 시도였습니다. 실무에서는 이 정도까지 분리할 필요가 없을 수도 있지만, 한번 과하게 나눠봐야 적정선이 어딘지 감이 잡히거든요.\n\nQ) * 현재 구조가 atom을 선언하고 이를 기반으로 hooks에서 로직을 관리하는 방식으로 진행했습니다. 만약에 zustand를 사용하였다면 store 기반으로 내부에 액션을 같이 관리했을 것 같은데, jotai로 진행한 방식에서는 이 접근 방식이 맞았을지 궁금합니다. 사실 atom 내부에서 관리한다고 해도, 사용하는 곳이 많지 않은 액션이 많아서, 이미 훅에 정의되어있는 로직에 전역 상태를 적용하고 전역상태 도입 전과 동일하게 사용하는 곳에서는 훅을 호출하는 방식으로 진행했습니다. jotai를 사용하여 hook로직을 간소화하고, atom내부에서 전역으로 로직을 관리하는 방법이 더 좋은 방향이었을까요? 사실 심화과제 요구사항에 zustand를 언급 안하신 이유가 있으신지도 궁금합니다!\n\n=> 아! jotai로도 내부에 액션을 같이 관리할 수 있어요. 그래서 프로젝트의 코드가 그렇게 된거였군요. zustand를 일부러 언급 안 한 건 아니었구요. 리팩토링할 때 zustand로 하려면 기존 코드를 유지하지 못하고 거의 다 다시 만들어야 하는데 jotai는 기존 useState 사용법이랑 비슷해서 전환이 편하거든요. 일종의 배려 차원이었어요. zustnad가 익숙하다면 그래서 내부 액션을 두고 만들었다면 지금 보다 훨씬 더 간결하게 만들었겠네요! \n\n수고하셨습니다.\n\n채점이 너무 늦어져서 정말로 정말로 미안해요 채은! 앞으로 남은 시간도 화이팅입니다! ",
     "assignment": {
       "name": "STEP14 프론트엔드 아키텍처 설계 및 디자인 시스템 심화과제",
       "url": "https://github.com/hanghae-plus/front_7th_chapter3-2/pull/6"
@@ -7139,6 +7139,1792 @@
     "assignment": {
       "name": "STEP16 프론트엔드 아키텍처 설계 및 디자인 시스템 심화과제",
       "url": "https://github.com/hanghae-plus/front_7th_chapter3-3/pull/22"
+    }
+  },
+  {
+    "passed": true,
+    "name": "강승훈",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/6"
+    }
+  },
+  {
+    "passed": true,
+    "name": "고다솜",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/30"
+    }
+  },
+  {
+    "passed": false,
+    "name": "곽정원",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/3"
+    }
+  },
+  {
+    "passed": false,
+    "name": "권연욱",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/12"
+    }
+  },
+  {
+    "passed": false,
+    "name": "권지현",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": false,
+    "name": "김단헌",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": true,
+    "name": "김대현",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/11"
+    }
+  },
+  {
+    "passed": false,
+    "name": "김도현",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/35"
+    }
+  },
+  {
+    "passed": false,
+    "name": "김민석",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/7"
+    }
+  },
+  {
+    "passed": false,
+    "name": "김민지",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/17"
+    }
+  },
+  {
+    "passed": false,
+    "name": "김성민",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/23"
+    }
+  },
+  {
+    "passed": true,
+    "name": "김소리",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/34"
+    }
+  },
+  {
+    "passed": false,
+    "name": "김우정",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/37"
+    }
+  },
+  {
+    "passed": true,
+    "name": "김준모",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/33"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "김채영",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/8"
+    }
+  },
+  {
+    "passed": false,
+    "name": "김현우",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/26"
+    }
+  },
+  {
+    "passed": false,
+    "name": "남은주",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": false,
+    "name": "노유리",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/13"
+    }
+  },
+  {
+    "passed": false,
+    "name": "도희정",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/5"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "박수범",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/24"
+    }
+  },
+  {
+    "passed": true,
+    "name": "박용태",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/4"
+    }
+  },
+  {
+    "passed": true,
+    "name": "박지영",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/39"
+    }
+  },
+  {
+    "passed": false,
+    "name": "박창수",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": true,
+    "name": "박형우",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/16"
+    }
+  },
+  {
+    "passed": false,
+    "name": "박희정",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/41"
+    }
+  },
+  {
+    "passed": false,
+    "name": "손승현",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/22"
+    }
+  },
+  {
+    "passed": false,
+    "name": "신수빈",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/28"
+    }
+  },
+  {
+    "passed": true,
+    "name": "안소은",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/29"
+    }
+  },
+  {
+    "passed": false,
+    "name": "안재현",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/19"
+    }
+  },
+  {
+    "passed": true,
+    "name": "양진성",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/9"
+    }
+  },
+  {
+    "passed": false,
+    "name": "오새듬",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/25"
+    }
+  },
+  {
+    "passed": false,
+    "name": "오태준",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": false,
+    "name": "윤지훈",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/43"
+    }
+  },
+  {
+    "passed": false,
+    "name": "이예인",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": true,
+    "name": "이윤지",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/10"
+    }
+  },
+  {
+    "passed": true,
+    "name": "이정민",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/31"
+    }
+  },
+  {
+    "passed": false,
+    "name": "이현지",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/36"
+    }
+  },
+  {
+    "passed": true,
+    "name": "전이진",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/15"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "전희재",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/1"
+    }
+  },
+  {
+    "passed": true,
+    "name": "정나리",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/2"
+    }
+  },
+  {
+    "passed": true,
+    "name": "정한슬",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/32"
+    }
+  },
+  {
+    "passed": true,
+    "name": "주민수",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/40"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "진재윤",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/18"
+    }
+  },
+  {
+    "passed": false,
+    "name": "차현빈",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": true,
+    "name": "천진아",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/21"
+    }
+  },
+  {
+    "passed": true,
+    "name": "한선민",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/38"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "한세준",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/20"
+    }
+  },
+  {
+    "passed": false,
+    "name": "현채은",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/42"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "황준태",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP17 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/27"
+    }
+  },
+  {
+    "passed": false,
+    "name": "강승훈",
+    "feedback": "잘했어요 승훈! 벌써 9주차까지 오셨네요. SSR/SSG 동작 원리를 직접 구현해보면서 Next.js가 왜 이렇게 설계되었는지 체감하는 게 이번 과제의 목표였습니다.\n\ngetServerSideProps 패턴 도입, ServerRouter 분리, __INITIAL_DATA__ hydration까지 핵심 흐름을 잘 잡아주셨어요. 잘했습니다.\n\nmain-server.js에서 각 Page별 분기를 js 코드 내부에서 하고 있는데 그러면 페이지가 추가 될때마다 해당 로직이 추가 되므로 각 페이지로 위임할 수 있는 방법도 생각해보시면 좋겠네요.\n\n회고가 없어서 질문 답변은 따로 없는데, 궁금한 점 있으면 편하게 물어봐주세요. 고생하셨고 마지막 주차도 화이팅입니다!!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/6"
+    }
+  },
+  {
+    "passed": true,
+    "name": "고다솜",
+    "feedback": "잘했어요 다솜! 회고 정말 깊이있게 작성해주셨네요. 특히 하이드레이션을 \"단순한 이벤트 연결이 아니라 상태의 복원\"으로 이해하신 부분, 서버 인스턴스의 상태 격리 문제를 직접 체감하신 부분이 좋았어요. 프레임워크가 숨겨주던 복잡성을 직접 구현함으로써 내부 구조에 대한 이해가 더 선명해지는 계기가 되었기를 바래요\n\nRouter 분리 방식에 대해서는, 클래스를 분리하면 타입 안전성 면에서는 좋을 수 있지만 Next.js 같은 메타 프레임워크의 철학과는 맞지 않아요. 애초의 메타 프레임워크의 의도가 하나의 프레임워크(=React)와 코드로 Server와 Client를 둘 다 처리하겠다는 게 목표인데, Server와 Client의 클래스를 쪼개기 시작하면 되려 복잡해지거든요. 그래서 가급적 하나의 소스 코드로 운영하고자 하는 방향이에요. \n\n다만 이 때 분기가 필요하고 이를 통해 발생되는 복잡도가 생긴다면 Server에서만 처리할 수 있는 middleware로 분리해서 선행 처리하는 식으로 복잡도를 줄이는 방향으로 가고 있습니다.\n\n고생하셨고 마지막 주차도 화이팅입니다!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/30"
+    }
+  },
+  {
+    "passed": false,
+    "name": "곽정원",
+    "feedback": "정원님 이번주차는 시간이 부족하셨던 것 같아요.\n나중에라도 한번 과제를 진행해보시면 좋을 것 같아요!\n수고하셨습니다!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/3"
+    }
+  },
+  {
+    "passed": false,
+    "name": "권연욱",
+    "feedback": "안녕하세요 연욱님..! 과제 진행이 안 되었군요 ㅠㅠ 아쉽습니다.\n10주차 과제는 잘 마무리할 수 있기를 기대하겠습니다! 화이팅!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/12"
+    }
+  },
+  {
+    "passed": false,
+    "name": "권지현",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": false,
+    "name": "김단헌",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": false,
+    "name": "김대현",
+    "feedback": "고생하셨습니다 대현님! 벌써 9부능선을 넘었군요.\n아쉽게 심화과제는 마무리 해주시지 못한거같아요. 회고도 아직 작성이 덜 된것 같구요 ㅠㅠ\n\n실제로 저희가 SSR이나 별도 렌더링 방식을 구현해야 하는 상황에서는 next나 다른 프레임워크를 통해 많이 접근을 하지만, 이렇게 구현을 하면서 실제 동작은 어떻게 하는지 많이 고민해볼 수 있는 시간이셨으면 좋았겠네요. 실제로 현업에서도 종종 구현해서 사용하기도 하구요!ㅎㅎㅎ\n\n꼭 시간 내서 회고 작성하셨으면 좋겠고, 추가로 궁금한 점 있으시면 언제든지 물어보시구요. \n\n이제 거의 다 왔습니다! 조금만 힘내고 다음 주 화이팅하시죠~~",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/11"
+    }
+  },
+  {
+    "passed": false,
+    "name": "김도현",
+    "feedback": "도현님 이번주차는 시간이 부족하셨던 것 같아요.\n나중에라도 한번 과제를 진행해보시면 좋을 것 같아요!\n수고하셨습니다!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/35"
+    }
+  },
+  {
+    "passed": false,
+    "name": "김민석",
+    "feedback": "고생하셨어요 민석! 회사일이 바쁘셨군요. 이번 과제는 SSR/SSG를 직접 구현해보면서 Next.js 같은 프레임워크가 내부적으로 어떻게 동작하는지 체감하는 게 목표였어요. 면접에서도 자주 나오는 주제이기도 하고요.\n\n회고에서 서버는 프로세스가 유지되고 클라이언트는 새로고침 시 초기화된다는 차이를 인지하신 부분, 그게 SSR 이해의 핵심 중 하나예요. 당연해 보이지만 직접 부딪혀봐야 체감되는 부분이거든요. 그 감각을 잡으셨으니 나중에 복습하실 때 훨씬 수월하실 거예요.\n\n항해 끝나고 꼭 다시 한번 챙겨보시고, 마지막 주차도 화이팅입니다!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/7"
+    }
+  },
+  {
+    "passed": false,
+    "name": "김민지",
+    "feedback": "안녕하세요 민지님..! 과제 진행이 안 되었군요 ㅠㅠ 아쉽습니다.\n10주차 과제는 잘 마무리할 수 있기를 기대하겠습니다! 화이팅!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/17"
+    }
+  },
+  {
+    "passed": false,
+    "name": "김성민",
+    "feedback": "따로 과제를 올려주시지는 못했네요 성민님 ㅠㅠ\n바쁜일이 있으셨나봐요\n꽤나 면접에서도 자주 물어보는 주제고, 반드시 알아야 하는 내용들이 과제에 담겨있다고 생각해요. 구현을 하지 않더라도 꼭 개념적인것들이라도 짚고 넘어가시면 좋을것 같습니다.\n\n고생하셨고, 마지막주차는 잘 마무리 해주시면 좋겠습니다!!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/23"
+    }
+  },
+  {
+    "passed": true,
+    "name": "김소리",
+    "feedback": "Q. 저는 굳이 SSR이 필요 없으면 안 해도 된다고 생각했는데, 보안 때문에 SSR를 사용했다는 의견을 들은 적이 있습니다. 민감한 로직을 클라이언트에 노출시키지 않기 위해서나, 인증이 필요한 페이지가 일시적으로 노출되는 것을 방지하기 위해서입니다. SSR 없이 CSR + 백엔드 API 구조나 라우터 만으로 일반적으로 보안 요구사항을 충족할 수 있는 것인지, 반드시 SSR를 사용하는 게 맞는지 궁금합니다.\n\n어디서 그런이야기를 하는지 모르겠네요.\n보안하고는 상관없다고 생각합니다. 빅테크 기업들도 SSR보다 CSR을 많이 사용합니다.\n저는 오히려 SSR이 정말 \"꼭\" 필요할때만 사용하자는 입장입니다.\nSSR라는 기술은 사실 신박하고 특수한 상황에서는 성능을 끌어올리는데 큰 역할을 할 수 있는 방법중 하나라고 생각합니다.\n하지만 대부분의 경우에는 보통 필요 없습니다.\n서버를 유지/관리하는 비용도 무시못하고 디버깅도 어려운부분이 있습니다.\n전반적으로 이런 단점들을 트레이드 오프할만한 뭔가가 있었야하는데\n저는 아직 찾지 못했습니다.\n다만 이 기술을 활용해 무언가를 해결할 수도 있기에 기술자체에 대해서는 이해도가 필요하다고 생각해요~\n\n스태틱한 파일 서빙으로 서버운영이 필요없는 SSG는 선호합니다. ㅎㅎ\n\nQ. SSR/SSG 기능을 사용하지 않더라도 Next.js나 Nuxt.js 같은 프레임워크를 사용하는 것이 괜찮은 선택인가요? 프레임워크 자체의 이점(파일 기반 라우팅, 구조화 \n등)이 있다고 하는데, 오히려 복잡도만 올리는 건 아닐지 궁금합니다.\n\n저는 불필요하다고 생각합니다.\n애초에 SSR/SSG도 안하는데 Next.js를 쓰는 방법이 있는지 모르겠네요 ㅎㅎ\n\nQ. 컴포넌트에서 메모리 누수가 발생했을 때, 서버 메모리 누수로도 이어질 수 있나요?\n\n사실 구현상 특별히 문제가 없다면 이것은 그럴수 없다고 답변을 드려야할 것 같은데요.\n억지로 만들라면 만들수도 있지 않을까 싶습니다.\n보통은 그럴수 없을 것 같습니다.\n특히 클라 컴포넌트라면 아시다시피 절대 불가능합니다 :) \n",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/34"
+    }
+  },
+  {
+    "passed": false,
+    "name": "김우정",
+    "feedback": "과제가 미제출 되어 피드백을 작성할수 가 없습니다. 마지막 과제까지 얼마 남지 않았네요. 화이팅입니다!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/37"
+    }
+  },
+  {
+    "passed": true,
+    "name": "김준모",
+    "feedback": "고생하셨습니다 준모님 ㅎㅎ\n벌써 9부능선을 넘었군요.\n과제는 잘 진행해주셨어요. 실제로 저희가 SSR이나 별도 렌더링 방식을 구현해야 하는 상황에서는 next나 다른 프레임워크를 통해 많이 접근을 하지만, 이렇게 구현을 하면서 실제 동작은 어떻게 하는지 많이 고민해볼 수 있는 시간이셨으면 좋았겠네요. 실제로 현업에서도 종종 구현해서 사용하기도 하구요!ㅎㅎㅎ\n\n> 질문 예시에도 나왔던 내용인데 현업에서 SSG 는 어느부분에서 사용하나요? 사용해보신 상황이 궁금합니다....\n\n주로.. 컨텐츠 적인 것들, 내용이 동적이게 변화하지 않는 것들에 많이 사용하는데요. 음.. 현업이라고 하면 기술 블로그라거나 가이드 문서같은것들에 주로 많이 활용을 하는 편인것 같아요. 브랜드 사이트나 프로모션 사이트에서 유저와 동적인 상호작용이 많이 필요하지 않으면 많이 사용하는 선택지이기도 하구요!\n\n이제 거의 다 왔습니다! 조금만 힘내고 다음 주 화이팅하시죠~~",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/33"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "김채영",
+    "feedback": "채영님 과제 잘 해주셨네요!\n처음 접한 개념들에 적혀있는것도 사실 요즘 많이 이미 사용중인 주제이고, 과거 전통적인 CSR의 문제점을 해결하기 위한 결과물들이기도 하구요. \n면접에서 자주 물어보는 주제이기 때문에 꼭 짚어가시면 좋을것 같아요 ㅎㅎ\n(실제로 얼마나 잘 쓰는곳이 있냐는 다른 얘기겠지만,.)\n\n비유를 통해서 새로운 개념들을 잘 정리해주신것 같고 좋은 방식인것 같아요 ㅎㅎ 회고에 문제 해결과정들도 잘 적혀있어서 저도 많이 배운것 같고 흥미진진했습니다. \n\n> 1. MSW 동시성 문제 해결 방식 검토\n\n음..! 이 부분은 보통 bypass로 구성하는게 맞지만, 서버마다 독립적인 인스턴스를 생성하지 않으면 간섭이 생겨 예상치 못한 동작이 있을것 같아요. 가능하다면 독립적인 인스턴스를 구성하고, 동작이 한 서버처럼 되어야 한다면 그 지점을 명확하게 하는 구성이 있으면 좋을것 같아여\n\n프로덕션 환경에서도 msw가 실행되는건..음 준일님께 여쭤봐야겠지만 아무래도 의도되지 않은 동작이지 않을까 싶은데여..! 한번 확인해보시죠 \n\n이번 주 과제 아주 잘해주셨고 마지막 주차도 잘 마무리 하시길바랍니다!!\n",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/8"
+    }
+  },
+  {
+    "passed": false,
+    "name": "김현우",
+    "feedback": "현우님 이번주차는 시간이 부족하셨던 것 같아요.\n나중에라도 한번 과제를 진행해보시면 좋을 것 같아요!\n수고하셨습니다!\n",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/26"
+    }
+  },
+  {
+    "passed": false,
+    "name": "남은주",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": false,
+    "name": "노유리",
+    "feedback": "유리님 이번주차는 시간이 부족하셨던 것 같아요.\n나중에라도 한번 과제를 진행해보시면 좋을 것 같아요!\n수고하셨습니다!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/13"
+    }
+  },
+  {
+    "passed": false,
+    "name": "도희정",
+    "feedback": "과제가 미제출 되어 피드백을 작성할수 가 없습니다. 마지막 과제까지 얼마 남지 않았네요. 화이팅입니다!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/5"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "박수범",
+    "feedback": "수범님 고생하셨어요!\n피자로 비유해서 정리해주신거 재밌기도 하고 ㅋㅋㅋㅋ방식만 피자로 설명하는줄 알았는데 아래 설명까지 계속 스토리로 이어지네여 ㅋㅋㅋㅋㅋㅋㅋ\n필요한 내용들이나 정리가 필요한지점 잘 찾아서 적용해주신 것 같네요 :+1\n\n> 질문 1. 프레임워크 도입의 기준\n\n음.. 질문을 살짝 바꾸면 직접 구현하는 것과 라이브러리를 사용하는 것을 정하는 기준이라고 볼 수 있을것 같은데요. 말씀해주신 것 처럼 결국 직접 구현을 한다는 것은 편리함을 버리고, 또는 지원해주는 기능이 모두 지원하지 않거나 불필요하게 기능이 과한 경우에 주로 선택을 하는 것 같은데요. 예시가 적절할지 모르겠지만, 양복을 입고 달리기를 해야 하는 대회에서 기성 양복을 사지 않고 딱 맞는 편한 맞춤 양복을 찾아가는 느낌인거죠. 누군가는 양복이 중요할 것이고 누군가는 양복보다는 달리기가 중요할거기도 할거구요.\n\n켄트 벡 아재가 한말로는 소프트웨어를 운영하는 비용은 결국 유지보수 비용과 동일하다 라는 말이 있는데요. 이 운영을 한다는 비용 관점에서 최소화할수 있는 선택을 하면 될 것 같아요!\n\n> 질문 2. \"SEO를 위해 Next.js를 쓴다\"는 저와 비슷한 초보들의 통념에 대한 반론\n\nSEO만으로 Next로 간다는건 사실 말씀해주신것처럼 지금은 딱 적합한 상황은 아닌거같아요. 늘 제가 생각하는 SSR이나 서버컴포넌트를 적용한다는 지점에서 아쉬운건 vercel이나 외부 쉽게 클라우드 솔루션을 사용하는게 아니라 일반회사에서 적용을 해야할 때 서버를 운영하는 비용이 FE개발자에게 너무 크다는 지점인것 같아요. 잘 할수 있다면 좋겠지만, 우리가 얻는 장점이 이걸 운영하면서 얻는 수많은 작업들에 비해 너무 작게 느껴질 수 있는거죠.\n\n제 개인적인 경험을 덧붙여보면, SSR을 하는게 유리한 지점들이 있긴해요. 상황적인 측면에서. 하지만 그게 1번 질문처럼 Next를 선택해야 한다는 지점으로 이어지는건 아니거든요. 하지만, 요즘의 리액트 거버넌스를 만들고 운영한다는 관점에서 새로운 기능이나 효과적인 캐싱을 누리고 싶다면.. 또 넥스트를 쓰는게 맞거든요. \n\n아무튼 다양한 얘기들이 있어서 주절주절 적고있는데, 키워드 관점에서 개인 공부 관점이라면 다양하게 접해보고 회사라면 최소한의 비용으로 최대효과를 누리는 선택을 하면 될 것 같습니다. \n\n고생하셨습니다! 마지막주도 화이팅이에요.",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/24"
+    }
+  },
+  {
+    "passed": true,
+    "name": "박용태",
+    "feedback": "잘했어요 용태! 9주차 과제 잘 마무리해주셨네요. SSR/SSG를 직접 구현해보면서 Next.js 같은 프레임워크가 내부적으로 어떻게 동작하는지 체감하셨을 거예요. 면접에서도 자주 나오는 주제이니 이번에 경험한 내용이 도움이 될 겁니다.\n\n고생하셨고 마지막 주차도 화이팅입니다!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/4"
+    }
+  },
+  {
+    "passed": false,
+    "name": "박지영",
+    "feedback": "1. ServerRouter의 URL 매칭 안정성\n\n보안 측면에서는 사실 더 고려해야할 것이 있지만,\n지금 이과제는 보안에 대한 고려보다는 구현에 더 집중하는 것이 좋을 것 같아요 :) \n과제에서 요구하는 사항만 구현해도 충분할 것 같습니다 :) \n\n참고로 URLPattern API를 활용하면 좀 수월해질 수도 있을 것 같아요.\n\n2. 서버/클라이언트 데이터 페칭 로직 중복\n\n사실 SSR을 구현하려면 어쩔수 없지 않을까 싶어요.\n다만 플랫폼 상관없이 공통적으로 사용할 수 있는 로직을 분리해서 재사용하는 방법으로 효율성을 높일 수 있을 것 같습니다~\n\n3. SSG 빌드 최적화\n\n사실 아시다시피 실무에서는 직접구현한 구현체를 사용하기 보다는 nextjs사용하고 있어요.\n그런데  물리적으로 페이지를 생성한다는 ssg특성상 (물론 세부적으로 일부 최적화 할 순 있겠지만)\n상품이 늘어날수록 빌드시간이 늘어나는건 어쩔수 없을 것 같습니다.\n다만 페이지간 선후관계는 필요 없을테니 병렬처리 라이브러리들을 활용하면 그시간을 줄일 수 있을 것 같습니다.\n\n4. 라우트별 데이터 로딩 로직 구조화\n 말씀하셨던 대로 이런 문제를 해결하기위해서 nextjs에서는 getServerSideProps라는 약속된 인터페이스를 활용하고\n페이지 컴포넌트에서 동일한 로직을 수행하고 있습니다.\n\nif-else를 줄이려면 어떻게든 해당 프로세스를 추상화하는 수밖에 없을 것 같아요.\ngetServerSideProps와 같이 사용하는 쪽으로 옮기지 않을것이라면\n맵을 사용해서 로직을 들고 있게 할 수 있을것 같아요.\n\nconst product = getPropsFunc['/product/:id'](id);\n\n요렇게요. ㅎㅎ",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/39"
+    }
+  },
+  {
+    "passed": false,
+    "name": "박창수",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": true,
+    "name": "박형우",
+    "feedback": "고생하셨어요 형우님 ㅎㅎ\n결국 렌더링 방식에 대한 고민은 지금 회고를 남겨주신 그런 논리 회로대로 충족이 되는 최선의 선택지, 비용대비 최고 효율을 누릴 수 있는 선택지를 사용하면 되는 형태입니다. \n개념에 대해 많이 어려우셨다고 했으니, 조금 더 이 부분에 대해서는 깊게 고민해보시면 좋겠네요 ㅎㅎ 면접때 많이 물어보는 내용이기도 하구요.\n\n> 변수앞에 $를 붙이면 DOM 요소이다!\n\n요거는 그 예전 jquery시절.. 유산인데 ㅎㅎㅎ 요즘은 자주 사용하지 않는 문법이긴해요.\n\n따로 리뷰를 요청해주신 + 남겨주신 부분은 없어서 회고 꼭 잘 남겨보시고 과제 잘 마무리 하시면 좋겠습니다 ㅠㅠ 남은 한 주도 화이팅입니다!!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://hyeongwoo94.github.io/front_7th_chapter4-1/react/"
+    }
+  },
+  {
+    "passed": false,
+    "name": "박희정",
+    "feedback": "안녕하세요 희정님..! 과제 진행이 안 되었군요 ㅠㅠ 아쉽습니다.\n10주차 과제는 잘 마무리할 수 있기를 기대하겠습니다! 화이팅!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/41"
+    }
+  },
+  {
+    "passed": false,
+    "name": "손승현",
+    "feedback": "승현님 아쉽게도 기본 과제까지는 진행해주셨는데, 테스트가 통과하지 못했고 배포 링크도 따로 없어서 제가 불합격 처리 했습니다 ㅠㅠ 너무 아쉽네요.\n\n꽤나 면접에서도 자주 물어보는 주제고, 반드시 알아야 하는 내용들이 과제에 담겨있다고 생각해요. 구현을 하지 않더라도 꼭 개념적인것들이라도 짚고 넘어가시면 좋을것 같습니다.\n\n고생하셨고, 마지막주차는 잘 마무리 해주시면 좋겠습니다!!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/22"
+    }
+  },
+  {
+    "passed": false,
+    "name": "신수빈",
+    "feedback": "안녕하세요 수빈님..! 과제 진행이 안 되었군요 ㅠㅠ 아쉽습니다.\n10주차 과제는 잘 마무리할 수 있기를 기대하겠습니다! 화이팅!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/28"
+    }
+  },
+  {
+    "passed": false,
+    "name": "안소은",
+    "feedback": "\n1. AsyncLocalStorage와 Store의 관계\n\n네 소은님 말씀하신대로 race condition이 발생할 수 있을 것 같아요.\n\n그래서 요청별로 스토어를 생성하기보다는 렌더링 단위로 스토어를 생성하면 좋을 것 같습니다 . 그게 그거지만요 ㅎㅎ\n이부분은 솔루션 코드를 보시면 더 잘 이해가 되실 것 같습니다.\n\n2. Router의 params 접근 방식\n\n네 말씀하신 디코딩 문제가 발생할 수 있어요 그래서 명시적으로 디코딩을 처리해주시면 좋을 것 같아요..\n그것말고도 사실 예상치못한 문제도 있을 수 있을 것 같아요.\n사실 express라우터를 활용하면서도 처리할 수 있는 방법이 있을 것 같긴 하지만 두가지 방법으로 관리해야하는건 마찬가지 같아요.\n\nSSR이란 특성을 고려해서 자체 정규식 함수를 활용하는 편이 더 나을 것 같습니다.\n우린 양쪽 모두 고려해야하니까요. 일원화 하시죵\n\n\n3. initialData의 Hydration 타이밍\n\n말씀하신 내용에 답이 다 있는 것 같아요 :) \n소은님 실제 업무에서도 일을 잘하시는 분이실 것 같습니다.(내말 맞죠? ㅎㅎ)\n\n말씀하신대로 초기화 로직은 이미 약속된 인터페이스가 있기 때문에 충분히 만들 수 있을 것 같아요 :)\n\n초기화 로직을 특정 시점의 프로세스로 일원화 하면 개별적으로 상태를 가져오기 전에 확인하는 코드도 필요 없을 것 같아요\n\n__INITIAL_DATA__는 해제해두면 좋을 것 같아요 다시 사용할 일이 없으니까요..\n\nㅎㅎ 이렇게 어떻게보면 과제를 최적화하고 리팩토링까지 이미 검토를 해주셨네요 \n\n멋집니다!\n",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/29"
+    }
+  },
+  {
+    "passed": false,
+    "name": "안재현",
+    "feedback": "과제가 미제출 되어 피드백을 작성할수 가 없습니다. 마지막 과제까지 얼마 남지 않았네요. 화이팅입니다!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/19"
+    }
+  },
+  {
+    "passed": true,
+    "name": "양진성",
+    "feedback": "잘했어요 진성! 회고가 정말 꼼꼼하네요. SSR이 결국 \"HTML 문자열 조립\"이라는 걸 체감하신 부분, await 한 줄 빠뜨려서 디버깅했던 경험, SSR과 SSG가 같은 render() 함수를 공유한다는 걸 깨달은 부분 모두 좋았어요. \n\n로더-렌더러 분리 패턴도 잘 적용하셨어요. Next.js의 getServerSideProps가 왜 그렇게 설계되었는지 직접 느껴보신 거죠. 직접 구현해봐야 얻을 수 있는 인사이트들을 이번 과제를 통해서 많이 느껴간것 같아서 아주 좋네요!! +_+b\n\nSSG 빌드 최적화에 대해서 1000개 정도는 메모리 이슈 크게 걱정 안 해도 돼요. HTML 파일이 이미지보다 훨씬 가벼우니까요. 사실 1000개까지 필요한 경우도 잘 없구요.  병렬 처리로 빌드 시간만 줄이면 충분해요. 캐시 방식도 고려해볼 수 있어요. 변경된 페이지만 다시 생성하고 나머지는 이전 빌드 결과를 쓰는 거죠.\n\n__INITIAL_DATA__ 크기는 너무 이른 최적화 걱정은 안 해도 돼요. 첫 페이지 번들 자체가 이미 수백 KB 단위라서 초기 데이터 좀 더 들어간다고 크게 체감되진 않거든요. 실제로 문제가 생기면 그때 대응해도 늦지 않아요.\n\n최적화에 대해서 당연히 공부하고 고민해야 되는건 맞는데 너무 또 해야한다 정도로 생각하진 않아도 된다는 의미였어요. 공부해야죠!\n\n고생하셨고 마지막 주차도 화이팅입니다!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/9"
+    }
+  },
+  {
+    "passed": false,
+    "name": "오새듬",
+    "feedback": "따로 과제를 올려주시지는 못했네요 새듬님,,,\n꽤나 면접에서도 자주 물어보는 주제고, 반드시 알아야 하는 내용들이 과제에 담겨있다고 생각해요. 구현을 하지 않더라도 꼭 개념적인것들이라도 짚고 넘어가시면 좋을것 같습니다!\n\n마지막주차는 잘 마무리 해주시면 좋겠습니다!! 고생하셨어요~~",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/25"
+    }
+  },
+  {
+    "passed": false,
+    "name": "오태준",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": false,
+    "name": "윤지훈",
+    "feedback": "안녕하세요 지훈님..! 과제 진행이 안 되었군요 ㅠㅠ 아쉽습니다.\n10주차 과제는 잘 마무리할 수 있기를 기대하겠습니다! 화이팅!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/43"
+    }
+  },
+  {
+    "passed": false,
+    "name": "이예인",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": true,
+    "name": "이윤지",
+    "feedback": "윤지님 고생하셨습니다 ㅎㅎ\n9주차 과제도 잘 해주셨네요. \n과제에서 의도했던 여러 학습 포인트들에 대해서 잘 정리하고 적어주신것 같아요 ㅎㅎ \nmsw는 참고로 노드 환경에서도 구동이 됩니다! 그래서 vitest에서 테스트가 가능했던거기도 하구요. 설정이 뭔가 누락된게 아닐까 싶긴해요 ㅎㅎ\n\n> 스토어 접근 이중 구조에 대한 의견\n\n가능하다면 일관성있게 하나로 접근하는게 좋다고 생각하는데요. 리액트 라이프사이클 하에서 쉽게 제어할 수 있는 명확한 context를 활용해서 제어를 하는게 좋다고 생각하는 편인것 같아요. 어느정도 격리가 명확하게 보장되고, 테스트도 용이하기도 하구요!\n\n> SSR 환경 체크 패턴\n\n넵 공통적으로 환경을 확인할 수 있도록 별도 함수로 추상화 해서 작성하는게 좋다고 생각해요 ㅎㅎ 굳이 구현을 그대로 적는게 더 명시적인 상황이 아닌것 같아서요.\n\n> AI 활용방안\n\n좋아요! 저는 매우 좋은 방식이라고 생각합니다. 결국 AI가 만든 코드든, 내가 누군가 작성해놓은 책을 읽든 비슷한 상황이라고 생각하는데요. 좋은 지식들, 어떻게 하는지 적혀있지만 결국 공부라면 내걸로 만드는 과정이 있어야 하는 것 같아요. 그런건 의도적으로 저를 불편하게 만드는건데 입으로 읽으면서, 손으로 적으면서 보거나.. 기반해서 내 생각을 정리하고 정리해본다거나 외워보면서 작성해보거나 하는거죠. 그런 맥락에서 저는 지금 하고 계신 방식이 매우 시간적인 측면에서도 유리하고 학습에도 좋다 생각해요 ㅎㅎ\n\n고생하셨고 마지막주차도 화이팅입니다!!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/10"
+    }
+  },
+  {
+    "passed": false,
+    "name": "이정민",
+    "feedback": "잘했어요 정민! \"렌더링 위치가 아니라 상태의 출발점\"이라는 인사이트가 멋지네요. SSR을 처음 접하면 대부분 \"서버에서 HTML을 그린다\"에서 멈추는데, 본질이 상태 연속성이라는 걸 직접 구현하면서 체감하신 거잖아요. 이런 식으로 기술의 배경을 자기 언어로 정리해두면 면접에서도 써먹을 수 있어요.\n\n질문 주신 부분에 대해서요. window.__INITIAL_DATA__ 방식은 SSR의 표준적인 패턴이에요. Next.js도 내부적으로 __NEXT_DATA__라는 이름으로 비슷하게 처리하고 있고요. 특정 프레임워크만의 구현이 아니라 SSR에서 서버-클라이언트 상태 동기화를 위한 일반적인 접근 방식이에요.\n\n고생하셨고 마지막 주차도 화이팅입니다!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/31"
+    }
+  },
+  {
+    "passed": false,
+    "name": "이현지",
+    "feedback": "안녕하세요 현지님..! 과제를 다 마무리하기에는 시간적 여유가 부족했던 것 같군요 ㅠㅠ 아쉽습니다.\n10주차 과제는 잘 마무리할 수 있기를 기대하겠습니다! 화이팅!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/36"
+    }
+  },
+  {
+    "passed": true,
+    "name": "전이진",
+    "feedback": "처음부터 하이드레이션에 필요한 최소데이터만 내려주는 방식으로 설계하는 것이 제일 이상적이라고 생각합니다.\n어차피 SSR이던 CSR이건 지금 페이지를 렌더링에 필요한 데이터만 들고있어야하는 것 같아요\nSSR은 스크립트 조각으로 내려주고\nCSR은 리액트 런타임과 API 호출을 통해서 말이죠.\nCSR에서 필요없는 데이터를 API로 가져오지 않듯 SSR도 그렇게 해야합니다.\n그런 상황에서도 캐시나 압축을 활용하면 좋을 것이고요 :) \n\n애초에 화면에 보여줄게 많다면 어쩔수 없죠. UI적으로 페이지네이션을 넣거나 더보기를 넣는등 UX를 개선해야죠~\n\n수고하셨습니다.",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/15"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "전희재",
+    "feedback": "잘했어요 희재! 회고 양이 엄청나네요. server.js 한 줄씩 분석하고, Vanilla랑 React 구현 차이까지 정리한 거 보면 이번 과제에 진짜 많은 시간 쏟으신 게 느껴집니다.\n\n\"서버가 정말 스토어를 알아야 하는가?\"라는 질문에서 관점이 바뀌었다는 부분이 좋았습니다. 처음에는 서버용 스토어를 어떻게 만들지 고민하다가, 애초에 서버가 스토어를 몰라도 된다는 걸 깨달은 거잖아요. 문제를 어떻게 풀지 고민하다가 문제를 재정의하면서 인사트이로 이어진 부분이 잘 읽었어요. 잘했습니다.\n\n질문 주신 SSG 빌드는 수천 개 정도는 메모리 걱정 안 해도 돼요. HTML이 이미지보다 훨씬 가벼우니까요. 그리고 동시성 제한이나 실패 처리 같은 건 실무에서는 Next.js 같은 프레임워크가 알아서 해줘서 우리가 직접 고민할 일은 거의 없었던 것 같네요. 적어도 저는 그랬습니다. (도움이 못되서 미안해요 ^^;;) \n\n정말 정말 고생하셨고 남은 마지막 주차도 화이팅입니다!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/1"
+    }
+  },
+  {
+    "passed": true,
+    "name": "정나리",
+    "feedback": "잘했어요 나리! Race Condition 문제를 상세히 적어준 내용 잘 읽었습니다. 서버환경에서 싱글톤 관리를 잘못하면 발생할 수 있는 내용들을 직접 몸으로 체험해서 얻어간 부분이 많았을 거예요.\n\n질문 주신 것들 보면 이미 방향을 알고 계신 것 같아요. 렌더링 직전에 setServerUrl 다시 호출하는 건 임시방편이고, 말씀하신 대로 요청별 컨텍스트 분리가 근본적인 해결책이에요. router를 재사용하기 보다는 요청마다 새 인스턴스를 만들어 활용해보세요.\n\nproductStore도 마찬가지예요. 지금은 페칭 시간이 짧아서 문제가 안 드러나는 거지 요청 많아지면 섞일 수 있어요. useSyncExternalStore 활용은 적절하게 잘 하셨습니다\n\n정말 고생하셨고 마지막 주차도 화이팅입니다!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/2"
+    }
+  },
+  {
+    "passed": false,
+    "name": "정한슬",
+    "feedback": "Q1. SSG 라우팅 문제\n\n제가 질문을 잘 이해를 못하는 것 같아욥\nSSG에서도 라우터를 활용하시려고 하셨던건가요?\nroutes정보만 있으면 되지 않나요?\n\n답변이 잘 안된 것 같은데욥 요거 솔루션 코드를 통해 비교해보시면 좋을 것 같습니다 :)",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/32"
+    }
+  },
+  {
+    "passed": false,
+    "name": "주민수",
+    "feedback": "아쉽게 심화 과제까지는 마무리를 해주시지 못했던 것 같네요 ㅠㅠ\n회사일이 바쁘다고 적어주셨군요 민수님\n\n생각보다 자주 사용하는 내용이고, 반드시 알아야 하는 주제라는건 민수님도 이미 잘 알고 계실것이라고 생각합니다.\n적어주신것처럼 빠른 시일내에 우선순위를 높여서 이 과제 마무리 해보시면 좋을거 같아요.\n\n고생하셨고 남은 1주도 화이팅입니다!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/40"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "진재윤",
+    "feedback": "고생하셨습니다 재윤님!\n회고도 아주 구체적으로 잘 작성해주셨었는데요.\n학습하셔야 되는 부분부분들을 구체적으로 잘 짚어 주신것같아요 :+1\n\n> static-site-generate.js에서 SSG 빌드 시 모든 상품 페이지를 순차적으로 생성하고 있습니다. 현재는 약 20개 상품으로 테스트 중인데, 상품이 1000개 이상으로 늘어났을 때 빌드 시간과 메모리 사용량이 걱정됩니다.\n\n정확합니다! 이게 SSG의 단점과도 이어지는데요.\nPromise all을 쓰든 결국 절대적인 페이지가 늘어나게 되면 쉽게 해결이 되는 문제가 아닐거에요. 컴퓨팅 파워도 제한적일거구요.\n목적에 맞춰 각각 다른 페이지들을 어떤건 SSG, 어떤건 다른 패턴을 적용하는것도 방법일 수 있지만, 선택적 빌드(변경만 있는 것들만 한다라거나..)등등.. 방법을 찾아서 해결하는 편이 좋을거에요. 이 고민이 꽤나 오래된걸로 알아서 SSG를 제공하는 여러 프레임워크들이나 글들을 보면 관련 고민을 어떻게 풀었는지 알 수 있지 않을까..! 싶습니다.\n\n> ssrContext.ts에서 전역 변수 let ssrContext를 사용하여 요청별 상태를 관리하고 있습니다.\n\n음.. 정확한 답변일지는 모르겠지만, 아마 말씀해주신거처럼 해당 위험이 있을 것 같아요. AsyncLocalStorage같은 걸 활용해서 요청별 컨텍스트를 분리하거나 express 미들웨어서 별도 처리를 해주는 형태로 분리할 수 있을 것 같은데.. 해당 부분에 대한 고민은 필요할 것 같습니다!\n\n고생하셨고 마지막 주차도 화이팅입니다!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/18"
+    }
+  },
+  {
+    "passed": false,
+    "name": "차현빈",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": true,
+    "name": "천진아",
+    "feedback": "잘했어요 진아! 회고에 SSR 동작 과정을 단계별로 정리해주신 거 좋았어요. 직접 구현해보면서 흐름을 이렇게 정리해두면 나중에 면접에서도 써먹을 수 있어요.\n\nServerRouter를 분리하고, loader 패턴으로 prefetching을 처리하고, withLifecycle에서 서버 환경일 때 mount를 스킵하는 등 핵심적인 판단들을 잘 해주셨어요. SSR에서 useEffect가 실행되면 안 된다는 걸 직접 체감하신 거죠.\n\n질문 주신 부분에 대해서는, 지금 하신 방식이 맞는 방향이에요. Next.js도 결국 같은 컴포넌트 코드를 서버와 클라이언트 양쪽에서 실행할 수 있게 만드는 게 목표거든요. 다만 우리가 지금 그런 시스템을 직접 만들기는 어려우니까, 원소스를 양쪽에서 쓸 수 있되 최소한의 분리만 하는 게 현실적인 방향이에요. 지금 예외처리로 환경 분기하신 방식이 그 맥락에서 적절한 선택입니다.\n\n고생하셨고 마지막 주차도 화이팅입니다!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/21"
+    }
+  },
+  {
+    "passed": true,
+    "name": "한선민",
+    "feedback": "1. React SSR에서 Context를 통한 데이터 주입 방식\n\n컨텍스트를 통해 스토어를 활용하는 방법은 좋은 방법이라고 생각합니다~ \n실제로 솔루션 코드도 그렇게 되어 있을 거에요.\n\n\n2. 서버에서 Store 생성 vs 데이터만 준비하는 트레이드오프 및 동시성 이슈\n네 동시성 이슈 있을 수 있어요.\n그래서 스토어는 각 요청마다 스토어를 만들어야 합니다.\n비동기 작업으로 인한 자원 공유로 여러 요청이 하나의 스토어 인스턴스를 공유한다면 문제가 될 수 있습니다.\n\n요청마다 스토어를 만든다기보다는 렌더링할때 스토어를 만든다는 개념이 더 맞는 것 같습니다.\n요건 솔루션 코드 보시면서 비교해보시면 바로 이해하실 수 있을 것 같습니다 :) \n\n수고하셨습니다.",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/38"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "한세준",
+    "feedback": "고생하셨습니다 세준님 ㅎㅎ\n과제 훌륭하게 잘 해주셨네요!\n발생할 수 있는 여러 학습 포인트들도 잘 정리해주셨고, 명확하게 목적에 맞게 기술도 잘 활용해서 사용해주신것으로 보여요 :+1\n\n제가 따로 특별하게 피드백 드릴 내용은 없을것 같습니다 ㅎㅎ\n고생하셨고 마지막 주차도 화이팅입니다!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/20"
+    }
+  },
+  {
+    "passed": false,
+    "name": "현채은",
+    "feedback": "채은님 이번주차는 시간이 부족하셨던 것 같아요.\n나중에라도 한번 과제를 진행해보시면 좋을 것 같아요!\n수고하셨습니다!",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/42"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "황준태",
+    "feedback": "안녕하세요 준태님! 한주동안 이렇게 많은 내용을 학습하셨다니.. 믿기지가 않네요 ㅎㅎ 너무 고생 많으셨습니다!!\n\n---\n\n> 서버에서 Store를 매 요청마다 생성하는 방식이 맞을까요? - 요청이 많아지면 메모리 부담이 클 것 같은데, 다른 방식이 있는지 궁금합니다. 요청 보낸 직후 해제한다거나 하면 될까요?\n\n사실 서버에서 렌더링을 처리한다는 것 자체가 부담이랍니다 ㅎㅎ\nStore가 차지하는 비중은 컴포넌트 렌더링에 필요한 기본적인 정보와 비교했을 때 미미한 수준이라고 생각합니다.\n어쨌든 Store를 요청마다 생성하는 방법이 제일 최선이고 안전하다고 생각해요.\n\n> Hydration 불일치 방지를 위한 더 좋은 패턴? - 현재는 조심해서 코드 짜는 수밖에 없는데, 구조적으로 방지하는 방법이 있는지.\n\n인터페이스를 통해 Server에서 실행할 코드와 Client에서 실행할 코드를 완전히 분리하는 방법이 최선이라고 생각해요. 그걸 NextJS 같은 프레임워크가 하고 있고!?\n\n혹은 아예 신경쓰고 싶지 않다면 jsdom 같은 라이브러리를 이용해서 client api 를 목킹하여 사용하는 방법도 있답니다.\n다만 window와 document에 대한 정보를 client와 일치하도록 만들어줘야 하는데 이것도 꽤 귀찮은 과정이라고 생각해요.\n\n여튼 중요한건 \"에러가 발생하지 않는 것\"이 아니라 \"에러를 통해 문제에 대한 피드백을 받는 것\"이라고 생각해요. 오류가 발생하는게 어찌보면 좋은 신호인거죠.\n\n> ISR 전략을 취하는 경우 정해진 주기마다 스크립트 파일을 돌리는건가요? on-demand 방식이라면 stale 같은 상태를 페이지 별로 관리해야하는건가요?\n\nNextJS는 자체적으로 이 옵션을 지원하기도 하는데, 다양한 전략이 있다고 생각해요.\n항상 빌드를 하는게 아니라, 일단 SSR로 페이지를 띄워놓고 node-cron 같은걸 이용해서 정해진 시간마다 리렌더링을 해줄수도 있답니다!\n\n- https://zuminternet.github.io/nestjs-custom-decorator/\n\n이 글을 참고해주세요!\n\n> window.__INITIAL_DATA__ 와 같은 방식으로 데이터를 내려주게 되면 보안상의 문제가 있을거 같은데, 민감한 데이터나 토큰 같은 정보들은 어떻게 내려줘야할까요?\n\n토큰은 헤더를 통해서 내려주면 된답니다 ㅎㅎ\n혹은 데이터를 내려주기보단 렌더링을 해서 내려주거나!?\n\n사실 잘 생각해보면 브라우저에서 렌더링을 한다는게 결국 민감한 데이터에 접근하는거라..\n토큰을 페이지에 직접적으로 노출하는게 아니라면 CSR과 큰 차이는 없다고 생각해요.\n\n아니면 일부 데이터만 client에서 호출할 수 있도록 구성한다거나!?\n",
+    "assignment": {
+      "name": "STEP18 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/27"
+    }
+  },
+  {
+    "passed": true,
+    "name": "강승훈",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/35"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "고다솜",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/4"
+    }
+  },
+  {
+    "passed": true,
+    "name": "곽정원",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/1"
+    }
+  },
+  {
+    "passed": false,
+    "name": "권연욱",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/27"
+    }
+  },
+  {
+    "passed": false,
+    "name": "권지현",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": false,
+    "name": "김단헌",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": true,
+    "name": "김대현",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/22"
+    }
+  },
+  {
+    "passed": false,
+    "name": "김도현",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/41"
+    }
+  },
+  {
+    "passed": true,
+    "name": "김민석",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/13"
+    }
+  },
+  {
+    "passed": false,
+    "name": "김민지",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/39"
+    }
+  },
+  {
+    "passed": false,
+    "name": "김성민",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/15"
+    }
+  },
+  {
+    "passed": true,
+    "name": "김소리",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/33"
+    }
+  },
+  {
+    "passed": true,
+    "name": "김우정",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/20"
+    }
+  },
+  {
+    "passed": true,
+    "name": "김준모",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/30"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "김채영",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/3"
+    }
+  },
+  {
+    "passed": false,
+    "name": "김현우",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": false,
+    "name": "남은주",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": false,
+    "name": "노유리",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/16"
+    }
+  },
+  {
+    "passed": false,
+    "name": "도희정",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/40"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "박수범",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/6"
+    }
+  },
+  {
+    "passed": false,
+    "name": "박용태",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": true,
+    "name": "박지영",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/24"
+    }
+  },
+  {
+    "passed": false,
+    "name": "박창수",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": true,
+    "name": "박형우",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/7"
+    }
+  },
+  {
+    "passed": true,
+    "name": "박희정",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/28"
+    }
+  },
+  {
+    "passed": false,
+    "name": "손승현",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/11"
+    }
+  },
+  {
+    "passed": false,
+    "name": "신수빈",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/37"
+    }
+  },
+  {
+    "passed": true,
+    "name": "안소은",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/29"
+    }
+  },
+  {
+    "passed": false,
+    "name": "안재현",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/21"
+    }
+  },
+  {
+    "passed": true,
+    "name": "양진성",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/17"
+    }
+  },
+  {
+    "passed": false,
+    "name": "오새듬",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/18"
+    }
+  },
+  {
+    "passed": false,
+    "name": "오태준",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/25"
+    }
+  },
+  {
+    "passed": true,
+    "name": "윤지훈",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/9"
+    }
+  },
+  {
+    "passed": false,
+    "name": "이예인",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": true,
+    "name": "이윤지",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/19"
+    }
+  },
+  {
+    "passed": true,
+    "name": "이정민",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/32"
+    }
+  },
+  {
+    "passed": true,
+    "name": "이현지",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/31"
+    }
+  },
+  {
+    "passed": true,
+    "name": "전이진",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/23"
+    }
+  },
+  {
+    "passed": true,
+    "name": "전희재",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/2"
+    }
+  },
+  {
+    "passed": true,
+    "name": "정나리",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/10"
+    }
+  },
+  {
+    "passed": false,
+    "name": "정한슬",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/34"
+    }
+  },
+  {
+    "passed": false,
+    "name": "주민수",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/36"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "진재윤",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/12"
+    }
+  },
+  {
+    "passed": false,
+    "name": "차현빈",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "천진아",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/14"
+    }
+  },
+  {
+    "passed": false,
+    "name": "한선민",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/26"
+    }
+  },
+  {
+    "passed": true,
+    "name": "한세준",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/8"
+    }
+  },
+  {
+    "passed": false,
+    "name": "현채은",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": true,
+    "name": "황준태",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP19 성능 최적화 기본과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/5"
+    }
+  },
+  {
+    "passed": true,
+    "name": "강승훈",
+    "feedback": "안녕하세요 승훈님! 마지막 과제 잘 진행해주셨네요 ㅎㅎ 고생하셨습니다!\n\n> 실제 프로젝트에서는 이만큼 최적화 할 내용이 없어서(?) 일수도 있지만, 이렇게 memo와 useMemo, useCallback을 많은 곳에 쓰는 게 맞나? 생각이 들었습니다.\n\n메모이제이션이라는 것의 특성이 그렇네요.. ㅎㅎ\n자식 요소에 대한 메모이제이션을 하려고 하면, 결국 이와 연관된 모든 것들에 대해 메모이제이션을 하다보니 무척 많은 구간에 대한 메모이제이션을 적용하게 된달까..\n\n정신을 바짝 차리지 않으면 불필요한 혹은 효과가 없는 코드가 될 수 있으니 조심해야 한답니다~!\n\n---\n\n10주동안 너무 고생 많으셨어요!\n비록 항해는 끝났지만 궁금한 내용 있으면 언제든 디스코드를 통해 문의주세요~!\n감사합니다.\n남은 연말 잘 보내세요~!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/35"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "고다솜",
+    "feedback": "고생하셨습니다! 다솜님\n\n리액트 내부 코드 관점에서 성능적인 부분들을 잘 챙겨서 봐주신 것 같아요.\n아마 리액트 내부 코드를 직접 작성하면서 공부했던 내용들의 연장선상으로 볼 수 있을 것 같은데요. 값에 따라 우선순위를 조절하고 여러 디버깅, 성능 도구들을 활용해서 측정해보는 경험이 매우 좋아보입니다. 실제로 현업에서도 사용하는 방식이기도 하구요. 최근 컴파일러에서 많은 부분들을 해주기 때문에 의미가 조금 희석될 수 있지만, 그럼에도 의미가 있을거에요. \n개발자 도구에서 메모이제이션 되는것들이 시각화되니까 그런것들을 목적에 맞게 보면 좋을것 같구요.\n\n> 1. useAutoCallback 패턴의 프로덕션 적용 가능성\n\n말씀대로 컴파일러에서 커버가 가능한 부분일 수 있을 것 같은데요!\n비슷한 얘기일것 같은데 최근 추가된 요거! 한번 보시면 좋을것 같습니다.\nhttps://ko.react.dev/reference/react/useEffectEvent\n\n> 2. Context 분리 구조의 확장성과 대안\n\n지금의 구조도 나쁘지 않은 것 같아요. 실제 더 나은 개선법들이 궁금하다면 이전에 말씀드렸었던 리액트 훅을 활용한 마이크로 상태관리 라는 책 또는 zustand나 jotai의 내부 구현을 봐봐도 좋을것 같아요!\n\n> 3. useDeferredValue vs startTransition 선택 기준\n\n둘의 사용 사례는 명확하게 다른걸로 알고 있습니다. 값이냐 아니냐라는 기준으로요. 결국 레인 내에서 우선순위를 다르게 가져가고 렌더링에서 다르게 처리하지만, 과하게 사용하면 오히려 성능적인 이점을 줄이기 어렵다고 해서 잘 선별해서 골라서 사용해야 한다고 알고 있어요. 사실 엄청 큰 기대하는 만큼의 성능 개선이 있을까 싶기도하구요.. 선택에 대해서 더 궁금하다면 관련해서 가이드 문서를 보면 충분히 비교가 될 것 같아요!\n\n> 4. 성능 최적화의 우선순위와 측정 방법\n\n과한 최적화는 디버깅을 어렵게합니다. 특히 FE측의 최적화들, 메모이제이션들에 해당되는 부분들은 그런거같아요. 미연에 방지할 수 있는 너무 명백한 부분에 대해서만 먼저 대응하고 성능적인 이슈가 발생했을 때 그 후에 대응을 하는게 필요합니다. 뭐가 더 유의미하고 하다기보다는 문제가 생길때 대응을 하는 방식을 검토한다고 보면 좋을것 같아요.\n모든 최적화는 문제를 명확하게 하고 진행이 되어야 합니다. 말씀해주신 프로파일러나 크롬 개발자도구의 퍼포먼스 탭같은 것들을 기준으로 우선 파악을 하고 명확하게 한다음 수정하고 검토하는 반복을 거치면서 개선하시면 좋을것 같아요.\n\n오늘 내로 채점을 마쳐야 해서 시간에 쫓기고 있는데..  혹시나 답변이 조금 모호하거나 더 알고 싶은 내용이 있다면 편하게 알려주세요! 10주간 고생 정말 많이 하셨습니다. 앞으로도 화이팅입니다~~",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/4"
+    }
+  },
+  {
+    "passed": true,
+    "name": "곽정원",
+    "feedback": "Q. Context 선택적 구독 패턴의 한계\n\nA. 넵 말씀하신대로 useSchedule 훅은 다시 실행됩니다.\n다만 리렌더링이 일어날지 말지는 사실 결과물의 참조에요.\n\nschedulesMap의 참조가 바뀌었더라도 tableId를 통해 셀렉트된 schedules의 참조는 안바뀔 수 있기 때문에\n꼭 리랜더링을 유발하는 것은 아닙니다.\nuseSchedule이 아무리 많이 실행되도 리턴해주는 값의 참조가 바뀌지 않는다면 해당 값을 사용하는 컴포넌트가 리렌더링되진 않을테니까요.\n물론 컴포넌트도 메모이제이셔을 해야겠지만요.\n\nQ. DraggableSchedule의 memo 효과\n\nA. 네  이렇게 자주 업데이트되는 값의 경우 메모이제이션 효과가 제한적일 수밖에 없어요.\n근본적으로 자주 바뀌면 자주 바뀔수록 메모효과는 떨어질 수 밖에 없습니다.\n\n그래서 컴포넌트 리랜더 구조를  Context에 의존하기 보다.\n비록 조금 선언적이지 않더라도 별도의 이벤트를 받아서 처리하는 것이 더 효율적일 수 있습니다.\n드래그발생 -> 리랜더 보다는 드래그발생 -> 드래그 이벤트 발생 -> 선택적 업데이트\n이렇게 말이죠. \n움직임이 많은 UI는 리액트의 렌더링 플로우와 분리해서 구현하는 것이 좋을 것 같습니다.\n\n수고하셨습니다!\n",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/1"
+    }
+  },
+  {
+    "passed": false,
+    "name": "권연욱",
+    "feedback": "안녕하세요 연욱님!\n최적화가 이루어진 부분이 많이 없는 것 같아요 ㅠㅠ 추후에 꼭 마무리해보시면 좋을 것 같아요!\n\n> 실무에서 코드를 작성할 때 최적화가 필요한 부분을 구별해내는 판단 기준이 무엇인지, 그리고 성능 문제가 실제로 발생하기 전에 예방적으로 최적화를 적용하는 것과 문제가 발생한 후에 최적화하는 것 중 어떤 접근이 더 적절한지 조언을 받고 싶습니다!\n\n처음부터 문제를 인식하고 예방하는 것은 어렵다고 생각해요.\n그래서 일단 문제를 겪어보고, 해결해본다면 그 이후에는 내가 겪었던 문제에 대해 예민함이 생긴답니다.\n이 시점에 미리미리 문제를 예방할 수 있게 되는거죠! 저는 이렇게 경험 기반으로 체화시켰던 것 같아요 ㅎㅎ\n\n---\n\n비록 항해는 끝났지만 궁금한 내용 있으면 언제든 디스코드를 통해 문의주세요~!\n감사합니다.\n남은 연말 잘 보내세요~!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/27"
+    }
+  },
+  {
+    "passed": false,
+    "name": "권지현",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": false,
+    "name": "김단헌",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": true,
+    "name": "김대현",
+    "feedback": "잘했어요 대현! 이번 과제에서 \"왜 리렌더링이 발생하는가\"를 정확히 진단하고, 그에 맞는 해결책을 체계적으로 적용하는 접근법을 배우기 위함이었습니다. React DevTools Profiler로 실제 렌더링 횟수를 측정하면서 최적화를 해본 경험이 도움이 되었기를 바랍니다. 감으로 최적화하는 게 아니라 측정 기반으로 접근하는 습관은 실무를 할 때 도움이 될거에요!\n\nCQRS 패턴으로 Context를 Command/Query로 분리했다는 점이 눈에 들어오네요. 단순히 \"리렌더링 줄이기\"를 넘어서 \"상태를 읽는 쪽과 쓰는 쪽의 관심사가 다르다\"는 것을 이해하는 건 큰 이점이 있습니다. 이런 분리는 나중에 상태 관리 방식이 바뀌어도 영향 범위가 명확해지는 장점이 있습니다.\n\n또한 useDndContext를 TableOutline으로 격리한 부분도 잘했습니다. 자주 바뀌는 상태를 구독하는 컴포넌트는 최소한의 UI만 담당하게 한다는 원칙은 중요합니다. \n\nQ) Q&A에서 \"선택적 메모이제이션보다 전체 적용이 나을 수 있다\"는 내용이 인상깊었습니다. 현재는 리렌더링 비용이 큰 컴포넌트만 메모이제이션을 적용했는데 React 19의 React Compiler가 도입되면 수동 메모이제이션이 불필요해질 것으로 예상되는데, 현 시점에서도 전체 적용이 더 좋은 전략일까요?\n\n=> 실무에서 선택적 적용보다 전체 적용이 나을 수 있다는 건 컨벤션을 위함입니다. 언제는 해야한다라는걸 기준을 참 잡기가 어렵거든요. 또한 React Compiler가 나오면 수동 메모이제이션이 불필요해지는 건 맞지만, 아직 프로덕션 레디가 아니에요. 현 시점에서는 대현님이 하신 것처럼 \"왜 이 컴포넌트에 memo가 필요한지\" 이유를 설명할 수 있는 선택적 적용이 학습에는 더 좋다고 봅니다. \n\n=> 사실 논쟁의 다른 측면은 useMemo를 안 쓸 수 있도록 하는게 좋다는 측면도 있습니다. 리렌더링이 되어야 하는 이유가 2개이상이라면 컴포넌트의 책임이 여러개라는 의미이기도 하니까요.\n\n일단 본인이 최대한 모두의 의견들을 다 경험하고 나서 경험을 통해 선택을 할 수 있게 되기를 바랍니다.\n\n마지막 챕터까지 정말 수고 많으셨어요! 앞으로도 이렇게 손으로 부딪히면서 배우는 방식 계속 이어가시길 바랍니다. 고생하셨습니다! 화이팅입니다",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/22"
+    }
+  },
+  {
+    "passed": false,
+    "name": "김도현",
+    "feedback": "도현님 이번도 시간이 부족하셨던 것 같아요. ㅜㅜ\n항해가 종료된 나중에라도 한번 과제를 진행해보시면 좋을 것 같아요!\n적어도 솔루션 코드라도 한 번 분석하는 시간을 가져주시면 좋을 것 같습니다.\n그동안 수고하셨습니다!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/41"
+    }
+  },
+  {
+    "passed": true,
+    "name": "김민석",
+    "feedback": "안녕하세요 민석님! 마지막 과제 잘 진행해주셨네요 ㅎㅎ 고생하셨습니다!\n따로 궁금한 부분은 없는 것 같아서 피드백은 바로 마무리하겠습니다.\n\n\n10주동안 너무 고생 많으셨어요!\n비록 항해는 끝났지만 궁금한 내용 있으면 언제든 디스코드를 통해 문의주세요~!\n감사합니다.\n남은 연말 잘 보내세요~!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/13"
+    }
+  },
+  {
+    "passed": true,
+    "name": "김민지",
+    "feedback": "안녕하세요 민지님!\n심화과제는 잘 해주셨는데, 기본과제의 경우 현재 시간표 목록이 아예 안 나오고 있네요 ㅠㅠ 아쉽습니다.\n\n현재 특별하게 궁금한 부분은 없는 것 같아서 피드백은 바로 마무리하겠습니다.\n10주간 고생 많으셨어요!\n\n비록 항해는 끝났지만 궁금한 내용 있으면 언제든 디스코드를 통해 문의주세요~!\n감사합니다.\n남은 연말 잘 보내세요~!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/39"
+    }
+  },
+  {
+    "passed": false,
+    "name": "김성민",
+    "feedback": "성민님 이번엔 시간이 부족하셨던 것 같아요. \n항해가 종료된 나중에라도 한번 과제를 진행해보시면 좋을 것 같아요!\n적어도 솔루션 코드라도 한 번 분석하는 시간을 가져주시면 좋을 것 같습니다.\n그동안 수고하셨습니다!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/15"
+    }
+  },
+  {
+    "passed": true,
+    "name": "김소리",
+    "feedback": "소리님 고생하셨습니다 ㅎㅎ\n살짝 감을 잡으면 안되고! 여유가 있으실 때 한 번 깊게 파보면 좋을것 같아요. 앞으로 정말 많이 사용하고 잘 사용하면 현업에서 크게 도움을 받을 수 있거든요. 모호한 부분들도 줄어들고 개선에 대한 성과들도 만들 수 있고요.\n추후에 성능 개선을 진행하실때는 시간, 연산등에 대해서도 지표를 측정하는 방식들을 살펴보고 꼭 적용해보시면 좋을것 같습니다. \n\n10주간 고생하셨고 소리님도 새해 복 많이받으세요!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/33"
+    }
+  },
+  {
+    "passed": true,
+    "name": "김우정",
+    "feedback": "고생하셨습니다! 우정님!!!\n\n리액트 내부 코드 관점에서 성능적인 부분들을 잘 챙겨서 봐주신 것 같아요.\n아마 리액트 내부 코드를 직접 작성하면서 공부했던 내용들의 연장선상으로 볼 수 있을 것 같은데요. 값에 따라 우선순위를 조절하고 여러 디버깅, 성능 도구들을 활용해서 측정해보는 경험이 매우 좋아보입니다. 실제로 현업에서도 사용하는 방식이기도 하구요. 작성해주신것처럼 명확하게 개선 전 후에 대해서 시간을 관리하고 측정하는 습관을 가져가시면 현업에서도 좋을것 같습니다.\n\n> React.memo, useCallback, useMemo를 적용해도 여전히 리렌더링이 발생하는 경우가 많았는데요. 코치님은 이런 상황에서 “메모이제이션을 더 할지, 구조를 바꿀지”를 어떻게 판단하시나요?\n\n사실 전에부터 계속 언급이 되고 있는 내용이긴 하지만, 리렌더링은 실제 성능을 나쁘게 하는데 영향을 크게 주지는 않죠. 커밋이 되고 DOM에 반영이 되는 비용이 크게 되는데요. 해당 부분에 있어 만약 업데이트 되는 내용이 많다면 메모이제이션을 적용하게 되고, 그럼에도 구조가 나아지기 어렵다면 컴포넌트 트리 구조를 개선하거나 상태를 어떻게 활용할지에 대해 고민하는것 같아요. 대신 위에서 작성해주신것처럼 명확하게 시간, 계산을 근거로 허용되는 범위내에 들어올때까지, 가장 단순한 방식으로요!\n\n오늘 내로 채점을 마쳐야 해서 시간에 쫓기고 있는데..  혹시나 답변이 조금 모호하거나 더 알고 싶은 내용이 있다면 편하게 알려주세요! 10주간 고생 정말 많이 하셨습니다. 앞으로도 화이팅입니다~~",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/20"
+    }
+  },
+  {
+    "passed": true,
+    "name": "김준모",
+    "feedback": "잘했어요 준모! 이번 과제에서 \"왜 리렌더링이 발생하는가\"를 진단하고 해결책을 적용하는 접근법을 배우기 위함이었습니다. 측정 기반으로 최적화하는 습관은 실무를 할 때 도움이 될 거예요!\n\nPromise.all 내부에서 await를 사용하면 직렬 처리가 된다는 걸 직접 발견하고 수정한 부분이 좋았어요. 그리고 \"데이터 캐싱 vs Promise 캐싱\"의 차이를 깊이 파고든 점이 인상적입니다. 병렬 실행 환경에서는 요청이 거의 동시에 시작되기 때문에 데이터가 아닌 Promise 자체를 캐싱해야 한다는 통찰은 실무에서도 자주 마주치는 패턴이에요. 에러 시 캐시를 삭제하는 처리까지 넣은 것도 꼼꼼하네요.\n\nQ) 최적화 진행할 때 어떤 방법/라이브러리/도구를 활용하는지, 실무에서 활용도 높은 것들이 궁금합니다.\n\n=> 측정 도구로는 React DevTools Profiler, Chrome Performance 탭, Lighthouse가 기본이에요. 번들 분석은 webpack-bundle-analyzer나 vite의 rollup-plugin-visualizer를 많이 씁니다. 실무에서는 Sentry 같은 모니터링 도구로 실제 사용자 환경의 성능을 추적하기도 해요.\n\n=> 라이브러리 측면에서는 이번에 직접 구현한 Promise 캐싱 같은 패턴이 react-query나 SWR에 이미 내장되어 있어요. 현재 프론트엔드는 거의 대부분 개발이 될만큼 되어서 상용 라이브러리들의 \"왜 그렇게 만들어졌는지\"를 이번 과제를 통해 체감했다면 무엇을 써야할지 감이 더 잘 잡히게 될거에요. 포트폴리오에서는 직접 구현한 경험을 통해 본질을 설명할 수 있고 라이브러리들이 어떤 가치를 주고자 하는지 경험까지 둘 다 보여주면 좋습니다.\n\n마지막 챕터까지 정말 수고 많으셨어요! \"왜 이렇게 동작하는가\"를 끝까지 파고드는 방식 계속 이어가시길 바랍니다. 고생하셨습니다! 화이팅입니다",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/30"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "김채영",
+    "feedback": "Q. 실무에서의 성능 최적화 진행 방식에 대해 궁금합니다.\n\nA. 말씀하신 내용이 모두 맞다고 할 수 있을 것 같아요.\n애초에 고려해야 할 성능은 당연히 고려해야하고,\n성능에 민감할 수 있는 코드는 조금 더 성능을 고려해서 개발을 해요.\n그렇게하고 배포 이후 성능 이슈가 발견되면 성능 개선 업무로 별도로 진행을 합니다 :)\n어느 수준까지라고 한다면, 일단 할 수 있는 것까진 하고\n실제 테스트시 성능에 문제가 없고 더이상 할 것도 안보이면 멈추는 것이죠\n다만 테스트시 성능에 문제가 아직도 있다면 해결할때까지 파야죵..\n문제가 없다고 판단하는 기준은 유저가 사용했을때 문제가 없는지 쾌적한지가 기준인 것 같아요.\n만약 그기준을 룰로 만들고 싶다면,\n룰로 정해도 좋을 것 같습니다. \n실제로 예를들어 LCP는 어느정도까지 나와야한다 이런 기준이 있는 회사들이 많습니다.\n\nQ. 성능 최적화를 위한 CI 설계에 대해 궁금합니다.\n\nA. CI에서하는 경우도 있지만 사실 CI중에 라이트하우스를 통해 진행하는\n성능 확인으로는 모든 것을 커버하진 못하는 것 같아요.\n개발자 혹은 협업자들에게서 혹은 유저에게 오는 VOC를 발견되는 경우도 많아요.\n그럴때 다시 과제로 만들어 해결될때까지 개발합니다. \n조금 더 정확히 확인하려면 테스트케이스가 성능을 측정하고 성능에 의해 테스트가 깨질 수 있게 만들면 될 것 같습니다.\n성능에 민감한 코드일수록 도움이 될 것 같습니다.\n\n블로그도 봤는데요.\n우와 채영님 정말 열정이 느껴집니다 :)\n이번 항해를 통해 많은 것을 배우신 분중 꼽을만한 분이실 것 같아요!\n수고하셨습니다!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/3"
+    }
+  },
+  {
+    "passed": false,
+    "name": "김현우",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": false,
+    "name": "남은주",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": false,
+    "name": "노유리",
+    "feedback": "엇..유리님 바쁘셨나봐요.\n이번 주 과제에 있어서 사실 리액트 깊게 보는 부분에 대해 랩업을 할 수 있는 시기기도 했고 현업과 가까운 과제이기도 했는데요. 마지막 주차인 만큼 꼭 여유가 있는 가까운 시기에 이 과제를 마무리 하고 이야기 나눠볼 수 있으면 좋겠네요. \n\n10주간 고생하셨고 앞으로도 화이팅입니다!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/16"
+    }
+  },
+  {
+    "passed": false,
+    "name": "도희정",
+    "feedback": "안녕하세요 희정님! 과제를 다 하기에는 시간적 여유가 없었나보군요 ㅠㅠ 아쉽습니다. 따로 궁금한 부분은 없는 것 같아서 피드백은 바로 마무리하겠습니다.\n\n10주동안 너무 고생 많으셨어요!\n비록 항해는 끝났지만 궁금한 내용 있으면 언제든 디스코드를 통해 문의주세요~!\n감사합니다.\n남은 연말 잘 보내세요~!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/40"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "박수범",
+    "feedback": "Q. React 19(React Compiler)와 수동 최적화의 미래\n\nA. 리액트가 컴파일러를 통해 최적화 하는것은 예측가능한 범위내의 습관적인 최적화를 반복적으로 하는 것의 피로도를 줄여주는 역할이라고 생각합니다.\n물론 여러최적화를 추가로 하고 있을 것이고 앞으로 발전 가능성은 얼마든지 충분히 있어요.\n다만 성능 최적화라는 것이 단순하게 어떤 영역에서만 발생하는 것도 아니고 UI는 복잡하기 때문에 성능에 영향을 주는 코드가 리액트가 자동으로 파악하기 힘든 부분도 분명있습니다.\n렌더링 파이프라인에 대해서 신경안쓰고 만들 수 있도록 발전은 하겠지만(덜신경쓰게만들수록 좋은 프레임웍이니까요)\n성능에 대한 고민은 다양한 부분에서 필요하다고 생각합니다.\n렌더링 파이프라인을 알고 리액트를 사용하는 사람과 그렇지 않은 사람은 분명 코드래밸에서 차이가 날 수밖에 없으니까요.\n이것은 어떻게보면 AI시대의 우리의 고민과 닿는 부분이 있는 것 같아요.\n다만 이렇게 생각해보면 어떨까요?\n깊은 이해가 있는 개발자와 없는 개발자.\n어떤 개발자가 더 나은 개발자 일까요?\n그리고 어차피 아직은 면접볼때 이런 이해에 대한 질문을 많이 하기때문에 아직은 필요합니다. :)\n\nQ. 실무에서의 '최적화와 개발공수의 우선순위\n\nA. 애초에 고려해야 할 성능은 당연히 고려해야하고,\n성능에 민감할 수 있는 코드는 조금 더 성능을 고려해서 개발을 해요.\n그렇게하고 배포 이후 성능 이슈가 발견되면 성능 개선 업무로 별도로 진행을 합니다 :)\n어느 수준까지라고 한다면, 일단 할 수 있는 것까진 하고\n실제 테스트시 성능에 문제가 없고 더이상 할 것도 안보이면 멈추는 것이죠\n다만 테스트시 성능에 문제가 아직도 있다면 해결할때까지 파야죵..\n문제가 없다고 판단하는 기준은 유저가 사용했을때 문제가 없는지 쾌적한지가 기준인 것 같아요.\n만약 그기준을 룰로 만들고 싶다면,\n룰로 정해도 좋을 것 같습니다. \n실제로 예를들어 LCP는 어느정도까지 나와야한다 이런 기준이 있는 회사들이 많습니다.\n저희 회사도 기준은 있지만 점수보다는 LCP는 몇 ms이하 이런 기준입니다.\n\nQ. 현업 경험 부재와 심화 과제 경험의 이력서 활용 전략\n\nA. 제일 좋은것은 실무의 녹여내서 그것을 이력서에 작성하는 것입니다.\n이게 가장 효과적이고요 그외에는 어떻게보면 부족한 성과일수밖에 없을 것 같아요.\n\n깊은 기술적인 이해로 사이드프로젝트를 진행하거나 블로그를 작성할 수 있을 것 같습니다.\n물론 둘다하면 더 좋을 것 같아요 :) \n경쟁력은 실무에 녹인 것 보단 떨어질 수 있지만 없는 것 보단 나을 수 밖에 없을 것 같아요.\n어떤 강력한 한방 보다는 나는 이런 개발자라는 태도의 개념으로 풀어가는게 좋을 것 같습니다.\n\n\n크리스마스까지 과제하시느라 정말 고생많으셨어요 ㅜㅜ\n그동안 배우신 것을 토대로 더나은 커리어 더나은 성과를 만들 수 있길 바라겠습니다.\n\n화이팅!!!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/6"
+    }
+  },
+  {
+    "passed": false,
+    "name": "박용태",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": true,
+    "name": "박지영",
+    "feedback": "Q. SearchDialog.tsx의 filteredLectures 계산을 현재는 전체 searchOptions를 의존성으로 묶어 useMemo로 감싸 두었는데, 더 세분화하거나 계산 비용을 줄일 수 있는 구조 개선이 있을지 궁금합니다.\n\nA. 현재 코드에서 저라면 두가지 최적화를 할 것 같아요..\n\n말씀하신대로 의존성 분리와 Set() 사용입니다.\n\n말씀하신대로 의존성을 분리해서 계산로직을 효율적으로 돌릴 수 있고,\nArray.includes보단 Set을 사용해 탐색비용을 줄이는 것입니다.\nSet은 중복이 허용되지 않는 대신 일조으이 해시테이블이기때문에 탐색이 아니라 O(1)로 해시키를 찾는 구조입니다.\nincludes는 갯수 만큼 비교를 하죠.\n\nconst gradesSet = useMemo(\n  () => new Set(searchOptions.grades),\n  [searchOptions.grades]\n);\n\n이렇게 사용하면서\n\n gradesSet.has(lecture.grade) 이렇게 비교를 할 것 같습니다 :) \n\n\n수고하셨습니다!\n",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/24"
+    }
+  },
+  {
+    "passed": false,
+    "name": "박창수",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": true,
+    "name": "박형우",
+    "feedback": "잘했어요 형우! 이번 과제에서 \"왜 리렌더링이 발생하는가\"를 진단하고 해결책을 적용하는 접근법을 배우기 위함이었습니다. 측정 도구들(Lighthouse, Network 탭, Performance 탭, React Profiler)을 언제 사용하는지 정리하고 실제로 활용해본 경험이 도움이 되었기를 바랍니다.\n\nBefore/After를 명확하게 비교하고, 실제 측정값까지 기록해본 점이 좋았어요. 감이 아니라 숫자로 최적화 효과를 확인하는 습관은 실무에서 정말 중요합니다.\n\n특히 원본 참조 유지 개념을 이해하고 적용한 부분이 눈에 들어오네요. {...targetSchedule} 대신 targetSchedule을 반환하는 게 왜 중요한지 파악한 거죠. React의 리렌더링은 결국 참조 비교이기 때문에, 불필요한 복사를 피하는 게 memo 최적화의 핵심이에요.\n\n(100 100 100 100 뿌듯) ㅋㅋ Lighthouse 100점 달성 축하드려요! 점수 자체보다 \"왜 이 점수가 나왔고, 어떻게 개선했는지\"를 이해하는 과정이 더 값집니다. 메타 태그 추가, 버튼 색상 대비 같은 세부 사항까지 챙긴 꼼꼼함도 좋았어요.\n\n마지막 챕터까지 정말 수고 많으셨어요! 개발자 도구를 새롭게 활용하게 됐다는 성장 포인트, 앞으로도 계속 확장해가시길 바랍니다. 고생하셨습니다! 화이팅입니다",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://hyeongwoo94.github.io/front_7th_chapter4-2/"
+    }
+  },
+  {
+    "passed": true,
+    "name": "박희정",
+    "feedback": "안녕하세요 희정님! 과제 잘 진행해주셨네요 ㅎㅎ\n\n> Context 분리, memoization, 컴포넌트 구조 개선 등 다양한 최적화 기법 중 우선순위를 어떻게 두는지, 즉 “무엇부터 최적화하는 게 가장 효율적인지” 피드백을 받고 싶습니다.\n\n말씀해주신 것들을 토대로 생각해보면, 결국 최적화를 하기 위해선 컴포넌트 구조 개선이 제일 중요하다고 생각해요.\n그렇게 해야 컨텍스트나 메모이제이션도 효과적으로 적용할 수 있게 된답니다!\n\n컴포넌트도 단일책임 원칙을 기반으로 작성해야 추후에 개선할 때 효과적이랄까... 그런 것 같아요 ㅋㅋ\n\n다만 내가 겪는 문제에 따라 우선순위가 달라진다고 생각해요.\n\ncontext의 경우 개선이 필요할 수도 있고 아닐 수도 있는데, 아마 대부분의 경우에는 개선하지 않아도 무방하다고 생각해요 ㅎㅎ\n메모이제이션은 필요할 때 적용하면 좋긴 한데, 그걸 판단하는게 꽤 어렵답니다... ㅠㅠ\n\n> 상태 관리와 렌더링 성능을 동시에 고려할 때 Context + memoization” 조합이 최선인지 혹은 “Recoil, Jotai, Zustand 같은 전역 상태 관리 라이브러리”로 전환하는 게 더 바람직한지 궁금합니다.\n\n성능에 민감한 서비스라면 context보단 상태관리 라이브러리를 사용하는게 좋다고 생각해요.\ncontext는 성능 최적화에 적합한 도구는 아니랍니다!\n\n---\n\n10주간 고생 많으셨어요!\n비록 항해는 끝났지만 궁금한 내용 있으면 언제든 디스코드를 통해 문의주세요. 감사합니다.\n남은 연말 잘 보내세요~!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/28"
+    }
+  },
+  {
+    "passed": false,
+    "name": "손승현",
+    "feedback": "승현님 이번엔 시간이 부족하셨던 것 같아요. \n항해가 종료된 나중에라도 한번 과제를 진행해보시면 좋을 것 같아요!\n적어도 솔루션 코드라도 한 번 분석하는 시간을 가져주시면 좋을 것 같습니다.\n그동안 수고하셨습니다!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/11"
+    }
+  },
+  {
+    "passed": false,
+    "name": "신수빈",
+    "feedback": "안녕하세요 수빈님!\n현재 결과물을 확인해보니 API 호출 외에는 최적화가 제대로 이루어진 것 같지 않네요 ㅠㅠ 아쉽습니다.\n\n특별하게 궁금한 부분은 없는 것 같아서 피드백은 바로 마무리하겠습니다.\n\n10주간 고생 많으셨어요!\n비록 항해는 끝났지만 궁금한 내용 있으면 언제든 디스코드를 통해 문의주세요. 감사합니다.\n남은 연말 잘 보내세요~!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/37"
+    }
+  },
+  {
+    "passed": true,
+    "name": "안소은",
+    "feedback": "Q. React.memo의 JSON.stringify 비교 함수\n\nA. 오.! 신박하네요 ㅎㅎ 글쎄요 저는 오버엔지니어링인 것 같지않은데요.\n비용은 배열 순회 방식과 스트링 비교 방식을 성능 측정을 통해 확인해보시면 좋을 것 같아요.\n둘중 성능이 좋은 것으로 선택해도 무방할 것 같아요.\n\n이련식으로 스트링으로 변환해서 비교하는 방식은 종종 사용됩니다. \n저도 가끔사용하고  탄스택쿼리의 쿼리키도 이런식으로 스트링으로 변화해서 관리하는 것으로 기억하고 있습니다.\n하지만 stringify가 아무래도 크기에 따라 영향을 받기 때문에 오히려 성능이 떨어질수도 있어요.\n이건 실제로 측정을 해보시면 좋을 것 같습니다.\n아무튼 오버엔지니어링이라고 생각하지 않습니다.\n성능 최적화 단계에서는 부분적으로 오버엔지니어링이 허용되는 단계인 것 같아요.\n\nQ. VirtualScroll 스크롤 이벤트 최적화\n\nA. 유저의 조작에 의한 처리는 말씀하신대로 디바운스나 스로틀을 활용하면 좋습니다.\n저도 버츄얼 스크롤을 구현할때는 늘 사용했던 것 같아요.\n다만 딜레이 되는 동안 UX에 문제가 없을지 UI적인 보완이 필요할지에 대한 고민은 필요 할 것 같습니다.\n딜레이는 사실 정해진 값은 없을 것 같아요 요건 실제로 테스트를 해보면서 확인하시면 좋을 것 같아요.\n\nQ. useFetch 훅 구조\n\nA. 혹시 실제 라이브러리 어떤 것을 이야기하는 것일까요?\n아마 무언가 의도가 있을 것이고 그 의도가 중요할 것 같아욥..\n일단 일반적으로 생각해봤을때 멀티인스턴스를 고려해야할때는 컨텍스트가 더 유용할 것 같아요.\n오픈소스 라이브러리를 만든다면 언제 어디서 몇번 사용될지 모르기 때문에\n전역성이 가지는 충돌과 안정성에 문제가 있어욥.\n그래서 컨텍스트 구분을 통해 영역을 완전히 분리할 수 있겠죠?\n테스트할때도 전역보다는 별도의 프로바이더로 분리하는 편이 조금더 테스트 독립성 유지에도 편할 것 같아요 :) \n\n수고하셨습니다!! 소은님",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/29"
+    }
+  },
+  {
+    "passed": false,
+    "name": "안재현",
+    "feedback": "안녕하세요 재현님! 과제가 다 진행되지 않았군요 ㅠㅠ 아쉽습니다.\n따로 궁금한 부분은 없는 것 같아서 피드백은 바로 마무리하겠습니다.\n\n10주동안 너무 고생 많으셨어요!\n비록 항해는 끝났지만 궁금한 내용 있으면 언제든 디스코드를 통해 문의주세요~!\n감사합니다.\n남은 연말 잘 보내세요~!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/21"
+    }
+  },
+  {
+    "passed": true,
+    "name": "양진성",
+    "feedback": "고생하셨습니다 진성님 ㅎㅎ\n\n아마 리액트 내부 코드를 직접 작성하면서 공부했던 내용들의 연장선상으로 볼 수 있을 것 같은데요. 값에 따라 우선순위를 조절하고 여러 디버깅, 성능 도구들을 활용해서 측정해보는 경험이 매우 좋아보입니다. 실제로 현업에서도 사용하는 방식이기도 하구요. 작성해주신것처럼 명확하게 개선 전 후에 대해서 시간을 관리하고 측정하는 습관을 가져가시면 현업에서도 좋을것 같습니다. 성능 지표에 있어서는 꼭 얼마나 나아졌다는 건지도 체크하시구요!\n\n> 코치님께서는 어떤 기준으로 \"이 경우엔 메모이제이션이 필요하다\"고 판단하시는지 궁금합니다\n\n사실 '딱 우리 성능개선하자!'라는 날이 생기지 않는한 사용자가 체감할 수 있을 정도의 문제가 발생해야지만 성능 개선을 진행하는 것 같아요 실무에서는. 주로 예상치못한 부분에서 문제가 발생하고 일반적인 방식으로 해결하기보다는 서비스 성격에 맞춰 깊게 수정하는 편이 많았던 것 같거든요. 특정횟수보다는 프로파일러에서 지표상으로 접근하는게 좋겠지만, 일반적으로는 그런것 같습니다!\n\n오늘 내로 채점을 마쳐야 해서 시간에 쫓기고 있는데..  혹시나 답변이 조금 모호하거나 더 알고 싶은 내용이 있다면 편하게 알려주세요! 10주간 고생 정말 많이 하셨습니다. 앞으로도 화이팅입니다~~",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/17"
+    }
+  },
+  {
+    "passed": false,
+    "name": "오새듬",
+    "feedback": "새듬님 ㅜㅡㅜ 시간이 부족하셨군요.\n몇가지 작성해주신 문서만 봐도,\n시간만 있었다면 충분히 다 잘해주셨을거라 생각합니다.\n그동안 수고 많으셨고요.\n앞으로 좋은 커리어 많이 만드세요! 훌륭한 개발자 되세요!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/18"
+    }
+  },
+  {
+    "passed": false,
+    "name": "오태준",
+    "feedback": "태준님 이번엔 시간이 부족하셨던 것 같아요. \n항해가 종료된 나중에라도 한번 과제를 진행해보시면 좋을 것 같아요!\n적어도 솔루션 코드라도 한 번 분석하는 시간을 가져주시면 좋을 것 같습니다.\n그동안 수고하셨습니다!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/25"
+    }
+  },
+  {
+    "passed": true,
+    "name": "윤지훈",
+    "feedback": "안녕하세요 지훈님! 마지막 과제 잘 진행해주셨네요!\n\n> 코치님은 \"여기는 최적화가 필요하겠는데?\"를 어떤 기준으로 판단하시는지 궁금합니다! 이번 과제를 하면서 좀 뚜렷한 분석결과를 가지고 진행했다기 보다는, \"음 일단 이거 해봐!\"식으로 최적화가 얼떨결에 얻어걸린 느낌이라 ㅎ,, 발제 때나 Q&A때 모습을 보면 \"음... 여기에 memo 감사면 되겠는데?\", \"Context 조회 영역이랑 액션 영역 분리하면 해결되겠어\" 등 이러저러한 판단이 능숙하신 것 같아서 질문 드립니다!\n\n처음부터 문제를 인식하고 예방하는 것은 어렵다고 생각해요.\n그래서 일단 문제를 겪어보고, 해결해본다면 그 이후에는 내가 겪었던 문제에 대해 예민함이 생긴답니다.\n이 시점에 미리미리 문제를 예방할 수 있게 되는거죠! 저는 이렇게 경험 기반으로 체화시켰던 것 같아요 ㅎㅎ\n\n---\n\n10주간 고생 많으셨어요!\n비록 항해는 끝났지만 궁금한 내용 있으면 언제든 디스코드를 통해 문의주세요. 감사합니다.\n남은 연말 잘 보내세요~!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/9"
+    }
+  },
+  {
+    "passed": false,
+    "name": "이예인",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": true,
+    "name": "이윤지",
+    "feedback": "잘했어요 윤지! 이번 과제는 \"왜 리렌더링이 발생하는가\"를 진단하고 해결책을 적용하는 접근법을 배우기 위함이었습니다. React Profiler로 실제 렌더링을 측정하면서 최적화한 경험이 도움이 되었기를 바랍니다.\n\n\"... 처음에는 memo로 감싸면 리렌더링이 막힐 줄 알았는데, useContext를 쓰는 순간 memo가 무력화된다는 걸 몰랐습니다\"라는 경험 아주 좋습니다. 원리를 완전히 이해하지 않으면 그냥 이렇게 되겠지라고 생각하기 쉬워요. 제대로 되지 않는(?) 경험을 통해서 원리가 선명해지는 경험을 계속 해 나가길 바래요!\n\n마지막 챕터까지 정말 수고 많으셨어요! 리렌더링의 3가지 원인을 정리하고 각각의 해결법까지 체계적으로 이해한 과정이 인상적이에요. 고생하셨습니다! 화이팅입니다",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/19"
+    }
+  },
+  {
+    "passed": false,
+    "name": "이정민",
+    "feedback": "고생하셨습니다 정민님 ㅎㅎ\n조금 더! 드래그 관련해서 최적화를 할 수 있을거 같아요. \n몇 개 복제를 하지 않았음에도 드래그가 불가능해져서ㅠㅠ 심화과제는 불합격을 드렸습니다.\n\n아마 리액트 내부 코드를 직접 작성하면서 공부했던 내용들의 연장선상으로 볼 수 있을 것 같은데요. 값에 따라 우선순위를 조절하고 여러 디버깅, 성능 도구들을 활용해서 측정해보는 경험이 매우 좋아보입니다. 실제로 현업에서도 사용하는 방식이기도 하구요. 작성해주신것처럼 명확하게 개선 전 후에 대해서 시간을 관리하고 측정하는 습관을 가져가시면 현업에서도 좋을것 같습니다. 성능 지표에 있어서 조금 더! 개선할 수 있을 것 같은데 추후에 한번 더 다른 분들것들도 함께 보면 좋을것 같아요 ㅎㅎ\n\n오늘 내로 채점을 마쳐야 해서 시간에 쫓기고 있는데..  혹시나 답변이 조금 모호하거나 더 알고 싶은 내용이 있다면 편하게 알려주세요! \n저도 시작과 끝을 함께 할 수 있어서 너무 좋은 것 같은데요. 정말로 말로만이 아니라 필요한 것 있거나 궁금한 점 있으면 얼마든지 질문 주세요. 지금과 크게 다르지 않게 편하게 답변 드릴게요. 10주간 고생 정말 많이 하셨습니다. 앞으로도 화이팅입니다~~",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/32"
+    }
+  },
+  {
+    "passed": true,
+    "name": "이현지",
+    "feedback": "안녕하세요 현지님! 마지막 과제 잘 진행해주셨네요!\n\n특별하게 궁금한 부분은 없는 것 같아서 피드백은 바로 마무리하겠습니다.\n\n10주간 고생 많으셨어요!\n비록 항해는 끝났지만 궁금한 내용 있으면 언제든 디스코드를 통해 문의주세요. 감사합니다.\n남은 연말 잘 보내세요~!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/31"
+    }
+  },
+  {
+    "passed": true,
+    "name": "전이진",
+    "feedback": "이진님~ 고생하셨습니다!\n\n리액트 내부 코드 관점에서 성능적인 부분들을 잘 챙겨서 봐주신 것 같아요.\n아마 리액트 내부 코드를 직접 작성하면서 공부했던 내용들의 연장선상으로 볼 수 있을 것 같은데요. 값에 따라 우선순위를 조절하고 여러 디버깅, 성능 도구들을 활용해서 측정해보는 경험이 매우 좋아보입니다. 실제로 현업에서도 사용하는 방식이기도 하구요. 현재는 각 성능 지표가 얼만큼 딱 늘어났다 라는 것들을 수치화 하지는 않았던 것 같은데요. 성능 측정이라는게 결국 명확한 성과로 드러낼 수 있는 부분이니까 기록을 어떻게 측정하고 관리하는지 고민을 해보면 현업에서도 좋을것 같아요!\n\n> 성능 최적화를 위해 ScheduleTable을 ScheduleGrid, ScheduleItem 등으로 쪼개고 각각 메모이제이션을 적용했습니다.(src/components/ScheduleTables)\n\n음..! 우선 제가 봤을때는 그렇게 파편화가 발생하는 것처럼 보이지는 않아요. 컴포넌트의 분리도 적절하게 했고 폴더도 한 군데서 모아 관리하기 때문에 같은 곳에서 사용된다는 의미도 잘 드러낸다고 생각해요. 지금 코드와 맞지 않더라도 만약 정말 성능을 위해 억지로 컴포넌트를 분리해야 한다면 어디서 사용되는 코드인지 어떻게 사용되는 코드인지 사용되는 곳과, 비슷한 이야기를 하는 곳과 가까이 둬서 응집도를 높여보면 좋을것 같아요!\n\n오늘 내로 채점을 마쳐야 해서 시간에 쫓기고 있는데..  혹시나 답변이 조금 모호하거나 더 알고 싶은 내용이 있다면 편하게 알려주세요! 10주간 고생 정말 많이 하셨습니다. 앞으로도 화이팅입니다~~",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/23"
+    }
+  },
+  {
+    "passed": true,
+    "name": "전희재",
+    "feedback": "고생하셨습니다~ 희재님\n\n리액트 내부 코드 관점에서 성능적인 부분들을 잘 챙겨서 봐주신 것 같아요.\n아마 리액트 내부 코드를 직접 작성하면서 공부했던 내용들의 연장선상으로 볼 수 있을 것 같은데요. 값에 따라 우선순위를 조절하고 여러 디버깅, 성능 도구들을 활용해서 측정해보는 경험이 매우 좋아보입니다. 실제로 현업에서도 사용하는 방식이기도 하구요. 작성해주신것처럼 명확하게 개선 전 후에 대해서 시간을 관리하고 측정하는 습관을 가져가시면 현업에서도 좋을것 같습니다. 성능 지표에 있어서 조금 더! 개선할 수 있을 것 같은데 추후에 한번 더 다른 분들것들도 함께 보면 좋을것 같아요 ㅎㅎ\n\n> 1. 렌더링 최적화와 단일 진실 공급원(Single Source of Truth) 원칙의 균형점\n\n음.. 좋은 고민인데요. \n이런 부분들을 쉽게 해결해주는 구현을 살펴보려면 react-hook-form같은 form을 다루는 라이브러리에서 상태를 어떻게 관리하고 전파하는지 보면 좋을것 같아요. 컨트롤 방식과 언컨트롤 방식 모두 제공하고 있는데, 실제 구현법을 살펴보면 해당 고민에 대해 도움이 될 것 같아요!\n\nhttps://react-hook-form.com/\n\n> 2. 컴포넌트 분리 기준과 과도한 최적화 경계\n\n음.. 최적화라는게 섣부르게 시작하면 안된다고 늘 말하는데요. 실제로 구현은 단순하게 하되(리액트의 내부 최적화를 믿고) 실제 문제가 발생하면 해당 문제를 과제하시는데 사용하셨던 것처럼 퍼포먼스 탭이나 프로파일러로 규정하고 해당 문제를 해결하는거죠. 그 문제 해결 방법에 컴포넌트를 과하게 분리하는 것도 있을 것 같은데, 이 문제라는게 비즈니스 적으로 유저가 사용하기에 문제가 발생하는 부분이니 코드상으로 과하더라도 처리를 먼저 진행하고 우아한 구현 방법을 찾는 순서가 맞는것 같아요. 문제는 '느리다' 해결은 속도가 '빠르게한다'지 '구현을 잘 한다'가 아니니까요. (물론 잘 해야하지만)\n항상 실무에서 겪다보면 속도 이슈는 소소하고 깊고 여기에만 해당하는 수정을 해야하는 경우가 많더라구요. 그런 관점에서 이해해주시면 좋을것 같아요!\n\n오늘 내로 채점을 마쳐야 해서 시간에 쫓기고 있는데..  혹시나 답변이 조금 모호하거나 더 알고 싶은 내용이 있다면 편하게 알려주세요! 10주간 고생 정말 많이 하셨습니다. 앞으로도 화이팅입니다~~",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/2"
+    }
+  },
+  {
+    "passed": true,
+    "name": "정나리",
+    "feedback": "고생하셨습니다 나리님!\n\n모두 잘 작성해주신 것 같아요. 아마 리액트 내부 코드를 직접 작성하면서 공부했던 내용들의 연장선상으로 볼 수 있을 것 같은데요. 값에 따라 우선순위를 조절하고 여러 디버깅, 성능 도구들을 활용해서 측정해보는 경험이 매우 좋아보입니다. 실제로 현업에서도 사용하는 방식이기도 하구요. 작성해주신것처럼 명확하게 개선 전 후에 대해서 시간을 관리하고 측정하는 습관을 가져가시면 현업에서도 좋을것 같습니다.  \n\n오늘 내로 채점을 마쳐야 해서 시간에 쫓기고 있는데..  혹시나 답변이 조금 모호하거나 더 알고 싶은 내용이 있다면 편하게 알려주세요! 10주간 고생 정말 많이 하셨습니다. 앞으로도 화이팅입니다~~",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/10"
+    }
+  },
+  {
+    "passed": false,
+    "name": "정한슬",
+    "feedback": "한슬님 이번엔 시간이 부족하셨던 것 같아요.\n항해가 종료된 나중에라도 한번 과제를 진행해보시면 좋을 것 같아요!\n적어도 솔루션 코드라도 한 번 분석하는 시간을 가져주시면 좋을 것 같습니다.\n그동안 수고하셨습니다!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/34"
+    }
+  },
+  {
+    "passed": false,
+    "name": "주민수",
+    "feedback": "수고 많았어요 민수. 이번 과제는 \"왜 리렌더링이 발생하는가\"를 진단하고 해결책을 적용하는 접근법을 배우기 위함입니다. 지금까지 항해에서의 경험과 시간들이 도움이 되었기를 바래요! 수고 많았습니다. 화이팅입니다\n\n\n\n",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/36"
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "진재윤",
+    "feedback": "Q. 과제에서는 무한스크롤로 구현했지만, 실무에서 무한스크롤 → 가상스크롤로 전환하는 기준이 있을까요?\n\nA. 무한 스크롤과 가상스크롤은 목적이 다른 것 같아요~\n무한 스크롤은 성능보다는 사용자가 끝에 다다르면 자동으로 데이터 로드하는 즉 페이지네이션류의 UI종류 라고 볼 수 있는 반면,\n가상스크롤은 많은 데이터를 그릴때 성능을 고려하는 방법이지요..\n\nQ. 이번 과제에서 대부분의 컴포넌트에 memo를 적용했습니다. 모든 컴포넌트에 memo를 붙이는 것은 오버헤드인지, 아니면 기본으로 적용하는 편인지 궁금합니다.\n\nA. 그냥 무조건 적용한다기보다는 말씀하신대로 필요할때 적용합니다. 하지만 대부분 필요한 경우가 많긴 하죠 ㅎㅎ\n다만 부모가 렌더링되면 조건없이 다시 렌더링해야 하는 상황이면 성능 때문이 아니라 안씀으로 \"의도\"를 표현할 수 있을 것 같아요.\n생각보다 메모가 비용이 별로 안들어서 필요할때 부담없이 사용하셔도 됩니다.\n\nQ.  렌더링 문제로 인해서 Zustand 같은 상태관리 라이브러리를 도입하기도하나요?\n\nA.\n컨텍스트는 말씀하신대로 세밀한 렌더링 조율이 힘들기 때문에 상태가 자주 변경되지 않는 말그대로 \"공유\"자체가 목적일때 적합할 것 같아요.\n상태가 자주 변경되고 상태가 많은 경우라면 주스탠드같은 상태관리를 사용하는 것이 나은 것이죠.\n렌더링 뿐만 아니라 상태관리자체에도 여러가지 기능을 포함하고 있어서 상태관리도구를 사용합니다.\n반대로 탄스택쿼리와 같은 캐싱 기반 패치도구로 인해 공유해야할 상태를 캐시를 통해하게 되서 \n상태관리도구의 커버범위가 조금 줄어들기도 했습니다.\n\n수고하셨습니다!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/12"
+    }
+  },
+  {
+    "passed": false,
+    "name": "차현빈",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": true,
+    "theBest": true,
+    "name": "천진아",
+    "feedback": "안녕하세요 진아님! 마지막 과제에서 유종의 미를 거두어주셨군요 ㅎㅎ 멋있어요~!\n따로 궁금한 부분은 없는 것 같아서 피드백은 바로 마무리하겠습니다.\n\n비록 항해는 끝났지만 궁금한 내용 있으면 언제든 디스코드를 통해 문의주세요~!\n감사합니다.\n남은 연말 잘 보내세요~!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/14"
+    }
+  },
+  {
+    "passed": false,
+    "name": "한선민",
+    "feedback": "선민님 이번엔 시간이 부족하셨던 것 같아요.\n항해가 종료된 나중에라도 한번 과제를 진행해보시면 좋을 것 같아요!\n적어도 솔루션 코드라도 한 번 분석하는 시간을 가져주시면 좋을 것 같습니다.\n그동안 수고하셨습니다!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/26"
+    }
+  },
+  {
+    "passed": true,
+    "name": "한세준",
+    "feedback": "잘했어요 세준! 우선 과제 채점이 늦어져서 미안해요 ^^;; \n\n이번 과제는 \"왜 리렌더링이 발생하는가\"를 진단하고 해결책을 적용하는 접근법을 배우기 위함이었습니다. React Profiler로 실제 렌더링을 측정하면서 최적화한 경험이 도움이 되었기를 바래요\n\nuseAutoCallback 훅을 직접 만들어서 적용한 부분이 좋았어요. 콜백 참조는 고정하고 내부 로직만 최신 상태로 유지하는 패턴은 의존성 배열 관리 부담을 줄여주죠. 이 패턴이 모든 상황에 적합한 건 아니나 이러한 방식을 왜 사용하는지 어째서 제안이 되었는지 그 배경과 맥락을 꼭 이해하고 스스로 납득해서 \"아하!\" 하는 아하모먼트를 꼭 느껴보는게 중요합니다 :)\n\n마지막 챕터까지 정말 수고 많으셨어요! 멋집니다. 앞으로의 행보 응원할게요!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/8"
+    }
+  },
+  {
+    "passed": false,
+    "name": "현채은",
+    "feedback": "",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": ""
+    }
+  },
+  {
+    "passed": true,
+    "name": "황준태",
+    "feedback": "안녕하세요 준태님! 마지막 과제 잘 진행해주셨네요. 역시 믿고 보는 준태님의 과제입니다 ㅎㅎ\n\n---\n\n> React DevTools의 Profiler나 lighthouse 외에 실무에서 성능 측정에 추가로 사용하시는 도구가 있으신가요?\n\n흠.. 저는 크롬 개발자 도구에서 제공하는 성능탭, 네트워크탭 말고는 별도의 도구를 사용하진 않는 것 같아요.\n아마 센트리 정도..?\n센트리가 자연스럽게 Web Vitals에 대한 추이/추세를 볼 수 있도록 로그를 쌓아줬어요 ㅋㅋ\n\n> 성능 최적화와 유사한 작업들을 할 때, 문서화하는게 늘 고민인거 같아요. 코치님께서는 성능 최적화 등의 작업을 진행하시기 전, 후에 문서화를 하여 팀에 공유하시나요?\n\n팀원들이 함께 보면 좋을 내용의 경우 대체로 문서화를 했었어요.\n특히 요즘에는 AI가 어느정도의 내용은 커버해주다보니 큰 맥락 정도만 만들어서 공유해주면 AI가 꽤 잘 만들어준답니다 ㅎㅎ\n가령, git diff 같은걸 토대로 만들어본다거나!?\n\n> 언제 & 어떤 상황에서 문서화를 하시는지 궁금합니다!\n\n단순히 git log나 pr 등으로는 커버하기 어려운 내용에 대해서 문서화를 하기도 하고\n일을 진행하게된 \"원인\"에 대한 이해가 필요한 경우에 문서화를 하기도 했어요.\n\n그런데 이건 내가 하는 일의 맥락을 얼마나 디테일하게 공유하고 싶은지에 따라 달라지는 것 같네요 ㅎㅎ\n위에서도 언급했지만, AI가 있다보니 이제는 문서화에 대한 부담이 거의 없어진 상태여서, 단순 이슈 해결이 아니라면 대체로 문서화를 하려고 하는 편입니다.\n\n토스 같은 회사의 경우 \"빠르게 실패하고 나아가기\"가 목표라서, 이 경우에는 오히려 일부로 문서화를 하지 않는다고 해요. 어차피 결과가 확실하지 않으면 빠르게 폐기될 예정이니까요 ㅎㅎ\n\n회사마다 일하는 스타일이 다르기 때문에 이에 대한 고려도 필요하답니다~!\n\n---\n\n10주간 고생 많으셨어요!\n비록 항해는 끝났지만 궁금한 내용 있으면 언제든 디스코드를 통해 문의주세요. 감사합니다.\n남은 연말 잘 보내세요~!",
+    "assignment": {
+      "name": "STEP20 성능 최적화 심화과제",
+      "url": "https://github.com/hanghae-plus/front_7th_chapter4-2/pull/5"
     }
   }
 ]

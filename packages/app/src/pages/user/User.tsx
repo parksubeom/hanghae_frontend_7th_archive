@@ -1,6 +1,6 @@
 import type { GithubApiUsers, HanghaeUser } from "@hanghae-plus/domain";
 import { type PropsWithChildren, useMemo } from "react";
-import { Link, useNavigate } from "react-router"; // ✅ useNavigate 추가
+import { Link, useNavigate } from "react-router";
 import { Calendar, Clock, Github, StarIcon } from "lucide-react";
 import { useUserIdByParam, useUserWithAssignments } from "@/features";
 import { Badge, Card } from "@/components";
@@ -111,11 +111,11 @@ const AssignmentCard = ({ id, title, url, createdAt, theBest, body }: Assignment
 
                 <div className="flex items-center space-x-1">
                   <Calendar className="w-3 h-3" />
-                  <span>{formatDate(createdAt)}</span>
+                  <span suppressHydrationWarning>{formatDate(createdAt)}</span>
                 </div>
                 <div className="flex items-center space-x-1">
                   <Clock className="w-3 h-3" />
-                  <span>{readingTime.text}</span>
+                  <span suppressHydrationWarning>{readingTime.text}</span>
                 </div>
               </div>
             </div>
@@ -185,7 +185,6 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   );
 };
 
-// User 페이지 메타데이터 생성 함수
 export interface UserMetadataParams {
   userId: string;
   userName: string;
@@ -213,12 +212,9 @@ export const User = Object.assign(
     return (
       <div className="px-4 py-6">
         <div className="lg:flex lg:gap-8">
-          {/* 왼쪽 프로필 영역 */}
           <div className="lg:w-[300px]">
             <UserProfile {...user.github} name={user.name} />
           </div>
-
-          {/* 오른쪽 과제 목록 영역 */}
           <div className="lg:flex-1">
             <UserStats assignments={assignmentList} />
             <AssignmentsList items={assignmentList} />

@@ -1,4 +1,4 @@
-import { type PropsWithChildren } from "react";
+import { type PropsWithChildren, useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import { type Assignment, PageProvider, usePageData } from "@/providers";
 import { useAssignmentById, useFeedback, useUserIdByParam } from "@/features";
@@ -28,21 +28,18 @@ const AssignmentDetailProvider = ({ children }: PropsWithChildren) => {
   );
 };
 
-
 function formatDate(date: string | Date): string {
   const dateObj = typeof date === "string" ? new Date(date) : date;
 
-  // 1. Intl API를 사용하여 시간대를 'Asia/Seoul'로 강제합니다.
   const formatter = new Intl.DateTimeFormat("ko-KR", {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
-    timeZone: "Asia/Seoul", 
+    timeZone: "Asia/Seoul",
   });
 
-  // 2. 포맷팅 된 결과를 우리가 원하는 "YYYY.MM.DD" 형식으로 다듬습니다.
   const parts = formatter.formatToParts(dateObj);
-  
+
   const year = parts.find((p) => p.type === "year")?.value;
   const month = parts.find((p) => p.type === "month")?.value;
   const day = parts.find((p) => p.type === "day")?.value;
@@ -50,7 +47,6 @@ function formatDate(date: string | Date): string {
   return `${year}.${month}.${day}`;
 }
 
-// AssignmentDetail 페이지 메타데이터 생성 함수
 export interface AssignmentMetadataParams {
   assignmentId: string;
   assignmentTitle: string;
@@ -75,6 +71,14 @@ export const AssignmentDetail = Object.assign(
     const data = usePageData<Assignment>();
     const feedback = useFeedback(data.url);
 
+    // [수정 1] 마운트 여부를 확인하는 상태 추가
+    const [isMounted, setIsMounted] = useState(false);
+
+    // [수정 2] 컴포넌트가 브라우저에 마운트된 직후 true로 변경
+    useEffect(() => {
+      setIsMounted(true);
+    }, []);
+
     return (
       <div>
         <div className="card-wrap">
@@ -98,32 +102,41 @@ export const AssignmentDetail = Object.assign(
           </Card>
         </div>
 
-        <div className="overflow-auto" suppressHydrationWarning={true}>
-          <MarkdownPreview
-            source={data.body}
-            className="p-6 max-w-full"
-            wrapperElement={{
-              "data-color-mode": "dark",
-            }}
-            style={{
-              wordWrap: "break-word",
-              overflowWrap: "break-word",
-            }}
-          />
+        {/* [수정 3] MarkdownPreview를 isMounted가 true일 때만 렌더링 */}
+        <div className="overflow-auto">
+          {isMounted ? (
+            <MarkdownPreview
+              source={data.body}
+              className="p-6 max-w-full"
+              wrapperElement={{
+                "data-color-mode": "dark",
+              }}
+              style={{
+                wordWrap: "break-word",
+                overflowWrap: "break-word",
+              }}
+            />
+          ) : (
+            // 로딩 중이거나 서버 렌더링 시 보여줄 placeholder (높이 확보용)
+            <div className="p-6 text-gray-500">Loading content...</div>
+          )}
         </div>
 
-        <div className="overflow-auto mt-9" suppressHydrationWarning={true}>
-          <MarkdownPreview
-            source={`## 과제 피드백\n${feedback}`}
-            className="p-6 max-w-full"
-            wrapperElement={{
-              "data-color-mode": "dark",
-            }}
-            style={{
-              wordWrap: "break-word",
-              overflowWrap: "break-word",
-            }}
-          />
+        {/* [수정 4] 피드백 영역도 동일하게 처리 */}
+        <div className="overflow-auto mt-9">
+          {isMounted ? (
+            <MarkdownPreview
+              source={`## 과제 피드백\n${feedback}`}
+              className="p-6 max-w-full"
+              wrapperElement={{
+                "data-color-mode": "dark",
+              }}
+              style={{
+                wordWrap: "break-word",
+                overflowWrap: "break-word",
+              }}
+            />
+          ) : null}
         </div>
 
         <AssignmentComment className="mt-9" />

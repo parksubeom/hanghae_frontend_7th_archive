@@ -1,5 +1,6 @@
 import type { GithubApiUsers, HanghaeUser } from "@hanghae-plus/domain";
-import { type PropsWithChildren, useMemo } from "react";
+// [수정] MouseEvent 타입 추가
+import { type PropsWithChildren, useMemo, type MouseEvent } from "react";
 import { Link, useNavigate } from "react-router";
 import { Calendar, Clock, Github, StarIcon } from "lucide-react";
 import { useUserIdByParam, useUserWithAssignments } from "@/features";
@@ -101,7 +102,8 @@ const AssignmentCard = ({ id, title, url, createdAt, theBest, body }: Assignment
                   className="text-xs text-slate-400 flex items-center space-x-1 hover:underline underline-offset-4"
                   target="_blank"
                   rel="noreferrer"
-                  onClick={(e: any) => {
+                  // [수정] any -> MouseEvent로 변경하여 타입 안전성 확보
+                  onClick={(e: MouseEvent) => {
                     e.stopPropagation(); // 🚨 카드의 클릭 이벤트가 발생하지 않도록 막음
                   }}
                 >
@@ -185,6 +187,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   );
 };
 
+// User 페이지 메타데이터 생성 함수
 export interface UserMetadataParams {
   userId: string;
   userName: string;
@@ -212,9 +215,12 @@ export const User = Object.assign(
     return (
       <div className="px-4 py-6">
         <div className="lg:flex lg:gap-8">
+          {/* 왼쪽 프로필 영역 */}
           <div className="lg:w-[300px]">
             <UserProfile {...user.github} name={user.name} />
           </div>
+
+          {/* 오른쪽 과제 목록 영역 */}
           <div className="lg:flex-1">
             <UserStats assignments={assignmentList} />
             <AssignmentsList items={assignmentList} />

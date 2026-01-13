@@ -5,7 +5,7 @@ import path from "path";
 import svgr from "vite-plugin-svgr";
 
 export default createViteConfig({
-  base: "/front_7th/",
+  base: "/hanghae_frontend_7th_archive/",
   mode: "development", // 1. 개발 모드 명시
   plugins: [react(), tailwindcss(), svgr()],
   resolve: {

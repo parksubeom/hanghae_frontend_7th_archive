@@ -91,4 +91,4 @@ export interface AppData {
 }
 
 // 랭킹 시스템 관련 타입들
-export type Grade = "🏆 마스터" | "💎 다이아몬드" | "🥇 골드" | "🥈 실버" | "🥉 브론즈" | "📚 학습자" | "🌱 초보자";
+export type Grade = "블랙" | "레드" | "브라운" | "퍼플" | "블루" | "화이트";

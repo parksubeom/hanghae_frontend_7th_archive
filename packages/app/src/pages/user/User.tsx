@@ -205,9 +205,6 @@ const UserProfile = ({
               <div className="absolute inset-0 opacity-5 bg-gradient-to-br from-white/30 via-transparent to-black/30 pointer-events-none" />
 
               <div className="relative flex flex-col items-center justify-center h-full space-y-5 px-4">
-                {/* 등급 텍스트 - 더 큰 사이즈 */}
-                <div className={`text-4xl font-extrabold ${textColor} mb-1 tracking-wide`}>{grade}</div>
-
                 {/* 뱃지 이미지 - 더 큰 사이즈와 그림자 효과 */}
                 <div className="relative">
                   <img

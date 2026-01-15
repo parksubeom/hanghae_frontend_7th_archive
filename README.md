@@ -2,7 +2,150 @@
 
 ## 📅 최근 업데이트
 
-### 1. BP(BEST Practice) 정렬 기능 추가
+### 1. 등급 시스템 및 프로필 카드 개선
+
+**날짜**: 2024년 12월
+
+#### 배경
+기존의 점수 기반 랭킹 시스템을 완료율과 BP(Best Practice) 개수 기반의 등급 시스템으로 변경하고, 시각적으로 더욱 아름답고 직관적인 프로필 카드를 구현했습니다.
+
+#### 구현 내용
+
+**1. 등급 시스템 로직 변경**
+- 파일: `packages/crawler/src/utils/ranking.utils.ts`
+- 기존 점수 기반 등급 결정에서 완료율과 BP 개수 기반으로 변경
+- 등급별 기준:
+  - **블랙**: 완료율 100% + BP 2개 이상
+  - **레드**: 완료율 90% 이상 + BP 1개 이상
+  - **브라운**: 완료율 80% 이상
+  - **퍼플**: 완료율 55% 이상
+  - **블루**: 완료율 35% 이상
+  - **화이트**: 완료율 35% 미만
+
+```typescript
+export function determineGrade(
+  user: UserWIthCommonAssignments,
+  totalAssignments: number,
+): Grade {
+  const completionRate = (completedAssignments / totalAssignments) * 100;
+  const bestPracticeCount = user.assignments.filter(
+    (assignment) => assignment.theBest,
+  ).length;
+
+  if (completionRate >= 100 && bestPracticeCount >= 2) return '블랙';
+  if (completionRate >= 90 && bestPracticeCount >= 1) return '레드';
+  if (completionRate >= 80) return '브라운';
+  if (completionRate >= 55) return '퍼플';
+  if (completionRate >= 35) return '블루';
+  return '화이트';
+}
+```
+
+**2. 뱃지 이미지 시스템 구축**
+- 파일: `packages/app/src/pages/home/Home.tsx`, `packages/app/src/pages/user/User.tsx`
+- 등급별 SVG 뱃지 이미지 표시
+- 홈페이지 사용자 카드에 뱃지 표시
+- 프로필 상세 페이지에 뱃지 표시
+
+```typescript
+const getGradeBadgeImage = (grade: Grade): string => {
+  const badgeImages: Record<Grade, string> = {
+    블랙: `https://static.spartaclub.kr/hanghae99/plus/completion/badge_black.svg`,
+    레드: `https://static.spartaclub.kr/hanghae99/plus/completion/badge_red.svg`,
+    브라운: `https://static.spartaclub.kr/hanghae99/plus/completion/badge_brown.svg`,
+    퍼플: `https://static.spartaclub.kr/hanghae99/plus/completion/badge_purple.svg`,
+    블루: `https://static.spartaclub.kr/hanghae99/plus/completion/badge_blue.svg`,
+    화이트: `https://static.spartaclub.kr/hanghae99/plus/completion/badge_white.svg`,
+  };
+  return badgeImages[grade] || badgeImages["화이트"];
+};
+```
+
+**3. 프로필 카드 3D 플립 효과**
+- 파일: `packages/app/src/pages/user/User.tsx`, `packages/app/src/assets/index.css`
+- 호버 시 카드가 3D로 뒤집히며 등급 정보 표시
+- 앞면: 사용자 프로필 정보
+- 뒷면: 등급 뱃지 및 등급별 특징 설명
+- 부드러운 애니메이션 효과 (cubic-bezier 사용)
+
+```css
+/* 3D 플립 카드 효과 */
+.perspective-1000 {
+  perspective: 1200px;
+  perspective-origin: center center;
+}
+
+.card-flip-wrapper {
+  transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.group:hover .card-flip-wrapper {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  backface-visibility: hidden;
+  border-radius: 1rem;
+}
+```
+
+**4. 등급별 동적 스타일링**
+- 파일: `packages/app/src/pages/user/User.tsx`
+- 등급에 따라 배경색, 텍스트 색상, 테두리, 그림자 자동 변경
+- 글래스모피즘(backdrop-blur)과 그라데이션 효과 적용
+- 색상 대비 최적화 (화이트 등급은 어두운 텍스트, 나머지는 밝은 텍스트)
+
+```typescript
+const getGradeCardColors = (grade: Grade) => {
+  const colors: Record<Grade, { bg: string; text: string; textMuted: string; border: string; shadow: string }> = {
+    블랙: {
+      bg: "bg-gradient-to-br from-gray-900/90 via-black/95 to-gray-800/90 backdrop-blur-xl",
+      text: "text-white",
+      textMuted: "text-gray-200",
+      border: "border border-gray-700/50",
+      shadow: "shadow-2xl shadow-black/50",
+    },
+    // ... 각 등급별 색상 정의
+  };
+  return colors[grade] || colors["화이트"];
+};
+```
+
+**5. 등급별 특징 설명**
+- 객관적인 기준 기반 설명 제공
+- 완료율과 BP 개수를 명확히 표시
+- 예: "완료율 100% + BP 2개 이상" (블랙 등급)
+
+**6. 사용자 경험 개선**
+- 프로필 카드 앞면에 "호버하여 등급 보기" 힌트 추가
+- 뒷면에 "호버하여 프로필 보기" 안내 추가
+- 빛 효과(shimmer) 애니메이션 추가
+- 프로필 이미지 호버 시 확대 효과
+
+#### 변경된 파일
+- `packages/crawler/src/utils/ranking.utils.ts` - 등급 결정 로직 변경
+- `packages/domain/src/types.ts` - Grade 타입 정의
+- `packages/app/src/pages/home/Home.tsx` - 홈페이지 뱃지 표시
+- `packages/app/src/pages/user/User.tsx` - 프로필 카드 3D 플립 및 동적 스타일링
+- `packages/app/src/assets/index.css` - 3D 플립 카드 CSS 애니메이션
+
+#### 기술적 특징
+- **3D CSS Transforms**: `perspective`, `transform-style`, `backface-visibility`, `rotateY` 활용
+- **성능 최적화**: `will-change` 속성으로 브라우저 최적화 힌트 제공
+- **부드러운 애니메이션**: `cubic-bezier(0.34, 1.56, 0.64, 1)` 이징 함수로 자연스러운 움직임
+- **반응형 디자인**: 다양한 화면 크기에서 일관된 경험 제공
+- **접근성**: 등급 정보를 텍스트와 이미지로 모두 제공
+
+#### 사용 방법
+1. 홈페이지(`/`)에서 각 사용자 카드 하단에 등급 뱃지 확인
+2. 사용자 상세 페이지(`/@[username]/`)에서 프로필 카드에 마우스를 올리면 3D 플립 효과로 등급 정보 확인
+3. 등급별 색상과 스타일로 시각적으로 구분 가능
+
+---
+
+### 2. BP(BEST Practice) 정렬 기능 추가
 
 #### 배경
 사용자 목록에서 BEST가 많은 순으로 정렬할 수 있는 기능이 필요했습니다. 기존에는 이름과 점수로만 정렬이 가능했는데, BEST Practice를 많이 받은 사용자를 쉽게 확인할 수 있도록 BP 정렬 옵션을 추가했습니다.

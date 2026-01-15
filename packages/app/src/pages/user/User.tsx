@@ -1,13 +1,67 @@
-import type { GithubApiUsers, HanghaeUser } from "@hanghae-plus/domain";
+import type { GithubApiUsers, HanghaeUser, Grade } from "@hanghae-plus/domain";
 // [수정] MouseEvent 타입 추가
 import { type PropsWithChildren, useMemo, type MouseEvent } from "react";
 import { Link, useNavigate } from "react-router";
-import { Calendar, Clock, Github, StarIcon } from "lucide-react";
+import { Calendar, Clock, Github, StarIcon, FlipHorizontal } from "lucide-react";
 import { useUserIdByParam, useUserWithAssignments } from "@/features";
 import { Badge, Card } from "@/components";
 import { calculateReadingTime, formatDate } from "@/lib";
 import { type Assignment, PageProvider, usePageData } from "@/providers";
 import { baseMetadata, type MetadataConfig } from "@/utils/metadata";
+
+/**
+ * 등급에 따른 프로필 카드 스타일을 반환합니다.
+ * 글래스모피즘과 그라데이션을 조합하여 시각적으로 아름답게 만듭니다.
+ */
+const getGradeCardColors = (
+  grade: Grade,
+): { bg: string; text: string; textMuted: string; border: string; shadow: string } => {
+  const colors: Record<Grade, { bg: string; text: string; textMuted: string; border: string; shadow: string }> = {
+    블랙: {
+      bg: "bg-gradient-to-br from-gray-900/90 via-black/95 to-gray-800/90 backdrop-blur-xl",
+      text: "text-white",
+      textMuted: "text-gray-200",
+      border: "border border-gray-700/50",
+      shadow: "shadow-2xl shadow-black/50",
+    },
+    레드: {
+      bg: "bg-gradient-to-br from-red-600/90 via-red-700/95 to-rose-800/90 backdrop-blur-xl",
+      text: "text-white",
+      textMuted: "text-red-50",
+      border: "border border-red-500/40",
+      shadow: "shadow-2xl shadow-red-900/50",
+    },
+    브라운: {
+      bg: "bg-gradient-to-br from-amber-800/90 via-amber-900/95 to-orange-950/90 backdrop-blur-xl",
+      text: "text-white",
+      textMuted: "text-amber-50",
+      border: "border border-amber-700/40",
+      shadow: "shadow-2xl shadow-amber-900/50",
+    },
+    퍼플: {
+      bg: "bg-gradient-to-br from-purple-600/90 via-purple-700/95 to-violet-800/90 backdrop-blur-xl",
+      text: "text-white",
+      textMuted: "text-purple-50",
+      border: "border border-purple-500/40",
+      shadow: "shadow-2xl shadow-purple-900/50",
+    },
+    블루: {
+      bg: "bg-gradient-to-br from-blue-500/90 via-blue-600/95 to-indigo-700/90 backdrop-blur-xl",
+      text: "text-white",
+      textMuted: "text-blue-50",
+      border: "border border-blue-400/40",
+      shadow: "shadow-2xl shadow-blue-900/50",
+    },
+    화이트: {
+      bg: "bg-gradient-to-br from-white/95 via-gray-50/95 to-slate-100/95 backdrop-blur-xl",
+      text: "text-gray-900",
+      textMuted: "text-gray-700",
+      border: "border border-gray-300/60",
+      shadow: "shadow-2xl shadow-gray-400/30",
+    },
+  };
+  return colors[grade] || colors["화이트"];
+};
 
 const UserProfile = ({
   login,
@@ -18,45 +72,171 @@ const UserProfile = ({
   following,
   avatar_url,
   html_url,
-}: GithubApiUsers & { name: string }) => {
+  textColor,
+  textMutedColor,
+  cardBg,
+  border,
+  shadow,
+  grade,
+}: GithubApiUsers & {
+  name: string;
+  textColor: string;
+  textMutedColor: string;
+  cardBg: string;
+  border: string;
+  shadow: string;
+  grade: Grade;
+}) => {
+  /**
+   * 등급에 따른 뱃지 이미지 경로를 반환합니다.
+   */
+  const getGradeBadgeImage = (grade: Grade): string => {
+    const badgeImages: Record<Grade, string> = {
+      블랙: `https://static.spartaclub.kr/hanghae99/plus/completion/badge_black.svg`,
+      레드: `https://static.spartaclub.kr/hanghae99/plus/completion/badge_red.svg`,
+      브라운: `https://static.spartaclub.kr/hanghae99/plus/completion/badge_brown.svg`,
+      퍼플: `https://static.spartaclub.kr/hanghae99/plus/completion/badge_purple.svg`,
+      블루: `https://static.spartaclub.kr/hanghae99/plus/completion/badge_blue.svg`,
+      화이트: `https://static.spartaclub.kr/hanghae99/plus/completion/badge_white.svg`,
+    };
+    return badgeImages[grade] || badgeImages["화이트"];
+  };
+
+  /**
+   * 등급에 따른 특징 설명을 반환합니다.
+   */
+  const getGradeDescription = (grade: Grade): string => {
+    const descriptions: Record<Grade, string> = {
+      블랙: "완료율 100% + BP 2개 이상",
+      레드: "완료율 90% 이상 + BP 1개 이상",
+      브라운: "완료율 80% 이상",
+      퍼플: "완료율 55% 이상",
+      블루: "완료율 35% 이상",
+      화이트: "완료율 35% 미만",
+    };
+    return descriptions[grade] || descriptions["화이트"];
+  };
+
   return (
     <div className="sticky top-6">
-      <Card className="p-6">
-        <div className="flex flex-col items-center text-center space-y-4">
-          {/* 프로필 이미지 */}
-          <a href={html_url} target="_blank" rel="noreferrer">
-            <div className="relative">
-              <div className="w-48 h-48 rounded-full overflow-hidden ring-4 ring-orange-500/30">
-                <img src={avatar_url} alt={login} className="w-full h-full object-cover" />
+      {/* 3D 플립 카드 컨테이너 - 세련된 버전 */}
+      <div className="perspective-1000 profile-card-container">
+        <div className="relative w-full min-h-[500px] group card-shimmer">
+          {/* 카드 플립 래퍼 */}
+          <div className="card-flip-wrapper relative w-full min-h-[500px]">
+            {/* 앞면: 프로필 정보 */}
+            <div
+              className={`card-face absolute inset-0 w-full min-h-[500px] ${cardBg} ${border} ${shadow} rounded-2xl p-8 overflow-hidden`}
+            >
+              {/* 배경 그라데이션 오버레이 */}
+              <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-white/20 via-transparent to-transparent pointer-events-none" />
+
+              <div className="relative flex flex-col items-center text-center space-y-5 h-full justify-center">
+                {/* 프로필 이미지 - 호버 시 확대 효과 */}
+                <a
+                  href={html_url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group/avatar transition-transform duration-300 hover:scale-105"
+                >
+                  <div className="relative">
+                    <div className="w-40 h-40 rounded-full overflow-hidden ring-4 ring-white/20 shadow-2xl group-hover/avatar:ring-white/40 transition-all duration-300">
+                      <img
+                        src={avatar_url}
+                        alt={login}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover/avatar:scale-110"
+                      />
+                    </div>
+                    {/* 프로필 이미지 주변 빛 효과 */}
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  </div>
+                </a>
+
+                {/* 사용자 정보 */}
+                <div className="w-full space-y-3">
+                  <h3
+                    className={`text-2xl font-bold ${textColor} mb-1 transition-all duration-300 group-hover:scale-105`}
+                  >
+                    {login}
+                  </h3>
+                  <div className="space-y-2">
+                    <p className={`${textMutedColor} text-sm font-medium`}>{name}</p>
+                    {bio && <p className={`${textMutedColor} text-sm leading-relaxed px-2`}>{bio}</p>}
+                    {blog && (
+                      <a
+                        href={blog}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={`${textColor} hover:underline opacity-70 hover:opacity-100 text-sm transition-all duration-200 inline-block`}
+                      >
+                        {blog}
+                      </a>
+                    )}
+                    <div className={`flex justify-center space-x-6 ${textMutedColor} pt-2`}>
+                      <div className="flex flex-col items-center space-y-1">
+                        <span className="text-xs opacity-80">팔로워</span>
+                        <span className={`font-bold text-base ${textColor}`}>{followers}</span>
+                      </div>
+                      <div className="flex flex-col items-center space-y-1">
+                        <span className="text-xs opacity-80">팔로잉</span>
+                        <span className={`font-bold text-base ${textColor}`}>{following}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 호버 힌트 */}
+                <div className={`mt-4 pt-4 border-t border-current/10 w-full`}>
+                  <div
+                    className={`flex items-center justify-center space-x-2 ${textMutedColor} opacity-60 group-hover:opacity-100 transition-opacity duration-300`}
+                  >
+                    <FlipHorizontal className="w-4 h-4" />
+                    <span className="text-xs font-medium">호버하여 등급 보기</span>
+                  </div>
+                </div>
               </div>
             </div>
-          </a>
 
-          {/* 사용자 정보 */}
-          <div className="w-full">
-            <h3 className="text-2xl font-bold text-white mb-2">{login}</h3>
-            <div className="space-y-2">
-              <p className="text-slate-300">{name}</p>
-              {bio && <p>{bio}</p>}
-              {blog && (
-                <a href={blog} target="_blank" rel="noreferrer" className="text-blue-400 hover:underline">
-                  {blog}
-                </a>
-              )}
-              <div className="flex justify-center space-x-4 text-slate-400">
-                <div className="flex flex-col items-center">
-                  <span>팔로워</span>
-                  <span className="font-semibold text-white">{followers}</span>
+            {/* 뒷면: 등급 뱃지 - 더 세련된 디자인 */}
+            <div
+              className={`card-face absolute inset-0 w-full min-h-[500px] rotate-y-180 ${cardBg} ${border} ${shadow} rounded-2xl p-8 overflow-hidden`}
+            >
+              {/* 배경 패턴 오버레이 */}
+              <div className="absolute inset-0 opacity-5 bg-gradient-to-br from-white/30 via-transparent to-black/30 pointer-events-none" />
+
+              <div className="relative flex flex-col items-center justify-center h-full space-y-5 px-4">
+                {/* 등급 텍스트 - 더 큰 사이즈 */}
+                <div className={`text-4xl font-extrabold ${textColor} mb-1 tracking-wide`}>{grade}</div>
+
+                {/* 뱃지 이미지 - 더 큰 사이즈와 그림자 효과 */}
+                <div className="relative">
+                  <img
+                    src={getGradeBadgeImage(grade)}
+                    alt={grade}
+                    className="h-28 w-auto drop-shadow-2xl transition-transform duration-300 group-hover:scale-110"
+                    title={grade}
+                  />
+                  {/* 뱃지 주변 빛 효과 */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent rounded-full blur-xl opacity-50" />
                 </div>
-                <div className="flex flex-col items-center">
-                  <span>팔로잉</span>
-                  <span className="font-semibold text-white">{following}</span>
+
+                {/* 등급별 특징 설명 */}
+                <div className="space-y-2 mt-2">
+                  <div className={`w-12 h-0.5 ${textMutedColor} opacity-30 mx-auto`} />
+                  <p className={`text-sm leading-relaxed ${textMutedColor} text-center max-w-xs px-2`}>
+                    {getGradeDescription(grade)}
+                  </p>
+                </div>
+
+                {/* 안내 텍스트 */}
+                <div className="mt-2">
+                  <p className={`text-xs ${textMutedColor} text-center opacity-60`}>호버하여 프로필 보기</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </Card>
+      </div>
     </div>
   );
 };
@@ -206,18 +386,28 @@ export function generateUserMetadata({ userName, avatarUrl }: Omit<UserMetadataP
 
 export const User = Object.assign(
   () => {
-    const { assignments, ...user } = usePageData<
+    const { assignments, grade, ...user } = usePageData<
       Omit<HanghaeUser, "assignments"> & { assignments: Record<string, Assignment> }
     >();
 
     const assignmentList = Object.values(assignments);
+    const cardColors = getGradeCardColors(grade);
 
     return (
       <div className="px-4 py-6">
         <div className="lg:flex lg:gap-8">
           {/* 왼쪽 프로필 영역 */}
           <div className="lg:w-[300px]">
-            <UserProfile {...user.github} name={user.name} />
+            <UserProfile
+              {...user.github}
+              name={user.name}
+              textColor={cardColors.text}
+              textMutedColor={cardColors.textMuted}
+              cardBg={cardColors.bg}
+              border={cardColors.border}
+              shadow={cardColors.shadow}
+              grade={grade}
+            />
           </div>
 
           {/* 오른쪽 과제 목록 영역 */}

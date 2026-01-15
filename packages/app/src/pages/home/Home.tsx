@@ -1,4 +1,4 @@
-import type { CommonAssignment, GithubApiUsers, HanghaeUser } from "@hanghae-plus/domain";
+import type { CommonAssignment, GithubApiUsers, HanghaeUser, Grade } from "@hanghae-plus/domain";
 import { BookOpen, CheckCircle, Star, Users } from "lucide-react";
 import { mergeAssignments, useUsers } from "@/features";
 import { Link } from "react-router";
@@ -8,9 +8,24 @@ import { PageProvider, usePageData } from "@/providers";
 import { SortFilter, useSortFilter } from "@/features/users";
 import { baseMetadata, type MetadataConfig } from "@/utils/metadata";
 
-type UserCard = GithubApiUsers & { assignments: CommonAssignment[]; name: string };
+type UserCard = GithubApiUsers & { assignments: CommonAssignment[]; name: string; grade: Grade };
 
-const UserCard = ({ login, name, avatar_url, assignments }: UserCard) => {
+/**
+ * 등급에 따른 뱃지 이미지 경로를 반환합니다.
+ */
+const getGradeBadgeImage = (grade: Grade): string => {
+  const badgeImages: Record<Grade, string> = {
+    블랙: `https://static.spartaclub.kr/hanghae99/plus/completion/badge_black.svg`,
+    레드: `https://static.spartaclub.kr/hanghae99/plus/completion/badge_red.svg`,
+    브라운: `https://static.spartaclub.kr/hanghae99/plus/completion/badge_brown.svg`,
+    퍼플: `https://static.spartaclub.kr/hanghae99/plus/completion/badge_purple.svg`,
+    블루: `https://static.spartaclub.kr/hanghae99/plus/completion/badge_blue.svg`,
+    화이트: `https://static.spartaclub.kr/hanghae99/plus/completion/badge_white.svg`,
+  };
+  return badgeImages[grade] || badgeImages["화이트"];
+};
+
+const UserCard = ({ login, name, avatar_url, assignments, grade }: UserCard) => {
   return (
     <Card className="hover:shadow-glow transition-all duration-300 cursor-pointer animate-fade-in hover:scale-[1.02] group bg-card border border-border">
       <Link to={`/@${login}/`} className="block">
@@ -21,8 +36,9 @@ const UserCard = ({ login, name, avatar_url, assignments }: UserCard) => {
               <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-orange-500/30 group-hover:ring-orange-400/50 transition-all">
                 <img src={avatar_url} alt={login} className="w-full h-full object-cover" />
               </div>
-              <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border border-slate-800"></div>
             </div>
+            {/* 등급 뱃지 */}
+            <img src={getGradeBadgeImage(grade)} alt={grade} className="h-5 w-auto" title={grade} />
 
             <div className="w-full">
               <h3 className="text-sm font-semibold text-white group-hover:text-orange-300 transition-colors break-words leading-tight">
@@ -53,8 +69,14 @@ const UserCard = ({ login, name, avatar_url, assignments }: UserCard) => {
 const UsersGrid = ({ items }: { items: HanghaeUser[] }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-      {items.map(({ assignments, ...user }) => (
-        <UserCard key={user.github.id} {...user.github} name={user.name} assignments={mergeAssignments(assignments)} />
+      {items.map(({ assignments, grade, ...user }) => (
+        <UserCard
+          key={user.github.id}
+          {...user.github}
+          name={user.name}
+          assignments={mergeAssignments(assignments)}
+          grade={grade}
+        />
       ))}
     </div>
   );

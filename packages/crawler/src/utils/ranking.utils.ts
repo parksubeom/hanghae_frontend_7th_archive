@@ -19,14 +19,6 @@ const RANKING_CONSTANTS = {
   COMPLETION_100_THRESHOLD: 100,
   COMPLETION_90_THRESHOLD: 90,
   COMPLETION_80_THRESHOLD: 80,
-
-  // 등급 결정 기준 (점수 기반)
-  MASTER_SCORE_RATE: 85, // 마스터 점수 비율
-  DIAMOND_SCORE_RATE: 70, // 다이아몬드 점수 비율
-  GOLD_SCORE_RATE: 55, // 골드 점수 비율
-  SILVER_SCORE_RATE: 40, // 실버 점수 비율
-  BRONZE_SCORE_RATE: 25, // 브론즈 점수 비율
-  LEARNER_SCORE_RATE: 10, // 학습자 점수 비율
 } as const;
 
 /**
@@ -71,6 +63,7 @@ export function calculateUserScore(
 
 /**
  * 사용자의 등급을 결정합니다.
+ * 완료율과 BP(베스트 프랙티스) 개수를 기반으로 등급을 결정합니다.
  * @param user 사용자 정보
  * @param totalAssignments 전체 과제 수
  * @returns 결정된 등급
@@ -79,42 +72,43 @@ export function determineGrade(
   user: UserWIthCommonAssignments,
   totalAssignments: number,
 ): Grade {
-  const score = calculateUserScore(user, totalAssignments);
+  const completedAssignments = user.assignments.filter(
+    (assignment) => assignment.passed,
+  ).length;
 
-  const maxScore =
-    totalAssignments *
-      (RANKING_CONSTANTS.COMPLETION_SCORE +
-        RANKING_CONSTANTS.BEST_PRACTICE_SCORE) +
-    100;
+  const bestPracticeCount = user.assignments.filter(
+    (assignment) => assignment.theBest,
+  ).length;
 
-  const scorePercentage = (score / maxScore) * 100;
+  const completionRate = (completedAssignments / totalAssignments) * 100;
 
-  // 점수 기반 등급 결정
-  if (scorePercentage >= RANKING_CONSTANTS.MASTER_SCORE_RATE) {
-    return '🏆 마스터';
+  // 완료율 100% + BP 2개 이상 → 블랙
+  if (completionRate >= 100 && bestPracticeCount >= 2) {
+    return '블랙';
   }
 
-  if (scorePercentage >= RANKING_CONSTANTS.DIAMOND_SCORE_RATE) {
-    return '💎 다이아몬드';
+  // 완료율 90% 이상 + BP 1개 이상 → 레드
+  if (completionRate >= 90 && bestPracticeCount >= 1) {
+    return '레드';
   }
 
-  if (scorePercentage >= RANKING_CONSTANTS.GOLD_SCORE_RATE) {
-    return '🥇 골드';
+  // 완료율 80% 이상 → 브라운
+  if (completionRate >= 80) {
+    return '브라운';
   }
 
-  if (scorePercentage >= RANKING_CONSTANTS.SILVER_SCORE_RATE) {
-    return '🥈 실버';
+  // 완료율 55% 이상 → 퍼플
+  if (completionRate >= 55) {
+    return '퍼플';
   }
 
-  if (scorePercentage >= RANKING_CONSTANTS.BRONZE_SCORE_RATE) {
-    return '🥉 브론즈';
+  // 완료율 35% 이상 → 블루
+  if (completionRate >= 35) {
+    return '블루';
   }
 
-  if (scorePercentage >= RANKING_CONSTANTS.LEARNER_SCORE_RATE) {
-    return '📚 학습자';
-  }
-
-  return '🌱 초보자';
+  // 그 외 → 화이트
+  return '화이트';
 }
 
 /**
